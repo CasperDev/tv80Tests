@@ -19,6 +19,7 @@ module tb();
 
 wire cpu_busak_n;
 reg cpu_int_n = 1'b1;
+reg cpu_nmi_n = 1'b1;
  
 //------------- CPU ----------------------
 wire [7:0] cpu_di;
@@ -34,7 +35,7 @@ tv80s cpu (
     .m1_n(cpu_m1_n), .mreq_n(cpu_mreq_n), .iorq_n(cpu_iorq_n), .rd_n(cpu_rd_n), .wr_n(cpu_wr_n), 
     .rfsh_n(cpu_rfsh_n), .halt_n(cpu_halt_n), .busak_n(cpu_busak_n), 
     .A(cpu_a), .di(cpu_di), .dout(cpu_do),
-    .wait_n(1'b1), .int_n(cpu_int_n), .nmi_n(1'b1), .busrq_n(1'b1)    // all inactive for now
+    .wait_n(1'b1), .int_n(cpu_int_n), .nmi_n(cpu_nmi_n), .busrq_n(1'b1)    // all inactive for now
 );
 
 //------------- MEMORY / IO ----------------------
@@ -139,8 +140,8 @@ task ASSERT;
 	if (cpu.core.regs.RegsL[7] != REGS[39:32]) begin FAIL = 1'b1; $display("* FAIL *: [IYL] expected=%2h, actual=%2h",REGS[39:32],cpu.core.regs.RegsL[7]); end;
 	if (cpu.core.I != I) begin FAIL = 1'b1; $display("* FAIL *: [I] expected=%2h, actual=%2h",I,cpu.core.I); end;
 	if (cpu.core.R != R) begin FAIL = 1'b1; $display("* FAIL *: [R] expected=%2h, actual=%2h",R,cpu.core.R); end;
-	if (cpu.core.IntE_FF1 != IFF[0]) begin FAIL = 1'b1; $display("* FAIL *: [IFF1] expected=1'b1 actual=%1b",cpu.core.IntE_FF1); end;
-	if (cpu.core.IntE_FF2 != IFF[1]) begin FAIL = 1'b1; $display("* FAIL *: [IFF2] expected=1'b1, actual=%1b",cpu.core.IntE_FF2); end;
+	if (cpu.core.IntE_FF1 != IFF[0]) begin FAIL = 1'b1; $display("* FAIL *: [IFF1] expected=%1b actual=%1b",IFF[0],cpu.core.IntE_FF1); end;
+	if (cpu.core.IntE_FF2 != IFF[1]) begin FAIL = 1'b1; $display("* FAIL *: [IFF2] expected=%1b actual=%1b",IFF[1],cpu.core.IntE_FF2); end;
 	if (FAIL) $display("%s",TESTCASE);
 	end
 endtask

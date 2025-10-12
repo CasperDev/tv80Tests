@@ -32,4 +32,11 @@ To run several tests at once use quoted wildcard mask
 - [ ] RD control line timing
 - [ ] WR control line timing
 
-- [ ] Fix INT 2 ack cycle - should take 19T and takes 21T 
+- [ ] Fix INT 2 ack cycle 
+	- should take 19T and takes 21T (store PCL and PCH on stack should take 3T each but takes 4T each)
+
+- [ ] Fix NMI ack cycle 
+	- should take 11T and takes 15T (store PCL and PCH on stack should take 3T each but takes 4T each), 
+	- fake fech should take 4T but takes 6T (2 wait states should not be included)
+
+

@@ -1,5 +1,5 @@
 $date
-	Sun Oct 12 07:22:01 2025
+	Sun Oct 12 08:35:11 2025
 $end
 $version
 	Icarus Verilog
@@ -27,17 +27,18 @@ $var wire 16 / cpu_a [15:0] $end
 $var reg 1 0 FAIL $end
 $var reg 385 1 TESTCASE [0:384] $end
 $var reg 1 2 cpu_int_n $end
-$var reg 1 3 i_clk $end
-$var reg 1 4 i_reset_btn $end
-$var reg 8 5 io_o [7:0] $end
-$var reg 8 6 mem_o [7:0] $end
+$var reg 1 3 cpu_nmi_n $end
+$var reg 1 4 i_clk $end
+$var reg 1 5 i_reset_btn $end
+$var reg 8 6 io_o [7:0] $end
+$var reg 8 7 mem_o [7:0] $end
 $scope module cpu $end
-$var wire 1 7 busrq_n $end
-$var wire 1 8 cen $end
+$var wire 1 8 busrq_n $end
+$var wire 1 9 cen $end
 $var wire 1 " clk $end
-$var wire 8 9 di [7:0] $end
+$var wire 8 : di [7:0] $end
 $var wire 1 2 int_n $end
-$var wire 1 : nmi_n $end
+$var wire 1 3 nmi_n $end
 $var wire 1 # reset $end
 $var wire 1 ; wait_n $end
 $var wire 1 < write $end
@@ -61,13 +62,13 @@ $var reg 1 ( mreq_n $end
 $var reg 1 ' rd_n $end
 $var reg 1 % wr_n $end
 $scope module core $end
-$var wire 1 7 busrq_n $end
-$var wire 1 8 cen $end
+$var wire 1 8 busrq_n $end
+$var wire 1 9 cen $end
 $var wire 1 " clk $end
 $var wire 8 H di [7:0] $end
 $var wire 8 I dinst [7:0] $end
 $var wire 1 2 int_n $end
-$var wire 1 : nmi_n $end
+$var wire 1 3 nmi_n $end
 $var wire 1 # reset $end
 $var wire 1 & rfsh_n $end
 $var wire 1 ; wait_n $end
@@ -672,14 +673,14 @@ x>
 bx =
 x<
 1;
-1:
-bz 9
+bz :
+19
 18
-17
+bx 7
 bx 6
-bx 5
-14
-03
+15
+04
+13
 12
 bx 1
 00
@@ -849,10 +850,10 @@ b1 D#
 b0 G
 b0 H
 1"
-13
+14
 #10
 0"
-03
+04
 #15
 b0 Z"
 b0 e#
@@ -863,18 +864,18 @@ b11 f#
 b0 ["
 b0 Y"
 1"
-13
+14
 #20
 0"
-03
+04
 #25
 1"
-13
+14
 #30
 0"
-03
-0#
 04
+0#
+05
 #35
 b0 y
 b0 1#
@@ -913,7 +914,7 @@ b0 d"
 b1000000 r
 b1000000 .#
 1"
-13
+14
 b11 p
 b11 [#
 1K"
@@ -955,12 +956,12 @@ b1010101 &$
 b0 $$
 b0 '$
 #40
-b0 6
+b0 7
 0"
-03
+04
 #45
 b0 -
-b0 9
+b0 :
 b0 I
 b100 =
 b100 u"
@@ -968,13 +969,13 @@ b100 v"
 0(
 0'
 1"
-13
+14
 #50
 0"
-03
+04
 #55
 bz -
-bz 9
+bz :
 bz I
 b1000 =
 b1000 u"
@@ -993,13 +994,13 @@ b1010101 /
 b1010101 C
 b1010101 ."
 1"
-13
+14
 #59
 02
 #60
-bx 6
+bx 7
 0"
-03
+04
 #65
 1h"
 b1 c"
@@ -1011,10 +1012,10 @@ b10000 u"
 b10000 v"
 0(
 1"
-13
+14
 #70
 0"
-03
+04
 #75
 b1111111111111111 c"
 b1111111111111111 B"
@@ -1049,14 +1050,14 @@ b1 /
 b1 C
 b1 ."
 1"
-13
+14
 #80
-b0 6
+b0 7
 0"
-03
+04
 #85
 b11100111 -
-b11100111 9
+b11100111 :
 b11100111 I
 b10 Z"
 b10 e#
@@ -1068,18 +1069,18 @@ b101 r"
 15"
 0*
 1"
-13
+14
 #90
 0"
-03
+04
 #95
 0*
 16"
 1"
-13
+14
 #100
 0"
-03
+04
 #105
 b100 =
 b100 u"
@@ -1088,10 +1089,10 @@ b11 d#
 b100 v"
 0*
 1"
-13
+14
 #110
 0"
-03
+04
 #115
 0\
 b101 P
@@ -1107,7 +1108,7 @@ b101 c#
 b11 K
 b11 ]#
 bz -
-bz 9
+bz :
 bz I
 b11100111 g"
 b1000000 r
@@ -1143,11 +1144,11 @@ b1010110 /
 b1010110 C
 b1010110 ."
 1"
-13
+14
 #120
-bx 6
+bx 7
 0"
-03
+04
 #125
 b1111111111111111 c"
 b1111111111111111 e"
@@ -1163,10 +1164,10 @@ b11 r"
 b10000 v"
 0(
 1"
-13
+14
 #130
 0"
-03
+04
 #135
 1h"
 b100000 =
@@ -1180,10 +1181,10 @@ b100000 v"
 1s"
 b1111111111111111 b"
 1"
-13
+14
 #140
 0"
-03
+04
 #145
 1<
 b101 P
@@ -1226,10 +1227,10 @@ b10 v"
 06"
 05"
 1"
-13
+14
 #150
 0"
-03
+04
 #155
 b100 =
 b100 u"
@@ -1263,10 +1264,10 @@ b100 v"
 b0 0"
 b0 y"
 1"
-13
+14
 #160
 0"
-03
+04
 #165
 bz g"
 1h"
@@ -1290,11 +1291,11 @@ bz H
 1(
 1%
 1"
-13
+14
 #170
-b0 6
+b0 7
 0"
-03
+04
 #175
 b1 B"
 1T
@@ -1336,11 +1337,11 @@ b1111111111111110 /
 b1111111111111110 C
 b1111111111111110 ."
 1"
-13
+14
 #180
-bx 6
+bx 7
 0"
-03
+04
 #185
 b0 y
 b0 1#
@@ -1371,10 +1372,10 @@ b100 v"
 0(
 0%
 1"
-13
+14
 #190
 0"
-03
+04
 #195
 1h"
 bx c"
@@ -1388,11 +1389,11 @@ b1000 u"
 b1000 v"
 b111000 i"
 1"
-13
+14
 #200
-b1 6
+b1 7
 0"
-03
+04
 #205
 b1111111111111111 B"
 b1101 N
@@ -1443,14 +1444,14 @@ b1 D#
 0)
 b10 v"
 1"
-13
+14
 #210
-b11111111 6
+b11111111 7
 0"
-03
+04
 #215
 b11111111 -
-b11111111 9
+b11111111 :
 b11111111 I
 b100 =
 b100 u"
@@ -1482,13 +1483,13 @@ b0 m"
 b0 0"
 b0 y"
 1"
-13
+14
 #220
 0"
-03
+04
 #225
 bz -
-bz 9
+bz :
 bz I
 b11111111 g"
 b1111111111111111 c"
@@ -1515,7 +1516,7 @@ b11111111 H
 1(
 1'
 1"
-13
+14
 0#$
 b0 ~#
 b1010111 !$

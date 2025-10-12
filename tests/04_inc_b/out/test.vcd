@@ -1,5 +1,5 @@
 $date
-	Sun Oct 12 07:22:02 2025
+	Sun Oct 12 08:35:13 2025
 $end
 $version
 	Icarus Verilog
@@ -27,17 +27,18 @@ $var wire 16 / cpu_a [15:0] $end
 $var reg 1 0 FAIL $end
 $var reg 385 1 TESTCASE [0:384] $end
 $var reg 1 2 cpu_int_n $end
-$var reg 1 3 i_clk $end
-$var reg 1 4 i_reset_btn $end
-$var reg 8 5 io_o [7:0] $end
-$var reg 8 6 mem_o [7:0] $end
+$var reg 1 3 cpu_nmi_n $end
+$var reg 1 4 i_clk $end
+$var reg 1 5 i_reset_btn $end
+$var reg 8 6 io_o [7:0] $end
+$var reg 8 7 mem_o [7:0] $end
 $scope module cpu $end
-$var wire 1 7 busrq_n $end
-$var wire 1 8 cen $end
+$var wire 1 8 busrq_n $end
+$var wire 1 9 cen $end
 $var wire 1 " clk $end
-$var wire 8 9 di [7:0] $end
+$var wire 8 : di [7:0] $end
 $var wire 1 2 int_n $end
-$var wire 1 : nmi_n $end
+$var wire 1 3 nmi_n $end
 $var wire 1 # reset $end
 $var wire 1 ; wait_n $end
 $var wire 1 < write $end
@@ -61,13 +62,13 @@ $var reg 1 ( mreq_n $end
 $var reg 1 ' rd_n $end
 $var reg 1 % wr_n $end
 $scope module core $end
-$var wire 1 7 busrq_n $end
-$var wire 1 8 cen $end
+$var wire 1 8 busrq_n $end
+$var wire 1 9 cen $end
 $var wire 1 " clk $end
 $var wire 8 H di [7:0] $end
 $var wire 8 I dinst [7:0] $end
 $var wire 1 2 int_n $end
-$var wire 1 : nmi_n $end
+$var wire 1 3 nmi_n $end
 $var wire 1 # reset $end
 $var wire 1 & rfsh_n $end
 $var wire 1 ; wait_n $end
@@ -672,14 +673,14 @@ x>
 bx =
 x<
 1;
-1:
-bz 9
+bz :
+19
 18
-17
+bx 7
 bx 6
-bx 5
-14
-03
+15
+04
+13
 12
 bx 1
 00
@@ -849,10 +850,10 @@ b1 D#
 b0 G
 b0 H
 1"
-13
+14
 #10
 0"
-03
+04
 #15
 b0 Z"
 b0 e#
@@ -863,18 +864,18 @@ b11 f#
 b0 ["
 b0 Y"
 1"
-13
+14
 #20
 0"
-03
+04
 #25
 1"
-13
+14
 #30
 0"
-03
-0#
 04
+0#
+05
 #35
 b11111110 y
 b11111110 1#
@@ -911,7 +912,7 @@ b0 d"
 b10111001 r
 b10111001 .#
 1"
-13
+14
 b0 b"
 b0 u#
 b0 q#
@@ -948,12 +949,12 @@ b0 &$
 b0 $$
 b11111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 '$
 #40
-b100 6
+b100 7
 0"
-03
+04
 #45
 b100 -
-b100 9
+b100 :
 b100 I
 b100 =
 b100 u"
@@ -964,10 +965,10 @@ b100 v"
 0(
 0'
 1"
-13
+14
 #50
 0"
-03
+04
 #55
 1Z
 1S
@@ -975,7 +976,7 @@ b100 v"
 b1010 N
 b1010 a#
 bz -
-bz 9
+bz :
 bz I
 b100 _"
 b100 k#
@@ -1006,10 +1007,10 @@ b100 B#
 b1 Q"
 b1 V"
 1"
-13
+14
 #60
 0"
-03
+04
 #65
 b0 y
 b0 1#
@@ -1037,10 +1038,10 @@ b1 {"
 b10000 v"
 0(
 1"
-13
+14
 #70
 0"
-03
+04
 #75
 0h"
 b10 =
@@ -1063,11 +1064,11 @@ b1 /
 b1 C
 b1 ."
 1"
-13
+14
 #80
-bx 6
+bx 7
 0"
-03
+04
 #85
 1Z
 1S
@@ -1075,7 +1076,7 @@ b1010 N
 b1010 a#
 1X
 bx -
-bx 9
+bx :
 bx I
 0F#
 b100 _"
@@ -1106,10 +1107,10 @@ b100 v"
 0(
 0'
 1"
-13
+14
 #90
 0"
-03
+04
 #95
 b0xxx O
 b0xxx `#
@@ -1122,7 +1123,7 @@ b0xxx N
 b0xxx a#
 1X
 bz -
-bz 9
+bz :
 bz I
 b1 _"
 b1 k#
@@ -1172,7 +1173,7 @@ bx B#
 b10 Q"
 b10 V"
 1"
-13
+14
 0#$
 b0 ~#
 b1 !$

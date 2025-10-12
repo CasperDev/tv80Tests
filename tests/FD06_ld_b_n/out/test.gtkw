@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Fri Oct 10 07:48:42 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/tests/01_ld_bc_nn/out/test.vcd"
+[dumpfile_mtime] "Fri Oct 10 07:23:59 2025"
+[dumpfile_size] 16517
+[savefile] "/workspaces/tv80Tests/tests/01_ld_bc_nn/out/test.gtkw"
+[timestart] 0
+[size] 1579 981
+[pos] -1 -1
+*-4.807671 75 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test.
+[treeopen] test.tb.
+[sst_width] 297
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+test.tb.cpu.reset
+test.tb.cpu.cen
+test.tb.cpu.clk
+test.tb.cpu.m1_n
+test.tb.cpu.rfsh_n
+@22
+test.tb.cpu.A[15:0]
+@28
+test.tb.cpu.mreq_n
+test.tb.cpu.rd_n
+test.tb.cpu.wr_n
+@22
+test.tb.cpu.di[7:0]
+@23
+test.tb.cpu.di_reg[7:0]
+@420
+test.tb.cpu.IOWait
+test.tb.cpu.Mode
+test.tb.cpu.T2Write
+@22
+test.tb.cpu.dout[7:0]
+@28
+test.tb.cpu.intcycle_n
+test.tb.cpu.iorq
+test.tb.cpu.iorq_n
+@22
+test.tb.cpu.mcycle[6:0]
+test.tb.cpu.tstate[6:0]
+@28
+test.tb.cpu.wait_n
+test.tb.cpu.busrq_n
+test.tb.cpu.int_n
+test.tb.cpu.nmi_n
+test.tb.cpu.no_read
+test.tb.cpu.write
+test.tb.cpu.busak_n
+test.tb.cpu.halt_n
+[pattern_trace] 1
+[pattern_trace] 0
