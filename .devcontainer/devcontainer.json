@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+  "name": "Z80 Verilog Testbench",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": ["--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hbenl.vscode-test-explorer",
+		"hbenl.vscode-tap-adapter",
+		"mshr-h.veriloghdl"
+      ],
+      "settings": {
+        "testExplorer.codeLens": true,
+		"testExplorer.showCollapseAll": true,
+		"testExplorer.showRefresh": true,
+	  	"testExplorer.testAdapters": ["tap"],
+  		"tapAdapter.tapCommand": "./run_tests.sh"
+     }
+    }
+  },
+  "remoteUser": "vscode"
+}

@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sun Oct 05 20:43:50 2025
+[*]
+[dumpfile] "E:\TangNano\tv80Tests\tests\tb_bus.vcd"
+[dumpfile_mtime] "Sun Oct 05 20:43:18 2025"
+[dumpfile_size] 22060
+[savefile] "E:\TangNano\tv80Tests\tests\testbus.gtkw"
+[timestart] 0
+[size] 1554 741
+[pos] -1 -1
+*-5.000000 30 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_bus.
+[treeopen] tb_bus.dut.
+[sst_width] 197
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 203
+@29
+tb_bus.dut.tv80s.reset
+@28
+tb_bus.dut.clk
+tb_bus.dut.m1_n
+tb_bus.dut.rfsh_n
+tb_bus.dut.tv80s.mreq_n
+@22
+tb_bus.dut.tv80s.A[15:0]
+tb_bus.dut.tv80s.tstate[6:0]
+@28
+tb_bus.dut.tv80s.rd_n
+[pattern_trace] 1
+[pattern_trace] 0

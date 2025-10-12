@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/FD01_ld_bc_nn/out/test.vcd opened for output.
+-- FD 01 12 34 (ld bc,$3412) (undoc)
+tests/FD01_ld_bc_nn/test.v:31: $finish called at 195 (1ns)
