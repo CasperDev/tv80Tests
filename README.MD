@@ -25,11 +25,11 @@ To run several tests at once use quoted wildcard mask
 
 ## TODO
 
-[ ] M1 control line (remove register)
-[ ] RFSH control line (remove register)
-[ ] MREQ control line timing
-[ ] IORQ control line timing
-[ ] RD control line timing
-[ ] WR control line timing
+- [ ] M1 control line (remove register)
+- [ ] RFSH control line (remove register)
+- [ ] MREQ control line timing
+- [ ] IORQ control line timing
+- [ ] RD control line timing
+- [ ] WR control line timing
 
-[ ] Fix INT 2 ack cycle - should take 19T and takes 21T 
+- [ ] Fix INT 2 ack cycle - should take 19T and takes 21T 
