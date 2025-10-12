@@ -1,0 +1,2 @@
+	Syn 64.702(MHz)	17 logic levels
+	Route 62.318(MHz)	16 logic levels

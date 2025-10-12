@@ -10,5 +10,6 @@
         <File path="src/tv80_mcode.sv" type="file.verilog" enable="1"/>
         <File path="src/tv80_reg.sv" type="file.verilog" enable="1"/>
         <File path="src/tv80s.sv" type="file.verilog" enable="1"/>
+        <File path="src/tv80Tests.sdc" type="file.sdc" enable="1"/>
     </FileList>
 </Project>
