@@ -17,9 +17,9 @@ fi
 
 # --- Symulacja ---
 echo "Running simulation..."
-if ! vvp "${TESTFILE}.vvp" > fuse.log; then
+if ! vvp "${TESTFILE}.vvp" > "${TESTFILE}.log"; then
     echo "❌ Simulation failed!"
     exit 1
 fi
 
-echo "✅ Done. Output written to fuse.log"
+echo "✅ Done. Output written to ${TESTFILE}.log"

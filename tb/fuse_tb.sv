@@ -70,32 +70,32 @@ task ASSERT;
 		FAIL = 1'b0;
 	alt = cpu.core.Alternate;
 	//if (cpu.state != cpu.ST_FETCH_M1_T1) $display("* FAIL *: [CPU state] other than ST_FETCH_M1_T1, %b", cpu.state);
-	if (cpu.core.PC != REGS[15:0]) begin FAIL = 1'b1; $display("* FAIL *: [PC] expected=%4h, actual=%4h",REGS[15:0],cpu.i_tv80_core.PC); end;
-	if (cpu.core.SP != REGS[31:16]) begin FAIL = 1'b1; $display("* FAIL *: [SP] expected=%4h, actual=%4h",REGS[31:16],cpu.i_tv80_core.SP); end;
-	if (cpu.core.ACC != REGS[191:184]) begin FAIL = 1'b1; $display("* FAIL *: [A] expected=%2h, actual=%2h",REGS[191:184],cpu.i_tv80_core.ACC); end;
-	if (cpu.core.F != REGS[183:176]) begin FAIL = 1'b1; $display("* FAIL *: [F] expected=%2h, actual=%2h",REGS[183:176],cpu.i_tv80_core.F); end;
-	if (cpu.core.Ap != REGS[127:120]) begin FAIL = 1'b1; $display("* FAIL *: [A'] expected=%2h, actual=%2h",REGS[127:120],cpu.i_tv80_core.Ap); end;
-	if (cpu.core.Fp != REGS[119:112]) begin FAIL = 1'b1; $display("* FAIL *: [F'] expected=%2h, actual=%2h",REGS[119:112],cpu.i_tv80_core.Fp); end;
-	if (cpu.core.regs.RegsH[{alt,2'b00}] != REGS[175:168]) begin FAIL = 1'b1; $display("* FAIL *: [B] expected=%2h, actual=%2h",REGS[175:168],cpu.i_tv80_core.i_reg.RegsH[{alt,2'b00}]); end;
-	if (cpu.core.regs.RegsL[{alt,2'b00}] != REGS[167:160]) begin FAIL = 1'b1; $display("* FAIL *: [C] expected=%2h, actual=%2h",REGS[167:160],cpu.i_tv80_core.i_reg.RegsL[{alt,2'b00}]); end;
-	if (cpu.core.regs.RegsH[{alt,2'b01}] != REGS[159:152]) begin FAIL = 1'b1; $display("* FAIL *: [D] expected=%2h, actual=%2h",REGS[159:152],cpu.i_tv80_core.i_reg.RegsH[{alt,2'b01}]); end;
-	if (cpu.core.regs.RegsL[{alt,2'b01}] != REGS[151:144]) begin FAIL = 1'b1; $display("* FAIL *: [E] expected=%2h, actual=%2h",REGS[151:144],cpu.i_tv80_core.i_reg.RegsL[{alt,2'b01}]); end;
-	if (cpu.core.regs.RegsH[{alt,2'b10}] != REGS[143:136]) begin FAIL = 1'b1; $display("* FAIL *: [H] expected=%2h, actual=%2h",REGS[143:136],cpu.i_tv80_core.i_reg.RegsH[{alt,2'b10}]); end;
-	if (cpu.core.regs.RegsL[{alt,2'b10}] != REGS[135:128]) begin FAIL = 1'b1; $display("* FAIL *: [L] expected=%2h, actual=%2h",REGS[135:128],cpu.i_tv80_core.i_reg.RegsL[{alt,2'b10}]); end;
-	if (cpu.core.regs.RegsH[{!alt,2'b00}] != REGS[111:104]) begin FAIL = 1'b1; $display("* FAIL *: [B'] expected=%2h, actual=%2h",REGS[111:104],cpu.i_tv80_core.i_reg.RegsH[{!alt,2'b00}]); end;
-	if (cpu.core.regs.RegsL[{!alt,2'b00}] != REGS[103:96]) begin FAIL = 1'b1; $display("* FAIL *: [C'] expected=%2h, actual=%2h",REGS[103:96],cpu.i_tv80_core.i_reg.RegsL[{!alt,2'b00}]); end;
-	if (cpu.core.regs.RegsH[{!alt,2'b01}] != REGS[95:88]) begin FAIL = 1'b1; $display("* FAIL *: [D'] expected=%2h, actual=%2h",REGS[95:88],cpu.i_tv80_core.i_reg.RegsH[{!alt,2'b01}]); end;
-	if (cpu.core.regs.RegsL[{!alt,2'b01}] != REGS[87:80]) begin FAIL = 1'b1; $display("* FAIL *: [E'] expected=%2h, actual=%2h",REGS[87:80],cpu.i_tv80_core.i_reg.RegsL[{!alt,2'b01}]); end;
-	if (cpu.core.regs.RegsH[{!alt,2'b10}] != REGS[79:72]) begin FAIL = 1'b1; $display("* FAIL *: [H'] expected=%2h, actual=%2h",REGS[79:72],cpu.i_tv80_core.i_reg.RegsH[{!alt,2'b10}]); end;
-	if (cpu.core.regs.RegsL[{!alt,2'b10}] != REGS[71:64]) begin FAIL = 1'b1; $display("* FAIL *: [L'] expected=%2h, actual=%2h",REGS[71:64],cpu.i_tv80_core.i_reg.RegsL[{!alt,2'b10}]); end;
-	if (cpu.core.regs.RegsH[3] != REGS[63:56]) begin FAIL = 1'b1; $display("* FAIL *: [IXH] expected=%2h, actual=%2h",REGS[63:56],cpu.i_tv80_core.i_reg.RegsH[3]); end;
-	if (cpu.core.regs.RegsL[3] != REGS[55:48]) begin FAIL = 1'b1; $display("* FAIL *: [IXL] expected=%2h, actual=%2h",REGS[55:48],cpu.i_tv80_core.i_reg.RegsL[3]); end;
-	if (cpu.core.regs.RegsH[7] != REGS[47:40]) begin FAIL = 1'b1; $display("* FAIL *: [IYH] expected=%2h, actual=%2h",REGS[47:40],cpu.i_tv80_core.i_reg.RegsH[7]); end;
-	if (cpu.core.regs.RegsL[7] != REGS[39:32]) begin FAIL = 1'b1; $display("* FAIL *: [IYL] expected=%2h, actual=%2h",REGS[39:32],cpu.i_tv80_core.i_reg.RegsL[7]); end;
-	if (cpu.core.I != I) begin FAIL = 1'b1; $display("* FAIL *: [I] expected=%2h, actual=%2h",I,cpu.i_tv80_core.I); end;
-	if (cpu.core.R != R) begin FAIL = 1'b1; $display("* FAIL *: [R] expected=%2h, actual=%2h",R,cpu.i_tv80_core.R); end;
-	if (cpu.core.IntE_FF1 != IFF[0]) begin FAIL = 1'b1; $display("* FAIL *: [IFF1] expected=1'b1 actual=%1b",cpu.i_tv80_core.IntE_FF1); end;
-	if (cpu.core.IntE_FF2 != IFF[1]) begin FAIL = 1'b1; $display("* FAIL *: [IFF2] expected=1'b1, actual=%1b",cpu.i_tv80_core.IntE_FF2); end;
+	if (cpu.core.PC != REGS[15:0]) begin FAIL = 1'b1; $display("* FAIL *: [PC] expected=%4h, actual=%4h",REGS[15:0],cpu.core.PC); end;
+	if (cpu.core.SP != REGS[31:16]) begin FAIL = 1'b1; $display("* FAIL *: [SP] expected=%4h, actual=%4h",REGS[31:16],cpu.core.SP); end;
+	if (cpu.core.ACC != REGS[191:184]) begin FAIL = 1'b1; $display("* FAIL *: [A] expected=%2h, actual=%2h",REGS[191:184],cpu.core.ACC); end;
+	if (cpu.core.F != REGS[183:176]) begin FAIL = 1'b1; $display("* FAIL *: [F] expected=%2h, actual=%2h",REGS[183:176],cpu.core.F); end;
+	if (cpu.core.Ap != REGS[127:120]) begin FAIL = 1'b1; $display("* FAIL *: [A'] expected=%2h, actual=%2h",REGS[127:120],cpu.core.Ap); end;
+	if (cpu.core.Fp != REGS[119:112]) begin FAIL = 1'b1; $display("* FAIL *: [F'] expected=%2h, actual=%2h",REGS[119:112],cpu.core.Fp); end;
+	if (cpu.core.regs.RegsH[{alt,2'b00}] != REGS[175:168]) begin FAIL = 1'b1; $display("* FAIL *: [B] expected=%2h, actual=%2h",REGS[175:168],cpu.core.regs.RegsH[{alt,2'b00}]); end;
+	if (cpu.core.regs.RegsL[{alt,2'b00}] != REGS[167:160]) begin FAIL = 1'b1; $display("* FAIL *: [C] expected=%2h, actual=%2h",REGS[167:160],cpu.core.regs.RegsL[{alt,2'b00}]); end;
+	if (cpu.core.regs.RegsH[{alt,2'b01}] != REGS[159:152]) begin FAIL = 1'b1; $display("* FAIL *: [D] expected=%2h, actual=%2h",REGS[159:152],cpu.core.regs.RegsH[{alt,2'b01}]); end;
+	if (cpu.core.regs.RegsL[{alt,2'b01}] != REGS[151:144]) begin FAIL = 1'b1; $display("* FAIL *: [E] expected=%2h, actual=%2h",REGS[151:144],cpu.core.regs.RegsL[{alt,2'b01}]); end;
+	if (cpu.core.regs.RegsH[{alt,2'b10}] != REGS[143:136]) begin FAIL = 1'b1; $display("* FAIL *: [H] expected=%2h, actual=%2h",REGS[143:136],cpu.core.regs.RegsH[{alt,2'b10}]); end;
+	if (cpu.core.regs.RegsL[{alt,2'b10}] != REGS[135:128]) begin FAIL = 1'b1; $display("* FAIL *: [L] expected=%2h, actual=%2h",REGS[135:128],cpu.core.regs.RegsL[{alt,2'b10}]); end;
+	if (cpu.core.regs.RegsH[{!alt,2'b00}] != REGS[111:104]) begin FAIL = 1'b1; $display("* FAIL *: [B'] expected=%2h, actual=%2h",REGS[111:104],cpu.core.regs.RegsH[{!alt,2'b00}]); end;
+	if (cpu.core.regs.RegsL[{!alt,2'b00}] != REGS[103:96]) begin FAIL = 1'b1; $display("* FAIL *: [C'] expected=%2h, actual=%2h",REGS[103:96],cpu.core.regs.RegsL[{!alt,2'b00}]); end;
+	if (cpu.core.regs.RegsH[{!alt,2'b01}] != REGS[95:88]) begin FAIL = 1'b1; $display("* FAIL *: [D'] expected=%2h, actual=%2h",REGS[95:88],cpu.core.regs.RegsH[{!alt,2'b01}]); end;
+	if (cpu.core.regs.RegsL[{!alt,2'b01}] != REGS[87:80]) begin FAIL = 1'b1; $display("* FAIL *: [E'] expected=%2h, actual=%2h",REGS[87:80],cpu.core.regs.RegsL[{!alt,2'b01}]); end;
+	if (cpu.core.regs.RegsH[{!alt,2'b10}] != REGS[79:72]) begin FAIL = 1'b1; $display("* FAIL *: [H'] expected=%2h, actual=%2h",REGS[79:72],cpu.core.regs.RegsH[{!alt,2'b10}]); end;
+	if (cpu.core.regs.RegsL[{!alt,2'b10}] != REGS[71:64]) begin FAIL = 1'b1; $display("* FAIL *: [L'] expected=%2h, actual=%2h",REGS[71:64],cpu.core.regs.RegsL[{!alt,2'b10}]); end;
+	if (cpu.core.regs.RegsH[3] != REGS[63:56]) begin FAIL = 1'b1; $display("* FAIL *: [IXH] expected=%2h, actual=%2h",REGS[63:56],cpu.core.regs.RegsH[3]); end;
+	if (cpu.core.regs.RegsL[3] != REGS[55:48]) begin FAIL = 1'b1; $display("* FAIL *: [IXL] expected=%2h, actual=%2h",REGS[55:48],cpu.core.regs.RegsL[3]); end;
+	if (cpu.core.regs.RegsH[7] != REGS[47:40]) begin FAIL = 1'b1; $display("* FAIL *: [IYH] expected=%2h, actual=%2h",REGS[47:40],cpu.core.regs.RegsH[7]); end;
+	if (cpu.core.regs.RegsL[7] != REGS[39:32]) begin FAIL = 1'b1; $display("* FAIL *: [IYL] expected=%2h, actual=%2h",REGS[39:32],cpu.core.regs.RegsL[7]); end;
+	if (cpu.core.I != I) begin FAIL = 1'b1; $display("* FAIL *: [I] expected=%2h, actual=%2h",I,cpu.core.I); end;
+	if (cpu.core.R != R) begin FAIL = 1'b1; $display("* FAIL *: [R] expected=%2h, actual=%2h",R,cpu.core.R); end;
+	if (cpu.core.IntE_FF1 != IFF[0]) begin FAIL = 1'b1; $display("* FAIL *: [IFF1] expected=1'b1 actual=%1b",cpu.core.IntE_FF1); end;
+	if (cpu.core.IntE_FF2 != IFF[1]) begin FAIL = 1'b1; $display("* FAIL *: [IFF2] expected=1'b1, actual=%1b",cpu.core.IntE_FF2); end;
 	if (FAIL) $display("%s",TESTCASE);
 	end
 endtask
@@ -108,7 +108,7 @@ task SETUP;
 	input [1:0] IFF;
 	reg alt;
 	begin
-	alt = cpu.i_tv80_core.Alternate;
+	alt = cpu.core.Alternate;
 		cpu.core.ACC = REGS[191:184];
 		cpu.core.F = REGS[183:176];
 		cpu.core.Ap = REGS[127:120];
@@ -132,8 +132,8 @@ task SETUP;
 		cpu.core.SP = REGS[31:16];
 		cpu.core.PC = REGS[15:0];
 		cpu.core.A = REGS[15:0];
-		cpu.core.I = I; cpu.i_tv80_core.R = R; 
-		cpu.core.IntE_FF1 = IFF[0]; cpu.i_tv80_core.IntE_FF2 = IFF[1];
+		cpu.core.I = I; cpu.core.R = R; 
+		cpu.core.IntE_FF1 = IFF[0]; cpu.core.IntE_FF2 = IFF[1];
 	end
 endtask
 `define FIN 15
@@ -5031,7 +5031,7 @@ initial begin
 	mem[0] = 8'h76; mem[16'h0169] = 8'h11;
 	#(2* `CLKPERIOD * 4+`FIN)
 	ASSERT(192'h0200_cf98_90d8_0169_0000_0000_0000_0000_0000_0000_0000_0001, 8'h00, 8'h01, 2'b00);
-	if (cpu.i_tv80_core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
+	if (cpu.core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
 
 
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
@@ -5045,7 +5045,7 @@ initial begin
 	mem[0] = 8'hdd; mem[1] = 8'h76; mem[16'h0169] = 8'h11;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h0200_cf98_90d8_0169_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
-	if (cpu.i_tv80_core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
+	if (cpu.core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
 
 
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
@@ -5059,7 +5059,7 @@ initial begin
 	mem[0] = 8'hfd; mem[1] = 8'h76; mem[16'h0169] = 8'h11;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h0200_cf98_90d8_0169_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
-	if (cpu.i_tv80_core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
+	if (cpu.core.Halt_FF != 1'b1) $display("* FAIL *: [HALT] expected=1, actual=0");
 
 
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
