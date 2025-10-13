@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/FD07_rlca/out/test.vcd opened for output.
+-- FD 07 (rlca) (undoc)
+tests/FD07_rlca/test.v:31: $finish called at 135 (1ns)
