@@ -1,0 +1,17 @@
+-d E:\TangNano\tv80Tests\impl\gwsynthesis\tv80Tests.vg
+-p GW2A-18C-PBGA256-8
+-pn GW2A-LV18PG256C8/I7
+-cfg E:\TangNano\tv80Tests\impl\pnr\device.cfg
+-sdc E:\TangNano\tv80Tests\src\tv80Tests.sdc
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-place_option 0
+-route_option 2
+-clock_route_order 1
+-correct_hold 0
+-route_maxfan 23
+-global_freq 100.000

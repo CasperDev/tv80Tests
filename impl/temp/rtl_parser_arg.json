@@ -1,0 +1,33 @@
+{
+ "Device" : "GW2A-18C",
+ "Files" : [
+  {
+   "Path" : "E:/TangNano/tv80Tests/src/tv80_alu.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/TangNano/tv80Tests/src/tv80_mcode.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/TangNano/tv80Tests/src/tv80_reg.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "E:/TangNano/tv80Tests/src/tv80s.sv",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "E:/TangNano/tv80Tests/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "sysv",
+ "VhdlStd" : "vhdl_93"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="topz80" T_Register="239(0)" T_Alu="54(0)" T_Lut="1469(0)" T_Ssram="12(0)">
+ <SubModule name="tv80s" Register="12" Lut="42" T_Register="239(12)" T_Alu="54(0)" T_Lut="1469(42)" T_Ssram="12(0)">
+  <SubModule name="i_tv80_core" Register="227" Alu="47" Lut="1171" T_Register="227(227)" T_Alu="54(47)" T_Lut="1427(1171)" T_Ssram="12(0)">
+   <SubModule name="i_mcode" Lut="241" T_Lut="241(241)"/>
+   <SubModule name="i_alu" Alu="7" Lut="8" T_Alu="7(7)" T_Lut="8(8)"/>
+   <SubModule name="i_reg" Lut="7" Ssram="12" T_Lut="7(7)" T_Ssram="12(12)"/>
+  </SubModule>
+ </SubModule>
+</Module>
