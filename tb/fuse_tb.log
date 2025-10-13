@@ -1,5 +1,6 @@
-VCD info: dumpfile fuse.vcd opened for output.
-VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
+VCD info: dumpfile fuse_tb.vcd opened for output.
+Starting all tests...
+ -- 00          nop
  -- dd 00       DD nop
  -- fd 00       FD nop
  -- 01 12 34    ld bc,$3412
@@ -455,9 +456,6 @@ VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
  -- 8f          adc a,a
  -- dd 8f       adc a,a
  -- fd 8f       adc a,a
- -- 8f          adc a,a
- -- dd 8f       adc a,a
- -- fd 8f       adc a,a
  -- 90          sub a,b
  -- dd 90       sub a,b
  -- fd 90       sub a,b
@@ -852,6 +850,9 @@ VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
  -- fe          cp n
  -- dd fe       cp n
  -- fd fe       cp n
+ -- ff          rst 38h
+ -- dd ff       rst 38h
+ -- fd ff       rst 38h
  -- cb 00       rlc b
  -- cb 01       rlc c
  -- cb 02       rlc d
@@ -1108,4 +1109,4 @@ VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
  -- cb fd       set 7,l
  -- cb fe       set 7,(hl)
  -- cb ff       set 7,a
-fuse_tb.sv:14731: $finish called at 1656550 (100ps)
+fuse_tb.sv:18090: $finish called at 165305 (1ns)
