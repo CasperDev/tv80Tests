@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/FD08_ex_af_afp/out/test.vcd opened for output.
+-- FD 08 (EX AF,AF') (undoc)
+tests/FD08_ex_af_afp/test.sv:31: $finish called at 135 (1ns)
