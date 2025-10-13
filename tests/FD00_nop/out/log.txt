@@ -1,3 +1,2 @@
-VCD info: dumpfile tests/FD00_nop/out/test.vcd opened for output.
--- FD 00 (NOP undoc)
-tests/FD00_nop/test.v:33: $finish called at 135 (1ns)
+tests/FD00_nop/test.sv: No such file or directory
+No top level modules, and no -s option.

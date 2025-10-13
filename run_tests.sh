@@ -30,12 +30,12 @@ run_test() {
     mkdir -p "$out_dir"
 
     # --- Pobranie nazwy testu z pliku test.v ---
-    local verilog_file="${test_dir}/test.v"
+    local tb_file="${test_dir}/test.sv"
     local test_name
 
     # Szukaj localparam lub define
-    if grep -q "TESTNAME" "$verilog_file"; then
-        test_name=$(grep "TESTNAME" "$verilog_file" | head -n 1 | sed -E 's/.*"(.*)".*/\1/')
+    if grep -q "TESTNAME" "$tb_file"; then
+        test_name=$(grep "TESTNAME" "$tb_file" | head -n 1 | sed -E 's/.*"(.*)".*/\1/')
     else
         test_name="$(basename "$test_dir")"
     fi
@@ -53,8 +53,6 @@ run_test() {
     # Wypisz wyrównany tekst (bez nowej linii)
     printf "%s%s" "$label" "$spaces"
 	
-	local tb_file="${test_dir}/test.v"
-
     # --- Kompilacja ---
     if ! iverilog -g2012 -I $INCPATH -o "$vvp_file" "$tb_file" $UUT 2> "$log_file"; then
         echo -e "\n❌ ${RED}Compile error in $test_name${RESET}"
@@ -101,20 +99,6 @@ run_test() {
 }
 echo ""
 echo "=============================================="
-
-# # --- Tryb: jeden test lub wszystkie ---
-# if [ -n "$CMD" ]; then
-#     test_dir="tests/$CMD"
-#     if [ ! -d "$test_dir" ]; then
-#         echo "❌ Test directory not found: $test_dir"
-#         exit 1
-#     fi
-#     run_test "$test_dir"
-# else
-#     for test_dir in tests/*/; do
-#         run_test "$test_dir"
-#     done
-# fi
 
 # --- Wybór testów na podstawie parametru ---
 TESTS_DIR="tests"

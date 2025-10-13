@@ -1,3 +1,2 @@
-VCD info: dumpfile tests/DD03_inc_bc/out/test.vcd opened for output.
--- DD 03 (inc bc) (undoc)
-tests/DD03_inc_bc/test.v:32: $finish called at 135 (1ns)
+tests/DD03_inc_bc/test.sv: No such file or directory
+No top level modules, and no -s option.

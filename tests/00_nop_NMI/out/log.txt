@@ -1,3 +1,2 @@
-VCD info: dumpfile tests/00_nop_NMI/out/test.vcd opened for output.
--- 00 (NOP) NMI
-tests/00_nop_NMI/test.v:38: $finish called at 245 (1ns)
+tests/00_nop_NMI/test.sv: No such file or directory
+No top level modules, and no -s option.
