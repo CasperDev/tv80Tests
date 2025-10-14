@@ -16944,8 +16944,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h80;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB80
 
-
+`ifdef TEST_ALL
+`define TEST_CB81
+`endif
+`ifdef TEST_CB81
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 81 (RES 0,C)
@@ -16957,8 +16961,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h81;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_947e_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB81
 
-
+`ifdef TEST_ALL
+`define TEST_CB82
+`endif
+`ifdef TEST_CB82
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 82 (RES 0,D)
@@ -16970,8 +16978,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h82;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB82
 
-
+`ifdef TEST_ALL
+`define TEST_CB83
+`endif
+`ifdef TEST_CB83
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 83 (RES 0,E)
@@ -16983,8 +16995,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h83;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccf6_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB83
 
-
+`ifdef TEST_ALL
+`define TEST_CB84
+`endif
+`ifdef TEST_CB84
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 84 (RES 0,H)
@@ -16996,8 +17012,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h84;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6ce0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB84
 
-
+`ifdef TEST_ALL
+`define TEST_CB85
+`endif
+`ifdef TEST_CB85
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 85 (RES 0,L)
@@ -17009,8 +17029,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h85;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB85
 
-
+`ifdef TEST_ALL
+`define TEST_CB86
+`endif
+`ifdef TEST_CB86
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 86 (RES 0,(HL))
@@ -17023,7 +17047,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd6) $display("* FAIL *: [MEMWR] expected=d6, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CB86
 
+`ifdef TEST_ALL
+`define TEST_CB87
+`endif
+`ifdef TEST_CB87
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 87 (RES 0,A)
@@ -17035,8 +17064,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h87;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB87
 
-
+`ifdef TEST_ALL
+`define TEST_CB88
+`endif
+`ifdef TEST_CB88
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 88 (RES 1,B)
@@ -17048,8 +17081,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h88;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB88
 
-
+`ifdef TEST_ALL
+`define TEST_CB89
+`endif
+`ifdef TEST_CB89
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 89 (RES 1,C)
@@ -17061,8 +17098,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h89;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_947c_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB89
 
-
+`ifdef TEST_ALL
+`define TEST_CB8A
+`endif
+`ifdef TEST_CB8A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8A (RES 1,D)
@@ -17074,8 +17115,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h8a;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB8A
 
-
+`ifdef TEST_ALL
+`define TEST_CB8B
+`endif
+`ifdef TEST_CB8B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8B (RES 1,E)
@@ -17087,8 +17132,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h8b;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccf4_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB8B
 
-
+`ifdef TEST_ALL
+`define TEST_CB8C
+`endif
+`ifdef TEST_CB8C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8C (RES 1,H)
@@ -17100,8 +17149,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h8c;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB8C
 
-
+`ifdef TEST_ALL
+`define TEST_CB8D
+`endif
+`ifdef TEST_CB8D
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8D (RES 1,L)
@@ -17113,8 +17166,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h8d;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB8D
 
-
+`ifdef TEST_ALL
+`define TEST_CB8E
+`endif
+`ifdef TEST_CB8E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8E (RES 1,(HL))
@@ -17127,7 +17184,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd5) $display("* FAIL *: [MEMWR] expected=d5, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CB8E
 
+`ifdef TEST_ALL
+`define TEST_CB8F
+`endif
+`ifdef TEST_CB8F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 8F (RES 1,A)
@@ -17139,8 +17201,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h8f;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6800_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB8F
 
-
+`ifdef TEST_ALL
+`define TEST_CB90
+`endif
+`ifdef TEST_CB90
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 90 (RES 2,B)
@@ -17152,8 +17218,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h90;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB90
 
-
+`ifdef TEST_ALL
+`define TEST_CB91
+`endif
+`ifdef TEST_CB91
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 91 (RES 2,C)
@@ -17165,8 +17235,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h91;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_947a_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB91
 
-
+`ifdef TEST_ALL
+`define TEST_CB92
+`endif
+`ifdef TEST_CB92
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 92 (RES 2,D)
@@ -17178,8 +17252,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h92;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB92
 
-
+`ifdef TEST_ALL
+`define TEST_CB93
+`endif
+`ifdef TEST_CB93
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 93 (RES 2,E)
@@ -17191,8 +17269,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h93;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccf2_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB93
 
-
+`ifdef TEST_ALL
+`define TEST_CB94
+`endif
+`ifdef TEST_CB94
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 94 (RES 2,H)
@@ -17204,8 +17286,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h94;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_69e0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB94
 
-
+`ifdef TEST_ALL
+`define TEST_CB95
+`endif
+`ifdef TEST_CB95
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 95 (RES 2,L)
@@ -17217,8 +17303,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h95;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB95
 
-
+`ifdef TEST_ALL
+`define TEST_CB96
+`endif
+`ifdef TEST_CB96
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 96 (RES 2,(HL))
@@ -17231,7 +17321,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd3) $display("* FAIL *: [MEMWR] expected=d3, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CB96
 
+`ifdef TEST_ALL
+`define TEST_CB97
+`endif
+`ifdef TEST_CB97
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 97 (RES 2,A)
@@ -17243,8 +17338,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h97;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB97
 
-
+`ifdef TEST_ALL
+`define TEST_CB98
+`endif
+`ifdef TEST_CB98
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 98 (RES 3,B)
@@ -17256,8 +17355,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h98;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB98
 
-
+`ifdef TEST_ALL
+`define TEST_CB99
+`endif
+`ifdef TEST_CB99
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 99 (RES 3,C)
@@ -17269,8 +17372,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h99;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_9476_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB99
 
-
+`ifdef TEST_ALL
+`define TEST_CB9A
+`endif
+`ifdef TEST_CB9A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9A (RES 3,D)
@@ -17282,8 +17389,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h9a;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e033_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB9A
 
-
+`ifdef TEST_ALL
+`define TEST_CB9B
+`endif
+`ifdef TEST_CB9B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9B (RES 3,E)
@@ -17295,8 +17406,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h9b;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccf6_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB9B
 
-
+`ifdef TEST_ALL
+`define TEST_CB9C
+`endif
+`ifdef TEST_CB9C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9C (RES 3,H)
@@ -17308,8 +17423,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h9c;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_65e0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB9C
 
-
+`ifdef TEST_ALL
+`define TEST_CB9D
+`endif
+`ifdef TEST_CB9D
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9D (RES 3,L)
@@ -17321,8 +17440,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h9d;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB9D
 
-
+`ifdef TEST_ALL
+`define TEST_CB9E
+`endif
+`ifdef TEST_CB9E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9E (RES 3,(HL))
@@ -17335,7 +17458,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CB9E
 
+`ifdef TEST_ALL
+`define TEST_CB9F
+`endif
+`ifdef TEST_CB9F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 9F (RES 3,A)
@@ -17347,8 +17475,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h9f;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6200_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CB9F
 
-
+`ifdef TEST_ALL
+`define TEST_CBA0
+`endif
+`ifdef TEST_CBA0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A0 (RES 4,B)
@@ -17360,8 +17492,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_602f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA0
 
-
+`ifdef TEST_ALL
+`define TEST_CBA1
+`endif
+`ifdef TEST_CBA1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A1 (RES 4,C)
@@ -17373,8 +17509,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_946e_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA1
 
-
+`ifdef TEST_ALL
+`define TEST_CBA2
+`endif
+`ifdef TEST_CBA2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A2 (RES 4,D)
@@ -17386,8 +17526,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA2
 
-
+`ifdef TEST_ALL
+`define TEST_CBA3
+`endif
+`ifdef TEST_CBA3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A3 (RES 4,E)
@@ -17399,8 +17543,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_cce6_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA3
 
-
+`ifdef TEST_ALL
+`define TEST_CBA4
+`endif
+`ifdef TEST_CBA4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A4 (RES 4,H)
@@ -17412,8 +17560,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA4
 
-
+`ifdef TEST_ALL
+`define TEST_CBA5
+`endif
+`ifdef TEST_CBA5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A5 (RES 4,L)
@@ -17425,8 +17577,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA5
 
-
+`ifdef TEST_ALL
+`define TEST_CBA6
+`endif
+`ifdef TEST_CBA6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A6 (RES 4,(HL))
@@ -17439,7 +17595,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hc7) $display("* FAIL *: [MEMWR] expected=c7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBA6
 
+`ifdef TEST_ALL
+`define TEST_CBA7
+`endif
+`ifdef TEST_CBA7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A7 (RES 4,A)
@@ -17451,8 +17612,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA7
 
-
+`ifdef TEST_ALL
+`define TEST_CBA8
+`endif
+`ifdef TEST_CBA8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A8 (RES 4,B)
@@ -17464,8 +17629,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_502f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA8
 
-
+`ifdef TEST_ALL
+`define TEST_CBA9
+`endif
+`ifdef TEST_CBA9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB A9 (RES 5,C)
@@ -17477,8 +17646,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'ha9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_945e_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBA9
 
-
+`ifdef TEST_ALL
+`define TEST_CBAA
+`endif
+`ifdef TEST_CBAA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AA (RES 5,D)
@@ -17490,8 +17663,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'haa;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_c833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBAA
 
-
+`ifdef TEST_ALL
+`define TEST_CBAB
+`endif
+`ifdef TEST_CBAB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AB (RES 5,E)
@@ -17503,8 +17680,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hab;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccd6_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBAB
 
-
+`ifdef TEST_ALL
+`define TEST_CBAC
+`endif
+`ifdef TEST_CBAC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AC (RES 5,H)
@@ -17516,8 +17697,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hac;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_4de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBAC
 
-
+`ifdef TEST_ALL
+`define TEST_CBAD
+`endif
+`ifdef TEST_CBAD
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AD (RES 5,L)
@@ -17529,8 +17714,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'had;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6dc0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBAD
 
-
+`ifdef TEST_ALL
+`define TEST_CBAE
+`endif
+`ifdef TEST_CBAE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AE (RES 5,(HL))
@@ -17543,7 +17732,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBAE
 
+`ifdef TEST_ALL
+`define TEST_CBAF
+`endif
+`ifdef TEST_CBAF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB AF (RES 5,A)
@@ -17555,8 +17749,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'haf;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h4a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBAF
 
-
+`ifdef TEST_ALL
+`define TEST_CBB0
+`endif
+`ifdef TEST_CBB0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B0 (RES 6,B)
@@ -17568,8 +17766,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_302f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB0
 
-
+`ifdef TEST_ALL
+`define TEST_CBB1
+`endif
+`ifdef TEST_CBB1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B1 (RES 6,C)
@@ -17581,8 +17783,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_943e_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB1
 
-
+`ifdef TEST_ALL
+`define TEST_CBB2
+`endif
+`ifdef TEST_CBB2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B2 (RES 6,D)
@@ -17594,8 +17800,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_a833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB2
 
-
+`ifdef TEST_ALL
+`define TEST_CBB3
+`endif
+`ifdef TEST_CBB3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B3 (RES 6,E)
@@ -17607,8 +17817,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ccb6_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB3
 
-
+`ifdef TEST_ALL
+`define TEST_CBB4
+`endif
+`ifdef TEST_CBB4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B4 (RES 6,H)
@@ -17620,8 +17834,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_2de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB4
 
-
+`ifdef TEST_ALL
+`define TEST_CBB5
+`endif
+`ifdef TEST_CBB5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B5 (RES 6,L)
@@ -17633,8 +17851,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6da0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB5
 
-
+`ifdef TEST_ALL
+`define TEST_CBB6
+`endif
+`ifdef TEST_CBB6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B6 (RES 6,(HL))
@@ -17647,7 +17869,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'h97) $display("* FAIL *: [MEMWR] expected=97, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBB6
 
+`ifdef TEST_ALL
+`define TEST_CBB7
+`endif
+`ifdef TEST_CBB7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B7 (RES 6,A)
@@ -17659,8 +17886,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h2a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB7
 
-
+`ifdef TEST_ALL
+`define TEST_CBB8
+`endif
+`ifdef TEST_CBB8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B8 (RES 6,B)
@@ -17672,8 +17903,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB8
 
-
+`ifdef TEST_ALL
+`define TEST_CBB9
+`endif
+`ifdef TEST_CBB9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB B9 (RES 7,C)
@@ -17685,8 +17920,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hb9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_947e_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBB9
 
-
+`ifdef TEST_ALL
+`define TEST_CBBA
+`endif
+`ifdef TEST_CBBA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BA (RES 7,D)
@@ -17698,8 +17937,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hba;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_6833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBBA
 
-
+`ifdef TEST_ALL
+`define TEST_CBBB
+`endif
+`ifdef TEST_CBBB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BB (RES 7,E)
@@ -17711,8 +17954,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hbb;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_cc76_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBBB
 
-
+`ifdef TEST_ALL
+`define TEST_CBBC
+`endif
+`ifdef TEST_CBBC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BC (RES 7,H)
@@ -17724,8 +17971,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hbc;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBBC
 
-
+`ifdef TEST_ALL
+`define TEST_CBBD
+`endif
+`ifdef TEST_CBBD
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BD (RES 7,L)
@@ -17737,8 +17988,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hbd;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6d60_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBBD
 
-
+`ifdef TEST_ALL
+`define TEST_CBBE
+`endif
+`ifdef TEST_CBBE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BE (RES 7,(HL))
@@ -17751,8 +18006,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'h57) $display("* FAIL *: [MEMWR] expected=57, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBBE
 
-
+`ifdef TEST_ALL
+`define TEST_CBBF
+`endif
+`ifdef TEST_CBBF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB BF (RES 7,A)
@@ -17764,8 +18023,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hbf;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBBF
 
-
+`ifdef TEST_ALL
+`define TEST_CBC0
+`endif
+`ifdef TEST_CBC0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C0 (SET 0,B)
@@ -17777,8 +18040,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_712f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC0
 
-
+`ifdef TEST_ALL
+`define TEST_CBC1
+`endif
+`ifdef TEST_CBC1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C1 (SET 0,C)
@@ -17790,8 +18057,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC1
 
-
+`ifdef TEST_ALL
+`define TEST_CBC2
+`endif
+`ifdef TEST_CBC2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C2 (SET 0,D)
@@ -17803,8 +18074,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e933_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC2
 
-
+`ifdef TEST_ALL
+`define TEST_CBC3
+`endif
+`ifdef TEST_CBC3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C3 (SET 0,E)
@@ -17816,8 +18091,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC3
 
-
+`ifdef TEST_ALL
+`define TEST_CBC4
+`endif
+`ifdef TEST_CBC4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C4 (SET 0,H)
@@ -17829,8 +18108,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC4
 
-
+`ifdef TEST_ALL
+`define TEST_CBC5
+`endif
+`ifdef TEST_CBC5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C5 (SET 0,L)
@@ -17842,8 +18125,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de1_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC5
 
-
+`ifdef TEST_ALL
+`define TEST_CBC6
+`endif
+`ifdef TEST_CBC6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C6 (SET 0,(HL))
@@ -17856,8 +18143,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBC6
 
-
+`ifdef TEST_ALL
+`define TEST_CBC7
+`endif
+`ifdef TEST_CBC7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C7 (SET 0,A)
@@ -17869,8 +18160,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6b00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC8
 
-
+`ifdef TEST_ALL
+`define TEST_CBC8
+`endif
+`ifdef TEST_CBC8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C8 (SET 1,B)
@@ -17882,8 +18177,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_722f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC8
 
-
+`ifdef TEST_ALL
+`define TEST_CBC9
+`endif
+`ifdef TEST_CBC9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB C9 (SET 1,C)
@@ -17895,8 +18194,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hc9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBC9
 
-
+`ifdef TEST_ALL
+`define TEST_CBCA
+`endif
+`ifdef TEST_CBCA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CA (SET 1,D)
@@ -17908,8 +18211,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hca;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ea33_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBCA
 
-
+`ifdef TEST_ALL
+`define TEST_CBCB
+`endif
+`ifdef TEST_CBCB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CB (SET 1,E)
@@ -17921,8 +18228,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hcb;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBCB
 
-
+`ifdef TEST_ALL
+`define TEST_CBCC
+`endif
+`ifdef TEST_CBCC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CC (SET 1,H)
@@ -17934,8 +18245,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hcc;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6fe0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBCC
 
-
+`ifdef TEST_ALL
+`define TEST_CBCD
+`endif
+`ifdef TEST_CBCD
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CD (SET 1,L)
@@ -17947,8 +18262,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hcd;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de2_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBCD
 
-
+`ifdef TEST_ALL
+`define TEST_CBCE
+`endif
+`ifdef TEST_CBCE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CE (SET 1,(HL))
@@ -17961,8 +18280,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBCE
 
-
+`ifdef TEST_ALL
+`define TEST_CBCF
+`endif
+`ifdef TEST_CBCF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB CF (SET 1,A)
@@ -17974,8 +18297,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hcf;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBCF
 
-
+`ifdef TEST_ALL
+`define TEST_CBD0
+`endif
+`ifdef TEST_CBD0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D0 (SET 2,B)
@@ -17987,8 +18314,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_742f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD0
 
-
+`ifdef TEST_ALL
+`define TEST_CBD1
+`endif
+`ifdef TEST_CBD1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D1 (SET 2,C)
@@ -18000,8 +18331,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD1
 
-
+`ifdef TEST_ALL
+`define TEST_CBD2
+`endif
+`ifdef TEST_CBD2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D2 (SET 2,D)
@@ -18013,8 +18348,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_ec33_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD2
 
-
+`ifdef TEST_ALL
+`define TEST_CBD3
+`endif
+`ifdef TEST_CBD3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D3 (SET 2,E)
@@ -18026,8 +18365,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e837_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD3
 
-
+`ifdef TEST_ALL
+`define TEST_CBD4
+`endif
+`ifdef TEST_CBD4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D4 (SET 2,H)
@@ -18039,8 +18382,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD4
 
-
+`ifdef TEST_ALL
+`define TEST_CBD5
+`endif
+`ifdef TEST_CBD5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D5 (SET 2,L)
@@ -18052,8 +18399,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de4_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD5
 
-
+`ifdef TEST_ALL
+`define TEST_CBD6
+`endif
+`ifdef TEST_CBD6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D6 (SET 2,(HL))
@@ -18066,8 +18417,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBD6
 
-
+`ifdef TEST_ALL
+`define TEST_CBD7
+`endif
+`ifdef TEST_CBD7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D7 (SET 2,A)
@@ -18079,8 +18434,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6e00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD7
 
-
+`ifdef TEST_ALL
+`define TEST_CBD8
+`endif
+`ifdef TEST_CBD8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D8 (SET 3,B)
@@ -18092,8 +18451,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_782f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD8
 
-
+`ifdef TEST_ALL
+`define TEST_CBD9
+`endif
+`ifdef TEST_CBD9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB D9 (SET 3,C)
@@ -18105,8 +18468,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hd9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBD9
 
-
+`ifdef TEST_ALL
+`define TEST_CBDA
+`endif
+`ifdef TEST_CBDA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DA (SET 3,D)
@@ -18118,8 +18485,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hda;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBDA
 
-
+`ifdef TEST_ALL
+`define TEST_CBDB
+`endif
+`ifdef TEST_CBDB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DB (SET 3,E)
@@ -18131,8 +18502,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hdb;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e83b_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBDB
 
-
+`ifdef TEST_ALL
+`define TEST_CBDC
+`endif
+`ifdef TEST_CBDC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DC (SET 3,H)
@@ -18144,8 +18519,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hdc;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBDC
 
-
+`ifdef TEST_ALL
+`define TEST_CBDD
+`endif
+`ifdef TEST_CBDD
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DD (SET 3,L)
@@ -18157,8 +18536,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hdd;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de8_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBDD
 
-
+`ifdef TEST_ALL
+`define TEST_CBDE
+`endif
+`ifdef TEST_CBDE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DE (SET 3,(HL))
@@ -18171,8 +18554,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hdf) $display("* FAIL *: [MEMWR] expected=df, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBDE
 
-
+`ifdef TEST_ALL
+`define TEST_CBDF
+`endif
+`ifdef TEST_CBDF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB DF (SET 3,A)
@@ -18184,8 +18571,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hdf;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBDF
 
-
+`ifdef TEST_ALL
+`define TEST_CBE0
+`endif
+`ifdef TEST_CBE0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E0 (SET 4,B)
@@ -18197,8 +18588,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE0
 
-
+`ifdef TEST_ALL
+`define TEST_CBE1
+`endif
+`ifdef TEST_CBE1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E1 (SET 4,C)
@@ -18210,8 +18605,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_703f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE1
 
-
+`ifdef TEST_ALL
+`define TEST_CBE2
+`endif
+`ifdef TEST_CBE2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E2 (SET 4,D)
@@ -18223,8 +18622,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_f833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE2
 
-
+`ifdef TEST_ALL
+`define TEST_CBE3
+`endif
+`ifdef TEST_CBE3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E3 (SET 4,E)
@@ -18236,8 +18639,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE3
 
-
+`ifdef TEST_ALL
+`define TEST_CBE4
+`endif
+`ifdef TEST_CBE4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E4 (SET 4,H)
@@ -18249,8 +18656,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_7de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE4
 
-
+`ifdef TEST_ALL
+`define TEST_CBE5
+`endif
+`ifdef TEST_CBE5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E5 (SET 4,L)
@@ -18262,8 +18673,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6df0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE5
 
-
+`ifdef TEST_ALL
+`define TEST_CBE6
+`endif
+`ifdef TEST_CBE6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E6 (SET 4,(HL))
@@ -18276,8 +18691,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBE6
 
-
+`ifdef TEST_ALL
+`define TEST_CBE7
+`endif
+`ifdef TEST_CBE7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E7 (SET 4,A)
@@ -18289,8 +18708,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h7a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE7
 
-
+`ifdef TEST_ALL
+`define TEST_CBE8
+`endif
+`ifdef TEST_CBE8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E8 (SET 5,B)
@@ -18302,8 +18725,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE8
 
-
+`ifdef TEST_ALL
+`define TEST_CBE9
+`endif
+`ifdef TEST_CBE9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB E9 (SET 5,C)
@@ -18315,8 +18742,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'he9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBE9
 
-
+`ifdef TEST_ALL
+`define TEST_CBEA
+`endif
+`ifdef TEST_CBEA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB EA (SET 5,D)
@@ -18328,8 +18759,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hea;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBEA
 
-
+`ifdef TEST_ALL
+`define TEST_CBEB
+`endif
+`ifdef TEST_CBEB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB EB (SET 5,E)
@@ -18341,8 +18776,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'heb;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBEB
 
-
+`ifdef TEST_ALL
+`define TEST_CBEC
+`endif
+`ifdef TEST_CBEC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB EC (SET 5,H)
@@ -18354,8 +18793,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hec;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBEC
 
-
+`ifdef TEST_ALL
+`define TEST_CBED
+`endif
+`ifdef TEST_CBED
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB ED (SET 5,L)
@@ -18367,8 +18810,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hed;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBED
 
-
+`ifdef TEST_ALL
+`define TEST_CBEE
+`endif
+`ifdef TEST_CBEE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB EE (SET 5,(HL))
@@ -18381,8 +18828,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hf7) $display("* FAIL *: [MEMWR] expected=f7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBEE
 
-
+`ifdef TEST_ALL
+`define TEST_CBEF
+`endif
+`ifdef TEST_CBEF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB EF (SET 5,A)
@@ -18394,8 +18845,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hef;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBEF
 
-
+`ifdef TEST_ALL
+`define TEST_CBF0
+`endif
+`ifdef TEST_CBF0
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F0 (SET 6,B)
@@ -18407,8 +18862,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf0;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF0
 
-
+`ifdef TEST_ALL
+`define TEST_CBF1
+`endif
+`ifdef TEST_CBF1
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F1 (SET 6,C)
@@ -18420,8 +18879,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf1;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_706f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF1
 
-
+`ifdef TEST_ALL
+`define TEST_CBF2
+`endif
+`ifdef TEST_CBF2
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F2 (SET 6,D)
@@ -18433,8 +18896,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf2;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF2
 
-
+`ifdef TEST_ALL
+`define TEST_CBF3
+`endif
+`ifdef TEST_CBF3
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F3 (SET 6,E)
@@ -18446,8 +18913,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf3;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e873_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF3
 
-
+`ifdef TEST_ALL
+`define TEST_CBF4
+`endif
+`ifdef TEST_CBF4
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F4 (SET 6,H)
@@ -18459,8 +18930,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf4;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF4
 
-
+`ifdef TEST_ALL
+`define TEST_CBF5
+`endif
+`ifdef TEST_CBF5
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F5 (SET 6,L)
@@ -18472,8 +18947,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf5;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF5
 
-
+`ifdef TEST_ALL
+`define TEST_CBF6
+`endif
+`ifdef TEST_CBF6
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F6 (SET 6,(HL))
@@ -18486,8 +18965,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBF6
 
-
+`ifdef TEST_ALL
+`define TEST_CBF7
+`endif
+`ifdef TEST_CBF7
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F7 (SET 6,A)
@@ -18499,8 +18982,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf7;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF7
 
-
+`ifdef TEST_ALL
+`define TEST_CBF8
+`endif
+`ifdef TEST_CBF8
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F8 (SET 7,B)
@@ -18512,8 +18999,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf8;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_f02f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF8
 
-
+`ifdef TEST_ALL
+`define TEST_CBF9
+`endif
+`ifdef TEST_CBF9
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB F9 (SET 7,C)
@@ -18525,8 +19016,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hf9;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_70af_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBF9
 
-
+`ifdef TEST_ALL
+`define TEST_CBFA
+`endif
+`ifdef TEST_CBFA
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FA (SET 7,D)
@@ -18538,8 +19033,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hfa;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBFA
 
-
+`ifdef TEST_ALL
+`define TEST_CBFB
+`endif
+`ifdef TEST_CBFB
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FB (SET 7,E)
@@ -18551,8 +19050,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hfb;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e8b3_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBFB
 
-
+`ifdef TEST_ALL
+`define TEST_CBFC
+`endif
+`ifdef TEST_CBFC
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FC (SET 7,H)
@@ -18564,8 +19067,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hfc;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_ede0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBFC
 
-
+`ifdef TEST_ALL
+`define TEST_CBFD
+`endif
+`ifdef TEST_CBFD
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FD (SET 7,L)
@@ -18577,8 +19084,12 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hfd;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h6a00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+`endif // TEST_CBFD
 
-
+`ifdef TEST_ALL
+`define TEST_CBFE
+`endif
+`ifdef TEST_CBFE
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FE (SET 7,(HL))
@@ -18591,8 +19102,12 @@ initial begin
 	#(2* `CLKPERIOD * 15+`FIN)
 	ASSERT(192'h2600_9207_459a_01a3_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h01a3] != 8'hd7) $display("* FAIL *: [MEMWR] expected=d7, actual=%2h",mem[16'h01a3]);
+`endif // TEST_CBFE
 
-
+`ifdef TEST_ALL
+`define TEST_CBFF
+`endif
+`ifdef TEST_CBFF
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB FF (SET 7,A)
@@ -18604,7 +19119,6 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'hff;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'hea00_702f_e833_6de0_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
-
 `endif // TEST_CBFF
 
 	$finish;

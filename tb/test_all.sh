@@ -27,4 +27,16 @@ if ! vvp "${TESTFILE}.vvp" > "${TESTFILE}.log"; then
     exit 1
 fi
 
-echo "✅ Done. Output written to ${TESTFILE}.log"
+# --- Kolory ANSI ---
+GREEN=$(tput setaf 2)
+RED=$(tput setaf 1)
+YELLOW=$(tput setaf 3)
+NC=$(tput sgr0)
+
+if grep -q "FAIL" "${TESTFILE}.log"; then
+        echo -e "❌ Some tests ${RED}FAILED${NC}"
+else
+        echo -e "✅ All tests ${GREEN}PASSED${NC}"
+fi
+
+echo "Done. Output written to ${TESTFILE}.log"
