@@ -1,0 +1,59 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Wed Oct 15 08:16:47 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/tb/fuse_tb.vcd"
+[dumpfile_mtime] "Wed Oct 15 08:13:17 2025"
+[dumpfile_size] 15686
+[savefile] "/workspaces/tv80Tests/tb/fuse_tb.gtkw"
+[timestart] 0
+[size] 1304 810
+[pos] -1 -1
+*-5.455692 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[sst_width] 297
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 230
+@28
+tb.cpu.reset
+tb.cpu.int_n
+tb.cpu.nmi_n
+tb.cpu.cen
+tb.cpu.clk
+tb.cpu.m1_n
+@29
+tb.cpu.rfsh_n
+@28
+tb.cpu.mreq_n
+tb.cpu.iorq_n
+tb.cpu.iorq
+tb.cpu.rd_n
+tb.cpu.wr_n
+tb.cpu.write
+@22
+tb.cpu.A[15:0]
+tb.cpu.di[7:0]
+tb.cpu.di_reg[7:0]
+@420
+tb.cpu.IOWait
+tb.cpu.Mode
+tb.cpu.T2Write
+@28
+tb.cpu.busak_n
+tb.cpu.busrq_n
+@22
+tb.cpu.dout[7:0]
+@28
+tb.cpu.halt_n
+tb.cpu.intcycle_n
+@22
+tb.cpu.mcycle[6:0]
+@28
+tb.cpu.no_read
+@22
+tb.cpu.tstate[6:0]
+@28
+tb.cpu.wait_n
+[pattern_trace] 1
+[pattern_trace] 0

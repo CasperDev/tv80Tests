@@ -9,16 +9,9 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "hbenl.vscode-test-explorer",
-		"hbenl.vscode-tap-adapter",
 		"mshr-h.veriloghdl"
       ],
       "settings": {
-        "testExplorer.codeLens": true,
-		"testExplorer.showCollapseAll": true,
-		"testExplorer.showRefresh": true,
-	  	"testExplorer.testAdapters": ["tap"],
-  		"tapAdapter.tapCommand": "./run_tests.sh"
      }
     }
   },

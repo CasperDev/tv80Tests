@@ -39,7 +39,7 @@ tv80s cpu (
 
 //------------- MEMORY ----------------------
  
-reg [7:0] mem[0:1023];
+reg [7:0] mem[0:65535];
 reg [7:0] mem_o;
 always@(negedge cpu_clk) begin
 	mem_o <= mem[cpu_a];
@@ -14755,9 +14755,28 @@ initial begin
 `endif // TEST_CB00
 
 `ifdef TEST_ALL
+`define TEST_DDCB00
+`endif
+`ifdef TEST_DDCB00
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 00 (RLC (IX+d),B)
+	$display(" -- dd cb 00    rlc (ix+d),b");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h3c65_f0e4_09d1_646b_0000_0000_0000_0000_1da1_f08f_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h0d;  mem[3] = 8'h00;
+	mem[16'h1dae] = 8'ha1;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h3c01_43e4_09d1_646b_0000_0000_0000_0000_1da1_f08f_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h1dae] != 8'h43) $display("* FAIL *: [MEMWR] expected=43, actual=%2h",mem[16'h1dae]);
+`endif // TEST_CB00
+
+`ifdef TEST_ALL
 `define TEST_CB01
 `endif
-`ifdef TEST_CB001
+`ifdef TEST_CB01
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 01 (RLC C)
@@ -14769,7 +14788,26 @@ initial begin
 	mem[0] = 8'hcb;  mem[1] = 8'h01;
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h10a0_b3f2_552e_a806_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
-`endif // TEST_CB01
+`endif // TEST_CB00
+
+`ifdef TEST_ALL
+`define TEST_DDCB01
+`endif
+`ifdef TEST_DDCB01
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 01 (RLC (IX+d),C)
+	$display(" -- dd cb 01    rlc (ix+d),c");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hf68f_e33b_2d4a_7725_0000_0000_0000_0000_28fd_f31b_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'hb7;  mem[3] = 8'h01;
+	mem[16'h28b4] = 8'he3;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hf681_e3c7_2d4a_7725_0000_0000_0000_0000_28fd_f31b_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h28b4] != 8'hc7) $display("* FAIL *: [MEMWR] expected=c7, actual=%2h",mem[16'h28b4]);
+`endif // TEST_DDCB01
 
 `ifdef TEST_ALL
 `define TEST_CB02
@@ -14789,6 +14827,25 @@ initial begin
 `endif // TEST_CB02
 
 `ifdef TEST_ALL
+`define TEST_DDCB02
+`endif
+`ifdef TEST_DDCB02
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 02 (RLC (IX+d),D)
+	$display(" -- dd cb 02    rlc (ix+d),d");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'he20c_836e_513a_f840_0000_0000_0000_0000_c796_ae9b_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h91;  mem[3] = 8'h02;
+	mem[16'hc727] = 8'h8d;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'he20d_836e_1b3a_f840_0000_0000_0000_0000_c796_ae9b_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hc727] != 8'h1b) $display("* FAIL *: [MEMWR] expected=1b, actual=%2h",mem[16'hc727]);
+`endif // TEST_DDCB02
+
+`ifdef TEST_ALL
 `define TEST_CB03
 `endif
 `ifdef TEST_CB003
@@ -14804,6 +14861,25 @@ initial begin
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'h682c_e479_de7e_a806_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 `endif // TEST_CB03
+
+`ifdef TEST_ALL
+`define TEST_DDCB03
+`endif
+`ifdef TEST_DDCB03
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 03 (RLC (IX+d),E)
+	$display(" -- dd cb 03    rlc (ix+d),e");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h6224_3571_c519_48dc_0000_0000_0000_0000_041e_c07b_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h48;  mem[3] = 8'h03;
+	mem[16'h0466] = 8'h78;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h62a4_3571_c5f0_48dc_0000_0000_0000_0000_041e_c07b_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h0466] != 8'hf0) $display("* FAIL *: [MEMWR] expected=f0, actual=%2h",mem[16'h0466]);
+`endif // TEST_DDCB03
 
 `ifdef TEST_ALL
 `define TEST_CB04
@@ -14823,6 +14899,25 @@ initial begin
 `endif // TEST_CB04
 
 `ifdef TEST_ALL
+`define TEST_DDCB04
+`endif
+`ifdef TEST_DDCB04
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 04 (RLC (IX+d),H)
+	$display(" -- dd cb 04    rlc (ix+d),h");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hb310_bfc4_64af_d622_0000_0000_0000_0000_5949_a989_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h48;  mem[3] = 8'h04;
+	mem[16'h5991] = 8'h68;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hb380_bfc4_64af_d022_0000_0000_0000_0000_5949_a989_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h5991] != 8'hd0) $display("* FAIL *: [MEMWR] expected=d0, actual=%2h",mem[16'h5991]);
+`endif // TEST_DDCB04
+
+`ifdef TEST_ALL
 `define TEST_CB05
 `endif
 `ifdef TEST_CB005
@@ -14840,9 +14935,28 @@ initial begin
 `endif // TEST_CB05
 
 `ifdef TEST_ALL
+`define TEST_DDCB05
+`endif
+`ifdef TEST_DDCB05
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 05 (RLC (IX+d),L)
+	$display(" -- dd cb 05    rlc (ix+d),l");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h4954_bb04_56ec_9d58_0000_0000_0000_0000_0077_1349_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'hff;  mem[3] = 8'h05;
+	mem[16'h0076] = 8'h95;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h492d_bb04_56ec_9d2b_0000_0000_0000_0000_0077_1349_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h0076] != 8'h2b) $display("* FAIL *: [MEMWR] expected=2b, actual=%2h",mem[16'h0076]);
+`endif // TEST_DDCB05
+
+`ifdef TEST_ALL
 `define TEST_CB06
 `endif
-`ifdef TEST_CB006
+`ifdef TEST_CB06
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 06 (RLC (HL))
@@ -14856,6 +14970,44 @@ initial begin
 	ASSERT(192'h8aad_e479_552e_0106_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 	if (mem[16'h0106] != 8'ha9) $display("* FAIL *: [MEMWR] expected=a9, actual=%2h",mem[16'h0106]);
 `endif // TEST_CB06
+
+`ifdef TEST_ALL
+`define TEST_DDCB06
+`endif
+`ifdef TEST_DDCB06
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 06 (RLC C)
+	$display(" -- dd cb 06    rlc (ix+d)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h0cf4_f636_90a6_6117_0000_0000_0000_0000_5421_90ee_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h07; mem[3] = 8'h06;
+	mem[16'h5428] = 8'h97;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h0c29_f636_90a6_6117_0000_0000_0000_0000_5421_90ee_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h5428] != 8'h2f) $display("* FAIL *: [MEMWR] expected=2f, actual=%2h",mem[16'h5428]);
+`endif // TEST_DDCB06
+
+`ifdef TEST_ALL
+`define TEST_FDCB06
+`endif
+`ifdef TEST_FDCB06
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE FD CB 06 (RLC C)
+	$display(" -- fd cb 06    rlc (iy+d)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hf285_89a2_e78f_ef74_0000_0000_0000_0000_140d_ff27_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hfd; mem[1] = 8'hcb;  mem[2] = 8'h72; mem[3] = 8'h06;
+	mem[16'hff99] = 8'hf1;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hf2a1_89a2_e78f_ef74_0000_0000_0000_0000_140d_ff27_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hff99] != 8'he3) $display("* FAIL *: [MEMWR] expected=e3, actual=%2h",mem[16'hff99]);
+`endif // TEST_FDCB06
 
 `ifdef TEST_ALL
 `define TEST_CB07
@@ -14873,6 +15025,25 @@ initial begin
 	#(2* `CLKPERIOD * 8+`FIN)
 	ASSERT(192'hda88_e479_552e_a806_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
 `endif // TEST_CB07
+
+`ifdef TEST_ALL
+`define TEST_DDCB07
+`endif
+`ifdef TEST_DDCB07
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 07 (RLC (IX+d),L)
+	$display(" -- dd cb 07    rlc (ix+d),a");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h6f4d_9ca3_bdf6_ed50_0000_0000_0000_0000_9803_55f9_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h42;  mem[3] = 8'h07;
+	mem[16'h9845] = 8'hae;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h5d09_9ca3_bdf6_ed50_0000_0000_0000_0000_9803_55f9_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h9845] != 8'h5d) $display("* FAIL *: [MEMWR] expected=5d, actual=%2h",mem[16'h9845]);
+`endif // TEST_DDCB07
 
 `ifdef TEST_ALL
 `define TEST_CB08
