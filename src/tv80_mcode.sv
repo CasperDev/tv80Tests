@@ -26,7 +26,8 @@ module tv80_mcode
 (/*AUTOARG*/
     input wire [7:0] IR,                   // Instruction register 
     input wire [1:0] ISet,                 // Instructions Set: 00-Std, 01-CB, 10-FD/ED, 11 CB,FD/ED ???
-    input wire [6:0] MCycle,               // Current cycle ???
+    input wire XY_Ind,
+	input wire [6:0] MCycle,               // Current cycle ???
     input wire [7:0] F,                    // Flag Register 
     input wire NMICycle,                   // NMI Acknowledge Cycle
     input wire INTCycle,                   // INT Acknowledge Cycle
@@ -37,6 +38,7 @@ module tv80_mcode
     output reg Inc_PC, Inc_WZ, 
     output reg [3:0] IncDec_16,           // BC,DE,HL,SP   0 is inc 
     output reg Read_To_Reg, Read_To_Acc, 
+	output reg Extra_Reg_Save,			  // Undocumented DDCB store back to register	
     output reg [3:0] Set_BusA_To,         // B,C,D,E,H,L,DI/DB,A,SP(L),SP(M),0,F
     output reg [3:0] Set_BusB_To,         // B,C,D,E,H,L,DI,A,SP(L),SP(M),1,F,PC(L),PC(M),0
     output reg [3:0] ALU_Op,              // 
@@ -102,7 +104,7 @@ module tv80_mcode
     end
 
     always @ (F or IR or ISet or INTCycle or MCycle
-            or NMICycle or f_cc_true or DDD or SSS or DPAIR) begin
+            or NMICycle or f_cc_true or DDD or SSS or DPAIR or XY_Ind) begin
 
         MCycles <= 3'b001;
         if (MCycle[0]) begin
@@ -117,6 +119,7 @@ module tv80_mcode
         IncDec_16 <= 4'b0000;
         Read_To_Acc <= 1'b0;
         Read_To_Reg <= 1'b0;
+		Extra_Reg_Save <= 1'b0;
         Set_BusB_To <= 4'b0000;
         Set_BusA_To <= 4'b0000;
         ALU_Op <= { 1'b0, IR[5:3] };
@@ -1325,11 +1328,38 @@ module tv80_mcode
                 8'b00101000,8'b00101001,8'b00101010,8'b00101011,8'b00101100,8'b00101101,8'b00101111,
                 8'b00110000,8'b00110001,8'b00110010,8'b00110011,8'b00110100,8'b00110101,8'b00110111,
                 8'b00111000,8'b00111001,8'b00111010,8'b00111011,8'b00111100,8'b00111101,8'b00111111 : begin
-                    if (MCycle[0] ) begin
-                        ALU_Op <= 4'b1000;
-                        Read_To_Reg <= 1'b1;
-                        Save_ALU <= 1'b1;
-                    end
+					if (XY_Ind) begin
+						MCycles <= 3'b011;
+						Set_BusA_To <= 3'b110;
+						case (1'b1) // MCycle
+							MCycle[0], MCycle[6] :
+								Set_Addr_To <= aXY;
+							MCycle[1] : begin
+								ALU_Op <= 4'b1000;
+								Read_To_Reg <= 1'b1;
+								Save_ALU <= 1'b1;
+								Set_Addr_To <= aXY;
+								TStates <= 3'b100;
+							end
+
+							MCycle[2] : begin
+								Write <= 1'b1;
+							// end
+							// MCycle[3] : begin
+								Set_BusA_To[2:0] <= IR[2:0];
+                            	Read_To_Reg <= 1'b1;
+								Extra_Reg_Save <= 1'b1;
+							end
+
+							default :;
+						endcase // case(MCycle)
+					end else begin
+						if (MCycle[0] ) begin
+							ALU_Op <= 4'b1000;
+							Read_To_Reg <= 1'b1;
+							Save_ALU <= 1'b1;
+						end
+					end
                 end // case: 8'b00000000,8'b00000001,8'b00000010,8'b00000011,8'b00000100,8'b00000101,8'b00000111,...
 
                 // RLC (HL), RL (HL), RRC (HL), RR (HL), SRA (HL), SRL (HL), SLA (HL), SLL (HL) (Undocumented) / SWAP (HL)

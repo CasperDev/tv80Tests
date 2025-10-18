@@ -17,7 +17,7 @@
     "SubInsts" : [
      {
       "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 199,
+      "InstLine" : 200,
       "InstName" : "mcode",
       "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_mcode.sv",
       "ModuleLine" : 25,
@@ -25,7 +25,7 @@
      },
      {
       "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 231,
+      "InstLine" : 232,
       "InstName" : "i_alu",
       "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_alu.sv",
       "ModuleLine" : 25,
@@ -33,7 +33,7 @@
      },
      {
       "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 824,
+      "InstLine" : 829,
       "InstName" : "regs",
       "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_reg.sv",
       "ModuleLine" : 27,

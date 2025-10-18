@@ -14920,7 +14920,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB05
 `endif
-`ifdef TEST_CB005
+`ifdef TEST_CB05
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 05 (RLC L)
@@ -14944,13 +14944,13 @@ initial begin
 	$display(" -- dd cb 05    rlc (ix+d),l");
 	// -----------------------------------------------------
 	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
-	SETUP(192'h4954_bb04_56ec_9d58_0000_0000_0000_0000_0077_1349_0000_0000, 8'h00, 8'h00, 2'b00);
+	SETUP(192'h0cf4_f636_90a6_6117_0000_0000_0000_0000_5421_90ee_0000_0000, 8'h00, 8'h00, 2'b00);
 	// memory data
-	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'hff;  mem[3] = 8'h05;
-	mem[16'h0076] = 8'h95;
+	mem[0] = 8'hdd;  mem[1] = 8'hcb;  mem[2] = 8'h07;  mem[3] = 8'h05;
+	mem[16'h5428] = 8'h97;
 	#(2* `CLKPERIOD * 23+`FIN)
-	ASSERT(192'h492d_bb04_56ec_9d2b_0000_0000_0000_0000_0077_1349_0000_0004, 8'h00, 8'h02, 2'b00);
-	if (mem[16'h0076] != 8'h2b) $display("* FAIL *: [MEMWR] expected=2b, actual=%2h",mem[16'h0076]);
+	ASSERT(192'h0c29_f636_90a6_612f_0000_0000_0000_0000_5421_90ee_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h5428] != 8'h2f) $display("* FAIL *: [MEMWR] expected=2f, actual=%2h",mem[16'h5428]);
 `endif // TEST_DDCB05
 
 `ifdef TEST_ALL
@@ -15048,7 +15048,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB08
 `endif
-`ifdef TEST_CB008
+`ifdef TEST_CB08
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 08 (RRC B)
@@ -15063,9 +15063,28 @@ initial begin
 `endif // TEST_CB08
 
 `ifdef TEST_ALL
+`define TEST_DDCB08
+`endif
+`ifdef TEST_DDCB08
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 08 (RRC (IX+d),b)
+	$display(" -- dd cb 08    rrc (ix+d),b (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h02f4_1c66_6023_ae06_0000_0000_0000_0000_ef40_b006_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h0a; mem[3] = 8'h08;
+	mem[16'hef4a] = 8'hda;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h0228_6d66_6023_ae06_0000_0000_0000_0000_ef40_b006_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hef4a] != 8'h6d) $display("* FAIL *: [MEMWR] expected=6d, actual=%2h",mem[16'hef4a]);
+`endif // TEST_DDCB08
+
+`ifdef TEST_ALL
 `define TEST_CB09
 `endif
-`ifdef TEST_CB009
+`ifdef TEST_CB09
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 09 (RRC C)
@@ -15080,9 +15099,28 @@ initial begin
 `endif // TEST_CB09
 
 `ifdef TEST_ALL
+`define TEST_DDCB09
+`endif
+`ifdef TEST_DDCB09
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 09 (RRC (IX+d),c)
+	$display(" -- dd cb 09    rrc (ix+d),c (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h9825_9258_54d5_5e1e_0000_0000_0000_0000_9d0b_6e58_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h3b; mem[3] = 8'h09;
+	mem[16'h9d46] = 8'h6f;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h98a5_92b7_54d5_5e1e_0000_0000_0000_0000_9d0b_6e58_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h9d46] != 8'hb7) $display("* FAIL *: [MEMWR] expected=6d, actual=%2h",mem[16'h9d46]);
+`endif // TEST_DDCB09
+
+`ifdef TEST_ALL
 `define TEST_CB0A
 `endif
-`ifdef TEST_CB00A
+`ifdef TEST_CB0A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0A (RRC D)
@@ -15097,9 +15135,28 @@ initial begin
 `endif // TEST_CB0A
 
 `ifdef TEST_ALL
+`define TEST_DDCB0A
+`endif
+`ifdef TEST_DDCB0A
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0A (RRC (IX+d),d)
+	$display(" -- dd cb 0A    rrc (ix+d),d (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hd2dd_6aac_e789_9293_0000_0000_0000_0000_1fb4_2498_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h83; mem[3] = 8'h0a;
+	mem[16'h1f37] = 8'h78;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hd22c_6aac_3c89_9293_0000_0000_0000_0000_1fb4_2498_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h1f37] != 8'h3c) $display("* FAIL *: [MEMWR] expected=3c, actual=%2h",mem[16'h1f37]);
+`endif // TEST_DDCB0A
+
+`ifdef TEST_ALL
 `define TEST_CB0B
 `endif
-`ifdef TEST_CB00B
+`ifdef TEST_CB0B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0B (RRC E)
@@ -15114,9 +15171,28 @@ initial begin
 `endif // TEST_CB0B
 
 `ifdef TEST_ALL
+`define TEST_DDCB0B
+`endif
+`ifdef TEST_DDCB0B
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0B (RRC (IX+d),E)
+	$display(" -- dd cb 0B    rrc (ix+d),e (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hb82c_b284_23f8_7e7d_0000_0000_0000_0000_cd09_6a03_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'hfa; mem[3] = 8'h0b;
+	mem[16'hcd03] = 8'h92;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hb808_b284_2349_7e7d_0000_0000_0000_0000_cd09_6a03_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hcd03] != 8'h49) $display("* FAIL *: [MEMWR] expected=49, actual=%2h",mem[16'hcd03]);
+`endif // TEST_DDCB0B
+
+`ifdef TEST_ALL
 `define TEST_CB0C
 `endif
-`ifdef TEST_CB00C
+`ifdef TEST_CB0C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0C (RRC H)
@@ -15131,9 +15207,28 @@ initial begin
 `endif // TEST_CB0C
 
 `ifdef TEST_ALL
+`define TEST_DDCB0C
+`endif
+`ifdef TEST_DDCB0C
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0C (RRC (IX+d),H)
+	$display(" -- dd cb 0C    rrc (ix+d),h (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hdf8b_b6cc_ee8d_855a_0000_0000_0000_0000_bf6b_9b7d_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h79; mem[3] = 8'h0c;
+	mem[16'hbfe4] = 8'h0d;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hdf81_b6cc_ee8d_865a_0000_0000_0000_0000_bf6b_9b7d_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hbfe4] != 8'h86) $display("* FAIL *: [MEMWR] expected=86, actual=%2h",mem[16'hbfe4]);
+`endif // TEST_DDCB0C
+
+`ifdef TEST_ALL
 `define TEST_CB0D
 `endif
-`ifdef TEST_CB00D
+`ifdef TEST_CB0D
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0D (RRC L)
@@ -15148,9 +15243,28 @@ initial begin
 `endif // TEST_CB0D
 
 `ifdef TEST_ALL
+`define TEST_DDCB0D
+`endif
+`ifdef TEST_DDCB0D
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0D (RRC (IX+d),L)
+	$display(" -- dd cb 0d    rrc (ix+d),l (undoc)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hbae3_ceec_bbaa_b65e_0000_0000_0000_0000_88bd_503e_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'he4; mem[3] = 8'h0d;
+	mem[16'h88a1] = 8'h1f;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'hba89_ceec_bbaa_b68f_0000_0000_0000_0000_88bd_503e_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h88a1] != 8'h8f) $display("* FAIL *: [MEMWR] expected=8f, actual=%2h",mem[16'h88a1]);
+`endif // TEST_DDCB0D
+
+`ifdef TEST_ALL
 `define TEST_CB0E
 `endif
-`ifdef TEST_CB00E
+`ifdef TEST_CB0E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0E (RRC (HL))
@@ -15166,9 +15280,28 @@ initial begin
 `endif // TEST_CB0E
 
 `ifdef TEST_ALL
+`define TEST_DDCB0E
+`endif
+`ifdef TEST_DDCB0E
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0E (RRC (IX+d),L)
+	$display(" -- dd cb 0e    rrc (ix+d)");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'h1c36_890b_7830_060c_0000_0000_0000_0000_fd49_5d07_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'hc6; mem[3] = 8'h0e;
+	mem[16'hfd0f] = 8'had;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h1c81_890b_7830_060c_0000_0000_0000_0000_fd49_5d07_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'hfd0f] != 8'hd6) $display("* FAIL *: [MEMWR] expected=d6, actual=%2h",mem[16'hfd0f]);
+`endif // TEST_DDCB0E
+
+`ifdef TEST_ALL
 `define TEST_CB0F
 `endif
-`ifdef TEST_CB00F
+`ifdef TEST_CB0F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 0F (RRC A)
@@ -15183,9 +15316,28 @@ initial begin
 `endif // TEST_CB0F
 
 `ifdef TEST_ALL
+`define TEST_DDCB0F
+`endif
+`ifdef TEST_DDCB0F
+	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
+    // --------------- TEST --------------------------------
+	// FUSE DD CB 0F (RRC (IX+d),A)
+	$display(" -- dd cb 0f    rrc (ix+d),a");
+	// -----------------------------------------------------
+	// - AF BC DE HL AF' BC' DE' HL' IX IY SP PC
+	SETUP(192'hf5a7_fad4_fa4b_9c53_0000_0000_0000_0000_7447_2267_0000_0000, 8'h00, 8'h00, 2'b00);
+	// memory data
+	mem[0] = 8'hdd; mem[1] = 8'hcb;  mem[2] = 8'h57; mem[3] = 8'h0f;
+	mem[16'h749e] = 8'hf8;
+	#(2* `CLKPERIOD * 23+`FIN)
+	ASSERT(192'h7c28_fad4_fa4b_9c53_0000_0000_0000_0000_7447_2267_0000_0004, 8'h00, 8'h02, 2'b00);
+	if (mem[16'h749e] != 8'h7c) $display("* FAIL *: [MEMWR] expected=7c, actual=%2h",mem[16'h749e]);
+`endif // TEST_DDCB0F
+
+`ifdef TEST_ALL
 `define TEST_CB10
 `endif
-`ifdef TEST_CB010
+`ifdef TEST_CB10
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 10 (RL B)
@@ -15202,7 +15354,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB11
 `endif
-`ifdef TEST_CB011
+`ifdef TEST_CB11
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 11 (RL C)
@@ -15219,7 +15371,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB12
 `endif
-`ifdef TEST_CB012
+`ifdef TEST_CB12
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 12 (RL D)
@@ -15236,7 +15388,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB13
 `endif
-`ifdef TEST_CB013
+`ifdef TEST_CB13
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 13 (RL E)
@@ -15253,7 +15405,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB14
 `endif
-`ifdef TEST_CB014
+`ifdef TEST_CB14
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 14 (RL H)
@@ -15270,7 +15422,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB15
 `endif
-`ifdef TEST_CB015
+`ifdef TEST_CB15
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 15 (RL L)
@@ -15287,7 +15439,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB16
 `endif
-`ifdef TEST_CB016
+`ifdef TEST_CB16
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 16 (RL (HL))
@@ -15305,7 +15457,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB17
 `endif
-`ifdef TEST_CB017
+`ifdef TEST_CB17
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 17 (RL A)
@@ -15322,7 +15474,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB18
 `endif
-`ifdef TEST_CB018
+`ifdef TEST_CB18
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 18 (RR B)
@@ -15339,7 +15491,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB19
 `endif
-`ifdef TEST_CB019
+`ifdef TEST_CB19
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 19 (RR C)
@@ -15356,7 +15508,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB1A
 `endif
-`ifdef TEST_CB01A
+`ifdef TEST_CB1A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 1A (RR D)
@@ -15373,7 +15525,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB1B
 `endif
-`ifdef TEST_CB01B
+`ifdef TEST_CB1B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 1B (RR E)
@@ -15390,7 +15542,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB1C
 `endif
-`ifdef TEST_CB01C
+`ifdef TEST_CB1C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 1C (RR H)
@@ -15424,7 +15576,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB1E
 `endif
-`ifdef TEST_CB01E
+`ifdef TEST_CB1E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 1E (RR (HL))
@@ -15442,7 +15594,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB1F
 `endif
-`ifdef TEST_CB01F
+`ifdef TEST_CB1F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 1F (RR A)
@@ -15459,7 +15611,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB20
 `endif
-`ifdef TEST_CB020
+`ifdef TEST_CB20
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 20 (SLA B)
@@ -15476,7 +15628,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB21
 `endif
-`ifdef TEST_CB021
+`ifdef TEST_CB21
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 21 (SLA C)
@@ -15493,7 +15645,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB22
 `endif
-`ifdef TEST_CB022
+`ifdef TEST_CB22
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 22 (SLA D)
@@ -15510,7 +15662,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB23
 `endif
-`ifdef TEST_CB023
+`ifdef TEST_CB23
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 23 (SLA E)
@@ -15527,7 +15679,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB24
 `endif
-`ifdef TEST_CB024
+`ifdef TEST_CB24
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 24 (SLA H)
@@ -15544,7 +15696,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB25
 `endif
-`ifdef TEST_CB025
+`ifdef TEST_CB25
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 25 (SLA L)
@@ -15561,7 +15713,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB26
 `endif
-`ifdef TEST_CB026
+`ifdef TEST_CB26
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 26 (SLA (HL))
@@ -15579,7 +15731,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB27
 `endif
-`ifdef TEST_CB027
+`ifdef TEST_CB27
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 27 (SLA A)
@@ -15596,7 +15748,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB28
 `endif
-`ifdef TEST_CB028
+`ifdef TEST_CB28
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 28 (SRA B)
@@ -15613,7 +15765,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB29
 `endif
-`ifdef TEST_CB029
+`ifdef TEST_CB29
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 29 (SRA C)
@@ -15630,7 +15782,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2A
 `endif
-`ifdef TEST_CB02A
+`ifdef TEST_CB2A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2A (SRA D)
@@ -15647,7 +15799,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2B
 `endif
-`ifdef TEST_CB02B
+`ifdef TEST_CB2B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2B (SRA E)
@@ -15664,7 +15816,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2C
 `endif
-`ifdef TEST_CB02C
+`ifdef TEST_CB2C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2C (SRA H)
@@ -15681,7 +15833,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2D
 `endif
-`ifdef TEST_CB02D
+`ifdef TEST_CB2D
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2D (SRA L)
@@ -15698,7 +15850,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2E
 `endif
-`ifdef TEST_CB02E
+`ifdef TEST_CB2E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2E (SRA (HL))
@@ -15716,7 +15868,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB2F
 `endif
-`ifdef TEST_CB02F
+`ifdef TEST_CB2F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 2F (SRA A)
@@ -15733,7 +15885,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB30
 `endif
-`ifdef TEST_CB030
+`ifdef TEST_CB30
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 30 (SLL B)
@@ -15750,7 +15902,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB31
 `endif
-`ifdef TEST_CB031
+`ifdef TEST_CB31
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 31 (SLL C)
@@ -15767,7 +15919,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB32
 `endif
-`ifdef TEST_CB032
+`ifdef TEST_CB32
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 32 (SLL D)
@@ -15784,7 +15936,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB33
 `endif
-`ifdef TEST_CB033
+`ifdef TEST_CB33
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 33 (SLL E)
@@ -15801,7 +15953,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB34
 `endif
-`ifdef TEST_CB034
+`ifdef TEST_CB34
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 34 (SLL H)
@@ -15818,7 +15970,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB35
 `endif
-`ifdef TEST_CB035
+`ifdef TEST_CB35
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 35 (SLL L)
@@ -15835,7 +15987,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB36
 `endif
-`ifdef TEST_CB036
+`ifdef TEST_CB36
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 36 (SLL (HL))
@@ -15853,7 +16005,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB37
 `endif
-`ifdef TEST_CB037
+`ifdef TEST_CB37
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 37 (SLL A)
@@ -15870,7 +16022,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB38
 `endif
-`ifdef TEST_CB038
+`ifdef TEST_CB38
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 38 (SRL B)
@@ -15887,7 +16039,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB39
 `endif
-`ifdef TEST_CB039
+`ifdef TEST_CB39
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 39 (SRL C)
@@ -15904,7 +16056,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3A
 `endif
-`ifdef TEST_CB03A
+`ifdef TEST_CB3A
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3A (SRL D)
@@ -15921,7 +16073,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3B
 `endif
-`ifdef TEST_CB03B
+`ifdef TEST_CB3B
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3B (SRL E)
@@ -15938,7 +16090,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3C
 `endif
-`ifdef TEST_CB03C
+`ifdef TEST_CB3C
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3C (SRL H)
@@ -15955,7 +16107,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3D
 `endif
-`ifdef TEST_CB03D
+`ifdef TEST_CB3D
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3D (SRL L)
@@ -15972,7 +16124,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3E
 `endif
-`ifdef TEST_CB03E
+`ifdef TEST_CB3E
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3E (SRL (HL))
@@ -15990,7 +16142,7 @@ initial begin
 `ifdef TEST_ALL
 `define TEST_CB3F
 `endif
-`ifdef TEST_CB03F
+`ifdef TEST_CB3F
 	i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     // --------------- TEST --------------------------------
 	// FUSE CB 3F (SRL A)

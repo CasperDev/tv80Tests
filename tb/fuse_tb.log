@@ -1,7 +1,5 @@
 VCD info: dumpfile fuse_tb.vcd opened for output.
- -- dd cb 07    rlc (ix+d),a
-* FAIL *: [A] expected=5d, actual=6f
-* FAIL *: [F] expected=09, actual=4d
+ -- dd cb 0f    rrc (ix+d),a
+* FAIL *: [A] expected=7c, actual=f8
                                                  
-* FAIL *: [MEMWR] expected=5d, actual=ae
-fuse_tb.sv:19295: $finish called at 280 (1ns)
+fuse_tb.sv:19447: $finish called at 280 (1ns)

@@ -149,6 +149,7 @@ module tv80_core (/*AUTOARG*/
   wire [1:0]    Prefix;
   wire          Read_To_Acc;
   wire          Read_To_Reg;
+  wire 			Extra_Reg_Save;
   wire [3:0]     Set_BusB_To;
   wire [3:0]     Set_BusA_To;
   wire [3:0]     ALU_Op;
@@ -197,13 +198,13 @@ module tv80_core (/*AUTOARG*/
 		.Flag_C(Flag_C), .Flag_N(Flag_N), .Flag_P(Flag_P), .Flag_X(Flag_X), 
 		.Flag_H(Flag_H), .Flag_Y(Flag_Y), .Flag_Z(Flag_Z), .Flag_S(Flag_S)
 	) mcode (
-        .IR(IR), .ISet(ISet), .F(F),
+        .IR(IR), .ISet(ISet), .XY_Ind(XY_Ind), .F(F),
         .MCycle(mcycle), .NMICycle(NMICycle), .INTCycle(IntCycle),
      
         .MCycles(mcycles_d), .TStates(tstates),
         .Prefix(Prefix),
         .Inc_PC(Inc_PC), .Inc_WZ(Inc_WZ), .IncDec_16(IncDec_16),
-        .Read_To_Acc(Read_To_Acc), .Read_To_Reg(Read_To_Reg), 
+        .Read_To_Acc(Read_To_Acc), .Read_To_Reg(Read_To_Reg), .Extra_Reg_Save(Extra_Reg_Save),
         .Set_BusB_To(Set_BusB_To), .Set_BusA_To(Set_BusA_To), .Set_Addr_To(Set_Addr_To),
         .ALU_Op(ALU_Op), .Save_ALU(Save_ALU),
         .PreserveC(PreserveC), .Arith16(Arith16), .IORQ(iorq_i),
@@ -318,7 +319,7 @@ module tv80_core (/*AUTOARG*/
             Save_Mux = BusB;
         else if (!Save_ALU_r)
             Save_Mux = DI_Reg;
-        else
+		else
             Save_Mux = ALU_Q;
     end // always @ *
 
@@ -653,7 +654,7 @@ module tv80_core (/*AUTOARG*/
 
 
                 if (tstate[1] && Auto_Wait_t1 == 1'b0 ) begin
-                    dout <= BusB;
+                    if (~Extra_Reg_Save) dout <= BusB;
                     if (I_RLD == 1'b1 ) begin
                         dout[3:0] <= BusA[3:0];
                         dout[7:4] <= BusB[3:0];
@@ -775,7 +776,9 @@ module tv80_core (/*AUTOARG*/
             or tstate or wait_n) begin
         RegWEH = 1'b0;
         RegWEL = 1'b0;
-        if ((tstate[1] && ~Save_ALU_r && ~Auto_Wait_t1) || (Save_ALU_r && (ALU_Op_r != 4'b0111)) ) begin
+        if ((tstate[1] && ~Save_ALU_r && ~Auto_Wait_t1) 
+		  || (Save_ALU_r && (ALU_Op_r != 4'b0111)) )
+		  begin
             case (Read_To_Reg_r)
                 5'b10000 , 5'b10001 , 5'b10010 , 5'b10011 , 5'b10100 , 5'b10101 : begin
                     RegWEH = ~ Read_To_Reg_r[0];
@@ -805,11 +808,13 @@ module tv80_core (/*AUTOARG*/
 
 
     always @(/*AUTOSENSE*/ExchangeDH or ID16 or IncDec_16 or RegBusA_r
-            or RegBusB or Save_Mux or mcycle or tstate) begin
+            or RegBusB or Save_Mux or Extra_Reg_Save or dout or mcycle or tstate) begin
         RegDIH = Save_Mux;
         RegDIL = Save_Mux;
-
-        if (ExchangeDH == 1'b1 && tstate[3] ) begin
+        if (Extra_Reg_Save) begin
+			RegDIH = dout;
+			RegDIL = dout;
+		end else if (ExchangeDH == 1'b1 && tstate[3] ) begin
             RegDIH = RegBusB[15:8];
             RegDIL = RegBusB[7:0];
         end else if (ExchangeDH == 1'b1 && tstate[4] ) begin
