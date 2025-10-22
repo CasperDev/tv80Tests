@@ -1,0 +1,5 @@
+VCD info: dumpfile gentests/fdcba3/out/fdcba3.vcd opened for output.
+Test Test - fdcba3 ... FAIL
+- FAIL: [MEMWR] expected=49, actual=59
+- FAIL: [E] expected=49, actual=78
+gentests/fdcba3/fdcba3.sv:181: $finish called at 285 (1ns)

@@ -1,0 +1,4 @@
+VCD info: dumpfile gentests/eda2/out/eda2.vcd opened for output.
+Test Test - eda2 ... FAIL
+- FAIL: [F] expected=9f, actual=8a
+gentests/eda2/eda2.sv:178: $finish called at 215 (1ns)

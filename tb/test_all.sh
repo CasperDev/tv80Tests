@@ -33,10 +33,39 @@ RED=$(tput setaf 1)
 YELLOW=$(tput setaf 3)
 NC=$(tput sgr0)
 
-if grep -q "FAIL" "${TESTFILE}.log"; then
-        echo -e "❌ Some tests ${RED}FAILED${NC}"
-else
-        echo -e "✅ All tests ${GREEN}PASSED${NC}"
-fi
+PASS_COUNT=0
+FAIL_COUNT=0
 
-echo "Done. Output written to ${TESTFILE}.log"
+while IFS= read -r line; do
+     if [[ "$line" =~ ^Test ]]; then
+         if [[ "$line" =~ PASS ]]; then
+             line="${line//PASS/$(printf '\033[1;32mPASS\033[0m')}"
+             PASS_COUNT=$((PASS_COUNT + 1))
+         elif [[ "$line" =~ FAIL ]]; then
+             line="${line//FAIL/$(printf '\033[1;31mFAIL\033[0m')}"
+             FAIL_COUNT=$((FAIL_COUNT + 1))
+         fi
+		echo $line
+     fi
+     if [[ "$line" =~ "- FAIL" ]]; then
+         if [[ "$line" =~ PASS ]]; then
+             line="${line//PASS/$(printf '\033[1;32mPASS\033[0m')}"
+         elif [[ "$line" =~ FAIL ]]; then
+             line="${line//FAIL/$(printf '\033[1;31mFAIL\033[0m')}"
+         fi
+		echo $line
+     fi
+done < "${TESTFILE}.log"
+
+TOTAL=$((PASS_COUNT + FAIL_COUNT))
+
+echo "------------------------------"
+if (( TOTAL > 0 )); then
+    echo -e "  Total $TOTAL tests:"
+    echo -e "  ✅  \033[1;32m$PASS_COUNT PASS\033[0m"
+    echo -e "  ❌  \033[1;31m$FAIL_COUNT FAIL\033[0m"
+else
+    echo "  No tests detected."
+fi
+echo "=============================="
+

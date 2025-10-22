@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/16/out/16.vcd opened for output.
+Test Test - 16 ... PASS
+gentests/16/16.sv:178: $finish called at 125 (1ns)

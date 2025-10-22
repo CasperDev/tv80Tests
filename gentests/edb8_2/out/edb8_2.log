@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/edb8_2/out/edb8_2.vcd opened for output.
+Test Test - edb8_2 ... PASS
+gentests/edb8_2/edb8_2.sv:180: $finish called at 215 (1ns)

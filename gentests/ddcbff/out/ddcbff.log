@@ -1,0 +1,5 @@
+VCD info: dumpfile gentests/ddcbff/out/ddcbff.vcd opened for output.
+Test Test - ddcbff ... FAIL
+- FAIL: [MEMWR] expected=ab, actual=2b
+- FAIL: [A] expected=ab, actual=e6
+gentests/ddcbff/ddcbff.sv:181: $finish called at 285 (1ns)

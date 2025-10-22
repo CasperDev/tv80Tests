@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/eda0/out/eda0.vcd opened for output.
+Test Test - eda0 ... PASS
+gentests/eda0/eda0.sv:179: $finish called at 215 (1ns)

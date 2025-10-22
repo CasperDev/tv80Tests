@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/fdae/out/fdae.vcd opened for output.
+Test Test - fdae ... PASS
+gentests/fdae/fdae.sv:180: $finish called at 245 (1ns)

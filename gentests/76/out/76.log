@@ -1,0 +1,4 @@
+VCD info: dumpfile gentests/76/out/76.vcd opened for output.
+Test Test - 76 ... FAIL
+- FAIL: [PC] expected=0000, actual=0001
+gentests/76/76.sv:178: $finish called at 95 (1ns)

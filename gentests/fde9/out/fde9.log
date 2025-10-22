@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/fde9/out/fde9.vcd opened for output.
+Test Test - fde9 ... PASS
+gentests/fde9/fde9.sv:178: $finish called at 135 (1ns)

@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Wed Oct 22 08:28:01 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/00/out/00.vcd"
+[dumpfile_mtime] "Wed Oct 22 08:27:35 2025"
+[dumpfile_size] 15062
+[savefile] "/workspaces/tv80Tests/gentests/00/out/00.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-5.007232 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_00.
+[sst_width] 297
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 157
+@22
+tb_00.cpu.A[15:0]
+@420
+tb_00.cpu.IOWait
+tb_00.cpu.Mode
+tb_00.cpu.T2Write
+@28
+tb_00.cpu.busak_n
+tb_00.cpu.busrq_n
+tb_00.cpu.cen
+tb_00.cpu.clk
+@22
+tb_00.cpu.di[7:0]
+tb_00.cpu.di_reg[7:0]
+tb_00.cpu.dout[7:0]
+@28
+tb_00.cpu.halt_n
+tb_00.cpu.int_n
+tb_00.cpu.intcycle_n
+tb_00.cpu.iorq
+tb_00.cpu.iorq_n
+tb_00.cpu.m1_n
+@22
+tb_00.cpu.mcycle[6:0]
+@28
+tb_00.cpu.mreq_n
+tb_00.cpu.nmi_n
+tb_00.cpu.no_read
+tb_00.cpu.rd_n
+tb_00.cpu.reset
+tb_00.cpu.rfsh_n
+@22
+tb_00.cpu.tstate[6:0]
+@28
+tb_00.cpu.wait_n
+tb_00.cpu.wr_n
+tb_00.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

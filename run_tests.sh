@@ -21,21 +21,22 @@ TOTAL=0
 # --- Funkcja uruchamiająca pojedynczy test ---
 run_test() {
     local test_dir="$1"
-    local out_dir="${test_dir}/out"
-    local log_file="${out_dir}/log.txt"
-    local vvp_file="${out_dir}/test.vvp"
-    local vcd_file="${out_dir}/test.vcd"
-    local gtkw_file="${out_dir}/test.gtkw"
+	local test_base_name="$(basename "$test_dir")"
+    local tb_file="${test_dir}/${test_base_name}.sv"
+	local out_dir="${test_dir}/out"
+    local log_file="${out_dir}/${test_base_name}.log"
+    local vvp_file="${out_dir}/${test_base_name}.vvp"
+    local vcd_file="${out_dir}/${test_base_name}.vcd"
+    local gtkw_file="${out_dir}/${test_base_name}.gtkw"
 
     mkdir -p "$out_dir"
 
     # --- Pobranie nazwy testu z pliku test.v ---
-    local tb_file="${test_dir}/test.sv"
     local test_name
 
     # Szukaj localparam lub define
-    if grep -q "TESTNAME" "$tb_file"; then
-        test_name=$(grep "TESTNAME" "$tb_file" | head -n 1 | sed -E 's/.*"(.*)".*/\1/')
+    if grep -q "module tb_" "$tb_file"; then
+        test_name=$(grep "module tb_" "$tb_file" | head -n 1 | sed -E 's/(.*);.*/\1/')
     else
         test_name="$(basename "$test_dir")"
     fi
@@ -75,6 +76,8 @@ run_test() {
     if grep -q "FAIL" "$log_file"; then
         echo "❌ ${RED}FAILED${RESET}"
         FAILED=$((FAILED + 1))
+		 # pokaż szczegóły błędu
+    	grep '^- FAIL:' "$log_file" | sed "s/^/${RED}/; s/$/${RESET}/"
     else
         echo "✅ ${GREEN}PASSED${RESET}"
         PASSED=$((PASSED + 1))
@@ -87,9 +90,9 @@ run_test() {
         if [ -f "$vcd_file" ]; then
             echo "📈 Opening GTKWave for $test_name..."
 			if [ -f "$gtkw_file" ]; then
-                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "test.vcd" "test.gtkw" >/dev/null 2>&1 & disown)
+                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "$test_base_name.vcd" "$test_base_name.gtkw" >/dev/null 2>&1 & disown)
             else
-                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "test.vcd" >/dev/null 2>&1 & disown)
+                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "$test_base_name.vcd" >/dev/null 2>&1 & disown)
             fi
 		else
             echo "⚠️  VCD file not found: $vcd_file"
@@ -101,7 +104,7 @@ echo ""
 echo "=============================================="
 
 # --- Wybór testów na podstawie parametru ---
-TESTS_DIR="tests"
+TESTS_DIR="gentests"
 
 if [ -n "$1" ]; then
     # Pozwól używać wzorców typu 03*, *inc_bc*, itp.

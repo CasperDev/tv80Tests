@@ -1,0 +1,5 @@
+VCD info: dumpfile gentests/fb/out/fb.vcd opened for output.
+Test Test - fb ... FAIL
+- FAIL: [IFF1] expected=1'b1 actual=0
+- FAIL: [IFF2] expected=1'b1, actual=0
+gentests/fb/fb.sv:177: $finish called at 95 (1ns)

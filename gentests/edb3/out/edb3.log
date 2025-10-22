@@ -1,0 +1,4 @@
+VCD info: dumpfile gentests/edb3/out/edb3.vcd opened for output.
+Test Test - edb3 ... FAIL
+- FAIL: [F] expected=53, actual=42
+gentests/edb3/edb3.sv:181: $finish called at 635 (1ns)

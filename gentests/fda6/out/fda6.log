@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/fda6/out/fda6.vcd opened for output.
+Test Test - fda6 ... PASS
+gentests/fda6/fda6.sv:180: $finish called at 245 (1ns)

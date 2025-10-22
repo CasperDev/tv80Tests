@@ -1,0 +1,4 @@
+VCD info: dumpfile gentests/edb9/out/edb9.vcd opened for output.
+Test Test - edb9 ... FAIL
+- FAIL: [F] expected=0b, actual=03
+gentests/edb9/edb9.sv:186: $finish called at 1685 (1ns)
