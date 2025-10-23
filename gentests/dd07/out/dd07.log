@@ -1,0 +1,3 @@
+VCD info: dumpfile gentests/dd07/out/dd07.vcd opened for output.
+Test Test - dd07 ... PASS
+gentests/dd07/dd07.sv:182: $finish called at 135 (1ns)

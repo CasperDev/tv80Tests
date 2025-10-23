@@ -1,1 +1,3 @@
-Command signaled: /usr/lib/x86_64-linux-gnu/ivl/ivlpp -L -F"/tmp/ivrlg24613783b" -f"/tmp/ivrlg4613783b" -p"/tmp/ivrli4613783b" |/usr/lib/x86_64-linux-gnu/ivl/ivl -C"/tmp/ivrlh4613783b" -C"/usr/lib/x86_64-linux-gnu/ivl/vvp.conf" -- -
+VCD info: dumpfile gentests/ddcb0e/out/ddcb0e.vcd opened for output.
+Test Test - ddcb0e ... PASS
+gentests/ddcb0e/ddcb0e.sv:185: $finish called at 285 (1ns)

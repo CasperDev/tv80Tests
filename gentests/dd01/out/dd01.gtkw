@@ -1,0 +1,59 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Thu Oct 23 20:37:34 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/dd01/out/dd01.vcd"
+[dumpfile_mtime] "Thu Oct 23 20:35:27 2025"
+[dumpfile_size] 17324
+[savefile] "/workspaces/tv80Tests/gentests/dd01/out/dd01.gtkw"
+[timestart] 0
+[size] 1770 1063
+[pos] -1 -1
+*-5.436979 30 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_dd01.
+[sst_width] 297
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 318
+@28
+tb_dd01.cpu.reset
+tb_dd01.cpu.cen
+tb_dd01.cpu.clk
+tb_dd01.cpu.m1_n
+tb_dd01.cpu.rfsh_n
+@22
+tb_dd01.cpu.A[15:0]
+@28
+tb_dd01.cpu.mreq_n
+tb_dd01.cpu.rd_n
+@23
+tb_dd01.cpu.di[7:0]
+@420
+tb_dd01.cpu.IOWait
+tb_dd01.cpu.Mode
+tb_dd01.cpu.T2Write
+@28
+tb_dd01.cpu.busak_n
+tb_dd01.cpu.busrq_n
+@22
+tb_dd01.cpu.di_reg[7:0]
+tb_dd01.cpu.dout[7:0]
+@28
+tb_dd01.cpu.halt_n
+tb_dd01.cpu.int_n
+tb_dd01.cpu.intcycle_n
+tb_dd01.cpu.iorq
+tb_dd01.cpu.iorq_n
+@22
+tb_dd01.cpu.mcycle[6:0]
+@28
+tb_dd01.cpu.nmi_n
+tb_dd01.cpu.no_read
+@22
+tb_dd01.cpu.tstate[6:0]
+@28
+tb_dd01.cpu.wait_n
+tb_dd01.cpu.wr_n
+tb_dd01.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

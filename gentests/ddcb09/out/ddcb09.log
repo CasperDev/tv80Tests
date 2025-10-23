@@ -1,1 +1,4 @@
-Command signaled: /usr/lib/x86_64-linux-gnu/ivl/ivlpp -L -F"/tmp/ivrlg27285ce0d" -f"/tmp/ivrlg7285ce0d" -p"/tmp/ivrli7285ce0d" |/usr/lib/x86_64-linux-gnu/ivl/ivl -C"/tmp/ivrlh7285ce0d" -C"/usr/lib/x86_64-linux-gnu/ivl/vvp.conf" -- -
+VCD info: dumpfile gentests/ddcb09/out/ddcb09.vcd opened for output.
+Test Test - ddcb09 ... FAIL
+- FAIL: [C] expected=b7, actual=6f
+gentests/ddcb09/ddcb09.sv:185: $finish called at 285 (1ns)
