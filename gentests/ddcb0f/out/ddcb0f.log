@@ -1,4 +1,1 @@
-VCD info: dumpfile gentests/ddcb0f/out/ddcb0f.vcd opened for output.
-Test Test - ddcb0f ... FAIL
-- FAIL: [A] expected=7c, actual=f8
-gentests/ddcb0f/ddcb0f.sv:181: $finish called at 285 (1ns)
+Command signaled: /usr/lib/x86_64-linux-gnu/ivl/ivlpp -L -F"/tmp/ivrlg224228d33" -f"/tmp/ivrlg24228d33" -p"/tmp/ivrli24228d33" |/usr/lib/x86_64-linux-gnu/ivl/ivl -C"/tmp/ivrlh24228d33" -C"/usr/lib/x86_64-linux-gnu/ivl/vvp.conf" -- -

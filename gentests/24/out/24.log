@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/24/out/24.vcd opened for output.
 Test Test - 24 ... PASS
-gentests/24/24.sv:177: $finish called at 95 (1ns)
+gentests/24/24.sv:181: $finish called at 95 (1ns)

@@ -1,5 +1,5 @@
 $date
-	Wed Oct 22 13:35:53 2025
+	Thu Oct 23 11:29:08 2025
 $end
 $version
 	Icarus Verilog
@@ -384,30 +384,32 @@ $upscope $end
 $upscope $end
 $upscope $end
 $scope task ASSERT $end
-$var reg 8 {# I [7:0] $end
-$var reg 2 |# IFF [1:0] $end
-$var reg 8 }# R [7:0] $end
-$var reg 192 ~# REGS [191:0] $end
-$var reg 1 !$ alt $end
+$var reg 1 {# HaltFF $end
+$var reg 8 |# I [7:0] $end
+$var reg 2 }# IFF [1:0] $end
+$var reg 8 ~# R [7:0] $end
+$var reg 192 !$ REGS [191:0] $end
+$var reg 1 "$ alt $end
 $upscope $end
 $scope task ASSERTMEM $end
-$var reg 16 "$ addr [15:0] $end
-$var reg 8 #$ expected [7:0] $end
+$var reg 16 #$ addr [15:0] $end
+$var reg 8 $$ expected [7:0] $end
 $upscope $end
 $scope task RESULT $end
 $upscope $end
 $scope task SETFAIL $end
 $upscope $end
 $scope task SETMEM $end
-$var reg 16 $$ addr [15:0] $end
-$var reg 8 %$ value [7:0] $end
+$var reg 16 %$ addr [15:0] $end
+$var reg 8 &$ value [7:0] $end
 $upscope $end
 $scope task SETUP $end
-$var reg 8 &$ I [7:0] $end
-$var reg 2 '$ IFF [1:0] $end
-$var reg 8 ($ R [7:0] $end
-$var reg 192 )$ REGS [191:0] $end
-$var reg 1 *$ alt $end
+$var reg 1 '$ HaltFF $end
+$var reg 8 ($ I [7:0] $end
+$var reg 2 )$ IFF [1:0] $end
+$var reg 8 *$ R [7:0] $end
+$var reg 192 +$ REGS [191:0] $end
+$var reg 1 ,$ alt $end
 $upscope $end
 $scope task TESTCASE $end
 $upscope $end
@@ -463,20 +465,22 @@ b1 A
 $end
 #0
 $dumpvars
-x*$
+x,$
+bx +$
+bx *$
 bx )$
 bx ($
-bx '$
+x'$
 bx &$
 bx %$
 bx $$
 bx #$
-bx "$
-x!$
+x"$
+bx !$
 bx ~#
 bx }#
 bx |#
-bx {#
+x{#
 bx z#
 bx y#
 bx x#
@@ -925,8 +929,8 @@ b10010001 o
 b10010001 ,#
 1!
 1/
-b10100 %$
-b1101100011100100 $$
+b10100 &$
+b1101100011100100 %$
 b0 `"
 b101110101011 s#
 b10001111 o#
@@ -957,11 +961,12 @@ b11011111 <"
 b11011111 z"
 b11011111 ?#
 b10110010 -"
-0*$
-b0 '$
+0,$
+0'$
+b0 )$
+b0 *$
 b0 ($
-b0 &$
-b101100101101111111101001101110000101011011000011000101101111111100000000000000000000000000000000000000000000000000000000000000001101100010001111000010111010101100000000000000000000000000000000 )$
+b101100101101111111101001101110000101011011000011000101101111111100000000000000000000000000000000000000000000000000000000000000001101100010001111000010111010101100000000000000000000000000000000 +$
 #40
 b11011101 +
 b11011101 5
@@ -1816,11 +1821,12 @@ b10000 B#
 b10 t"
 1!
 1/
-0!$
+0"$
+0{#
+b0 }#
+b10 ~#
 b0 |#
-b10 }#
-b0 {#
-b101100101101111111101001100101000101011011000011000101101111111100000000000000000000000000000000000000000000000000000000000000001101100010001111000010111010101100000000000000000000000000000100 ~#
+b101100101101111111101001100101000101011011000011000101101111111100000000000000000000000000000000000000000000000000000000000000001101100010001111000010111010101100000000000000000000000000000100 !$
 1.
-b10010100 #$
-b1101100011100100 "$
+b10010100 $$
+b1101100011100100 #$

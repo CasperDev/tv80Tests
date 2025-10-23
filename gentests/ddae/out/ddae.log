@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/ddae/out/ddae.vcd opened for output.
 Test Test - ddae ... PASS
-gentests/ddae/ddae.sv:180: $finish called at 245 (1ns)
+gentests/ddae/ddae.sv:184: $finish called at 245 (1ns)

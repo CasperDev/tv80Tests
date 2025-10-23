@@ -1,4 +1,4 @@
 VCD info: dumpfile gentests/fdcb4e/out/fdcb4e.vcd opened for output.
 Test Test - fdcb4e ... FAIL
 - FAIL: [F] expected=31, actual=11
-gentests/fdcb4e/fdcb4e.sv:181: $finish called at 255 (1ns)
+gentests/fdcb4e/fdcb4e.sv:185: $finish called at 255 (1ns)

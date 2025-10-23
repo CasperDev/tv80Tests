@@ -1,4 +1,4 @@
 VCD info: dumpfile gentests/edaa/out/edaa.vcd opened for output.
 Test Test - edaa ... FAIL
 - FAIL: [F] expected=97, actual=82
-gentests/edaa/edaa.sv:178: $finish called at 215 (1ns)
+gentests/edaa/edaa.sv:182: $finish called at 215 (1ns)

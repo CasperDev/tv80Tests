@@ -1,0 +1,66 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Thu Oct 23 07:32:11 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/76/out/76.vcd"
+[dumpfile_mtime] "Thu Oct 23 07:27:52 2025"
+[dumpfile_size] 16239
+[savefile] "/workspaces/tv80Tests/gentests/76/out/76.gtkw"
+[timestart] 0
+[size] 1541 1018
+[pos] -1 -1
+*-5.007232 55 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_76.
+[treeopen] tb_76.cpu.
+[sst_width] 297
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 303
+@28
+tb_76.cpu.cen
+tb_76.cpu.reset
+tb_76.cpu.clk
+tb_76.cpu.m1_n
+tb_76.cpu.rfsh_n
+@22
+tb_76.cpu.A[15:0]
+@420
+tb_76.cpu.IOWait
+@28
+tb_76.cpu.core.Inc_PC
+@22
+tb_76.cpu.core.PC[15:0]
+tb_76.cpu.core.PC16[15:0]
+tb_76.cpu.core.PC16_B[15:0]
+@420
+tb_76.cpu.Mode
+tb_76.cpu.T2Write
+@28
+tb_76.cpu.busak_n
+tb_76.cpu.busrq_n
+@22
+tb_76.cpu.di[7:0]
+tb_76.cpu.di_reg[7:0]
+tb_76.cpu.dout[7:0]
+@29
+tb_76.cpu.halt_n
+@28
+tb_76.cpu.int_n
+tb_76.cpu.intcycle_n
+tb_76.cpu.iorq
+tb_76.cpu.iorq_n
+@22
+tb_76.cpu.mcycle[6:0]
+@28
+tb_76.cpu.mreq_n
+tb_76.cpu.nmi_n
+tb_76.cpu.no_read
+tb_76.cpu.rd_n
+@22
+tb_76.cpu.tstate[6:0]
+@28
+tb_76.cpu.wait_n
+tb_76.cpu.wr_n
+tb_76.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

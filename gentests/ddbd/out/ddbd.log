@@ -1,3 +1,1 @@
-VCD info: dumpfile gentests/ddbd/out/ddbd.vcd opened for output.
-Test Test - ddbd ... PASS
-gentests/ddbd/ddbd.sv:178: $finish called at 135 (1ns)
+Command signaled: /usr/lib/x86_64-linux-gnu/ivl/ivlpp -L -F"/tmp/ivrlg226543d1f" -f"/tmp/ivrlg26543d1f" -p"/tmp/ivrli26543d1f" |/usr/lib/x86_64-linux-gnu/ivl/ivl -C"/tmp/ivrlh26543d1f" -C"/usr/lib/x86_64-linux-gnu/ivl/vvp.conf" -- -

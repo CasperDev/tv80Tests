@@ -1,4 +1,4 @@
 VCD info: dumpfile gentests/ddcb02/out/ddcb02.vcd opened for output.
 Test Test - ddcb02 ... FAIL
 - FAIL: [D] expected=1b, actual=8d
-gentests/ddcb02/ddcb02.sv:181: $finish called at 285 (1ns)
+gentests/ddcb02/ddcb02.sv:185: $finish called at 285 (1ns)

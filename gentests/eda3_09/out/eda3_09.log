@@ -1,4 +1,4 @@
 VCD info: dumpfile gentests/eda3_09/out/eda3_09.vcd opened for output.
 Test Test - eda3_09 ... FAIL
 - FAIL: [F] expected=80, actual=82
-gentests/eda3_09/eda3_09.sv:179: $finish called at 215 (1ns)
+gentests/eda3_09/eda3_09.sv:183: $finish called at 215 (1ns)

@@ -2,4 +2,4 @@ VCD info: dumpfile gentests/fdcbb2/out/fdcbb2.vcd opened for output.
 Test Test - fdcbb2 ... FAIL
 - FAIL: [MEMWR] expected=3b, actual=7b
 - FAIL: [D] expected=3b, actual=bb
-gentests/fdcbb2/fdcbb2.sv:181: $finish called at 285 (1ns)
+gentests/fdcbb2/fdcbb2.sv:185: $finish called at 285 (1ns)

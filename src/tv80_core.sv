@@ -373,7 +373,6 @@ module tv80_core (/*AUTOARG*/
                 end else begin
                     Z16_r <= 1'b0;
                 end
-
                 if (mcycle[0] && (tstate[1] | tstate[2] | tstate[3] )) begin
                     // mcycle == 1 && tstate == 1, 2, || 3
                     if (tstate[2] && wait_n == 1'b1) begin
@@ -382,6 +381,7 @@ module tv80_core (/*AUTOARG*/
                             A[15:8] <= I;
                             R[6:0] <= R[6:0] + 1'b1;
                         end
+						// TODO: Halt ustawiany jest dopiero w kolejnym cyklu czyli PC zawsze zostaje zwiększone +1
                         if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
                         begin
                             PC <= PC16;
@@ -438,7 +438,7 @@ module tv80_core (/*AUTOARG*/
                         end else if (JumpXY == 1'b1 ) begin
                             A <= RegBusC;
                             PC <= RegBusC;
-                        end else if (Call == 1'b1 || RstP == 1'b1 ) begin
+                        end else if (Call == 1'b1 || RstP == 1'b1 || Halt) begin
                             A <= TmpAddr;
                             PC <= TmpAddr;
                         end else if (last_mcycle && NMICycle == 1'b1 ) begin

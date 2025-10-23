@@ -1,4 +1,4 @@
 VCD info: dumpfile gentests/edb2_1/out/edb2_1.vcd opened for output.
 Test Test - edb2_1 ... FAIL
 - FAIL: [F] expected=0c, actual=0a
-gentests/edb2_1/edb2_1.sv:178: $finish called at 265 (1ns)
+gentests/edb2_1/edb2_1.sv:182: $finish called at 265 (1ns)

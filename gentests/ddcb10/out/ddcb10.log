@@ -1,4 +1,1 @@
-VCD info: dumpfile gentests/ddcb10/out/ddcb10.vcd opened for output.
-Test Test - ddcb10 ... FAIL
-- FAIL: [B] expected=8b, actual=45
-gentests/ddcb10/ddcb10.sv:181: $finish called at 285 (1ns)
+Command signaled: /usr/lib/x86_64-linux-gnu/ivl/ivlpp -L -F"/tmp/ivrlg237d1f0ec" -f"/tmp/ivrlg37d1f0ec" -p"/tmp/ivrli37d1f0ec" |/usr/lib/x86_64-linux-gnu/ivl/ivl -C"/tmp/ivrlh37d1f0ec" -C"/usr/lib/x86_64-linux-gnu/ivl/vvp.conf" -- -

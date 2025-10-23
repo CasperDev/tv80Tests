@@ -107,21 +107,24 @@ for name, s in setup_tests.items():
     a = assert_tests[name]
 
     print(f"[+] Generuję test: {name}")
-    print(s)
-    print(a)
+    #print(s)
+    #print(a)
     
     code = template
     code = code.replace("TESTNAME", name)
     code = code.replace("SETUP_REGS", f"192'h{s['regs16']}")
     code = code.replace("SETUP_IREG", f"8'h{s['regs8'].split()[0]}")
     code = code.replace("SETUP_RREG", f"8'h{s['regs8'].split()[1]}")
-    code = code.replace("SETUP_IFFS", f"2'b{s['regs8'].split()[2]}{s['regs8'].split()[3]}")
+    code = code.replace("SETUP_IFFS", f"2'b{s['regs8'].split()[3]}{s['regs8'].split()[2]}")
+    code = code.replace("SETUP_HALT", f"1'b{s['regs8'].split()[5]}")
     code = code.replace("MEM_INIT", make_mem_init(s["mem"]))
 
     code = code.replace("ASSERT_REGS", f"192'h{a['regs16'].replace(' ', '_')}")
     code = code.replace("ASSERT_IREG", f"8'h{a['regs8'][0]}")
     code = code.replace("ASSERT_RREG", f"8'h{a['regs8'][1]}")
-    code = code.replace("ASSERT_MODE", f"2'b{a['regs8'][2]}{a['regs8'][3]}")
+    code = code.replace("ASSERT_MODE", f"2'b{a['regs8'][3]}{a['regs8'][2]}")
+    code = code.replace("ASSERT_HALT", f"1'b{a['regs8'][5]}")
+    
     code = code.replace("RUNCLOCKS", f"{a['cycles']}")
     code = code.replace("ASSERT_MEM", make_assert_mem(a["mem"]))
 

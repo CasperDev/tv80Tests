@@ -88,6 +88,7 @@ task ASSERT;
 	input [7:0] I;
 	input [7:0] R;
 	input [1:0] IFF;
+	input HaltFF;
 	reg alt;
 	begin
 		
@@ -117,8 +118,9 @@ task ASSERT;
 	if (cpu.core.regs.RegsL[7] != REGS[39:32]) begin SETFAIL(); $display("- FAIL: [IYL] expected=%2h, actual=%2h",REGS[39:32],cpu.core.regs.RegsL[7]); end;
 	if (cpu.core.I != I) begin SETFAIL(); $display("- FAIL: [I] expected=%2h, actual=%2h",I,cpu.core.I); end;
 	if (cpu.core.R != R) begin SETFAIL(); $display("- FAIL: [R] expected=%2h, actual=%2h",R,cpu.core.R); end;
-	if (cpu.core.IntE_FF1 != IFF[0]) begin SETFAIL(); $display("- FAIL: [IFF1] expected=1'b1 actual=%1b",cpu.core.IntE_FF1); end;
-	if (cpu.core.IntE_FF2 != IFF[1]) begin SETFAIL(); $display("- FAIL: [IFF2] expected=1'b1, actual=%1b",cpu.core.IntE_FF2); end;
+	if (cpu.core.IntE_FF1 != IFF[0]) begin SETFAIL(); $display("- FAIL: [IFF1] expected=%1b actual=%1b",IFF[0],cpu.core.IntE_FF1); end;
+	if (cpu.core.IntE_FF2 != IFF[1]) begin SETFAIL(); $display("- FAIL: [IFF2] expected=%1b, actual=%1b",IFF[1],cpu.core.IntE_FF2); end;
+	if (cpu.core.Halt_FF != HaltFF) begin SETFAIL(); $display("- FAIL: [HALT] expected=%1b, actual=%1b",HaltFF,cpu.core.Halt_FF); end;
 	RESULT();
 	end
 endtask
@@ -133,6 +135,7 @@ task SETUP;
 	input [7:0] I;
 	input [7:0] R;
 	input [1:0] IFF;
+	input HaltFF;
 	reg alt;
 	begin
 		alt = cpu.core.Alternate;
@@ -161,6 +164,7 @@ task SETUP;
 		cpu.core.A = REGS[15:0];
 		cpu.core.I = I; cpu.core.R = R; 
 		cpu.core.IntE_FF1 = IFF[0]; cpu.core.IntE_FF2 = IFF[1];
+		cpu.core.Halt_FF = HaltFF;
 	end
 endtask
 
@@ -169,12 +173,12 @@ endtask
 initial begin
 	TESTCASE("Test - ed59");
     i_reset_btn = 1; #30; i_reset_btn = 0; #5;
-    SETUP(192'h388a_d512_ecc5_93af_0000_0000_0000_0000_0000_0000_0000_0000, 8'h00, 8'h00, 2'b00);
+    SETUP(192'h388a_d512_ecc5_93af_0000_0000_0000_0000_0000_0000_0000_0000, 8'h00, 8'h00, 2'b00, 1'b0);
     SETMEM(16'h0000, 8'hed);
         SETMEM(16'h0001, 8'h59);
     #(2* `CLKPERIOD * 12 + `FIN)
 	
-    ASSERT(192'h388a_d512_ecc5_93af_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00);
+    ASSERT(192'h388a_d512_ecc5_93af_0000_0000_0000_0000_0000_0000_0000_0002, 8'h00, 8'h02, 2'b00, 1'b0);
     $finish;
 end
 endmodule

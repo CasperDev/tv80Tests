@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/02_1/out/02_1.vcd opened for output.
 Test Test - 02_1 ... PASS
-gentests/02_1/02_1.sv:177: $finish called at 125 (1ns)
+gentests/02_1/02_1.sv:181: $finish called at 125 (1ns)
