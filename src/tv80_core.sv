@@ -322,10 +322,12 @@ module tv80_core (/*AUTOARG*/
 		else
             Save_Mux = ALU_Q;
     end // always @ *
-
+	
+	reg [15:0] HaltPC;
     always @ (posedge clk or posedge reset) begin
         if (reset) begin
             PC <= 0;  // Program Counter
+			HaltPC <= 'd0;
             A <= 0;
             TmpAddr <= 0;
             IR <= 8'b00000000;
@@ -384,6 +386,7 @@ module tv80_core (/*AUTOARG*/
 						// TODO: Halt ustawiany jest dopiero w kolejnym cyklu czyli PC zawsze zostaje zwiększone +1
                         if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
                         begin
+							HaltPC <= PC;
                             PC <= PC16;
                         end
 
@@ -430,7 +433,10 @@ module tv80_core (/*AUTOARG*/
 
                     if (T_Res == 1'b1 ) begin
                         BTR_r <= (I_BT || I_BC || I_BTR) && ~ No_BTR;
-                        if (Jump == 1'b1 ) begin
+                        if (Halt == 1'b1) begin
+							A <= HaltPC;
+							PC <= HaltPC;
+						end else if (Jump == 1'b1 ) begin
                             A[15:8] <= DI_Reg;
                             A[7:0] <= TmpAddr[7:0];
                             PC[15:8] <= DI_Reg;
@@ -438,7 +444,7 @@ module tv80_core (/*AUTOARG*/
                         end else if (JumpXY == 1'b1 ) begin
                             A <= RegBusC;
                             PC <= RegBusC;
-                        end else if (Call == 1'b1 || RstP == 1'b1 || Halt) begin
+                        end else if (Call == 1'b1 || RstP == 1'b1) begin
                             A <= TmpAddr;
                             PC <= TmpAddr;
                         end else if (last_mcycle && NMICycle == 1'b1 ) begin
@@ -958,7 +964,7 @@ module tv80_core (/*AUTOARG*/
     // Main state machine
     //
     //-----------------------------------------------------------------------
-
+	reg SetEI_r;
     always @ (posedge clk or posedge reset) begin
         if (reset) begin
             mcycle <= 7'b0000001;
@@ -974,6 +980,7 @@ module tv80_core (/*AUTOARG*/
             Auto_Wait_t1 <= 1'b0;
             Auto_Wait_t2 <= 1'b0;
             m1_n <= 1'b1;
+			SetEI_r <= 1'b0;
         end else begin
             if (cen) begin
                 if (T_Res == 1'b1 ) begin
@@ -985,8 +992,9 @@ module tv80_core (/*AUTOARG*/
                 No_BTR <= (I_BT && (~ IR[4] || ~ F[Flag_P])) ||
                           (I_BC && (~ IR[4] || F[Flag_Z] || ~ F[Flag_P])) ||
                           (I_BTR && (~ IR[4] || F[Flag_Z]));
-                if (tstate[2]) begin
-                    if (SetEI == 1'b1 ) begin
+                if (T_Res == 1'b1) begin
+					SetEI_r <= SetEI;
+                    if (SetEI_r == 1'b1 ) begin
                         if (!NMICycle)
                             IntE_FF1 <= 1'b1;
                         IntE_FF2 <= 1'b1;
@@ -995,7 +1003,7 @@ module tv80_core (/*AUTOARG*/
                         IntE_FF1 <= IntE_FF2;
                     end
                 end
-                if (tstate[3] ) begin
+                if (T_Res == 1'b1) begin
                     if (SetDI == 1'b1 ) begin
                         IntE_FF1 <= 1'b0;
                         IntE_FF2 <= 1'b0;

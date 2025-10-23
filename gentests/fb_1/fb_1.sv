@@ -2,7 +2,7 @@
 `define CLKPERIOD 5
 `define FIN 20
 
-module tb_fb;
+module tb_fb_1;
 
     reg i_clk = 0;          // Signals driven from within a process (an initial or always block) must be type reg
     reg i_reset_btn =1;
@@ -13,7 +13,7 @@ module tb_fb;
 		if (!$value$plusargs("vcd=%s", vcd_path))
 			vcd_path = "default.vcd"; // domyślna nazwa, gdyby nie podano parametru
 		$dumpfile(vcd_path);
-		$dumpvars(0,tb_fb);
+		$dumpvars(0,tb_fb_1);
 	end
 
 	always #`CLKPERIOD i_clk = ~i_clk;
@@ -171,13 +171,13 @@ endtask
 
 
 initial begin
-	TESTCASE("Test - fb");
+	TESTCASE("Test - fb_1");
     i_reset_btn = 1; #30; i_reset_btn = 0; #5;
     SETUP(192'h0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000, 8'h00, 8'h00, 2'b00, 1'b0);
     SETMEM(16'h0000, 8'hfb);
     #(2* `CLKPERIOD * 4 + `FIN)
 	
-    ASSERT(192'h0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0001, 8'h00, 8'h01, 2'b11, 1'b0);
+    ASSERT(192'h0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0001, 8'h00, 8'h01, 2'b00, 1'b0);
     $finish;
 end
 endmodule
