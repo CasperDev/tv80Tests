@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/db/out/db.vcd opened for output.
 Test Test - db ... PASS
-gentests/db/db.sv:182: $finish called at 165 (1ns)
+gentests/db/db.sv:187: $finish called at 165 (1ns)

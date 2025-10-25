@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Sat Oct 25 18:34:41 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/fdcb06/out/fdcb06.vcd"
+[dumpfile_mtime] "Sat Oct 25 18:28:52 2025"
+[dumpfile_size] 22937
+[savefile] "/workspaces/tv80Tests/gentests/fdcb06/out/fdcb06.gtkw"
+[timestart] 0
+[size] 1402 809
+[pos] -1 -1
+*-5.982141 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_fdcb06.
+[sst_width] 297
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 230
+@28
+tb_fdcb06.cpu.reset
+tb_fdcb06.cpu.clk
+tb_fdcb06.cpu.m1_n
+tb_fdcb06.cpu.rfsh_n
+@22
+tb_fdcb06.cpu.A[15:0]
+@28
+tb_fdcb06.cpu.mreq_n
+tb_fdcb06.cpu.rd_n
+tb_fdcb06.cpu.wr_n
+@22
+tb_fdcb06.cpu.di[7:0]
+tb_fdcb06.cpu.di_reg[7:0]
+tb_fdcb06.cpu.dout[7:0]
+tb_fdcb06.cpu.mcycle[6:0]
+tb_fdcb06.cpu.tstate[6:0]
+@28
+tb_fdcb06.cpu.no_read
+tb_fdcb06.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

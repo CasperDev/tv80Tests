@@ -2,4 +2,4 @@ VCD info: dumpfile gentests/ddcbd3/out/ddcbd3.vcd opened for output.
 Test Test - ddcbd3 ... FAIL
 - FAIL: [MEMWR] expected=64, actual=60
 - FAIL: [E] expected=64, actual=52
-gentests/ddcbd3/ddcbd3.sv:185: $finish called at 285 (1ns)
+gentests/ddcbd3/ddcbd3.sv:189: $finish called at 285 (1ns)

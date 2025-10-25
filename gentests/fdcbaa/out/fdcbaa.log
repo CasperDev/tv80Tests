@@ -2,4 +2,4 @@ VCD info: dumpfile gentests/fdcbaa/out/fdcbaa.vcd opened for output.
 Test Test - fdcbaa ... FAIL
 - FAIL: [MEMWR] expected=1a, actual=3a
 - FAIL: [D] expected=1a, actual=fa
-gentests/fdcbaa/fdcbaa.sv:185: $finish called at 285 (1ns)
+gentests/fdcbaa/fdcbaa.sv:189: $finish called at 285 (1ns)

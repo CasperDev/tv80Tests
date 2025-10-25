@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/eda9/out/eda9.vcd opened for output.
-Test Test - eda9 ... FAIL
-- FAIL: [F] expected=bf, actual=9f
-gentests/eda9/eda9.sv:183: $finish called at 215 (1ns)
+Test Test - eda9 ... PASS
+gentests/eda9/eda9.sv:187: $finish called at 215 (1ns)

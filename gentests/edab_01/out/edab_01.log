@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/edab_01/out/edab_01.vcd opened for output.
-Test Test - edab_01 ... FAIL
-- FAIL: [F] expected=00, actual=02
-gentests/edab_01/edab_01.sv:183: $finish called at 215 (1ns)
+Test Test - edab_01 ... PASS
+gentests/edab_01/edab_01.sv:187: $finish called at 215 (1ns)

@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/ed58/out/ed58.vcd opened for output.
-Test Test - ed58 ... FAIL
-- FAIL: [F] expected=00, actual=XX
-gentests/ed58/ed58.sv:182: $finish called at 175 (1ns)
+Test Test - ed58 ... PASS
+gentests/ed58/ed58.sv:187: $finish called at 175 (1ns)

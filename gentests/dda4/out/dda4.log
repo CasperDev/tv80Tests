@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/dda4/out/dda4.vcd opened for output.
 Test Test - dda4 ... PASS
-gentests/dda4/dda4.sv:182: $finish called at 135 (1ns)
+gentests/dda4/dda4.sv:186: $finish called at 135 (1ns)

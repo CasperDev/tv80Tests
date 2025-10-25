@@ -1,0 +1,64 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Fri Oct 24 16:00:34 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/ed68/out/ed68.vcd"
+[dumpfile_mtime] "Fri Oct 24 15:59:14 2025"
+[dumpfile_size] 19256
+[savefile] "/workspaces/tv80Tests/gentests/ed68/out/ed68.gtkw"
+[timestart] 0
+[size] 1889 1120
+[pos] -1 -1
+*-4.981701 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_ed68.
+[treeopen] tb_ed68.cpu.
+[treeopen] tb_ed68.cpu.core.
+[sst_width] 297
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 338
+@28
+tb_ed68.cpu.reset
+tb_ed68.cpu.cen
+tb_ed68.cpu.clk
+tb_ed68.cpu.m1_n
+tb_ed68.cpu.rfsh_n
+@22
+tb_ed68.cpu.A[15:0]
+@28
+tb_ed68.cpu.mreq_n
+tb_ed68.cpu.rd_n
+@22
+tb_ed68.cpu.di[7:0]
+@420
+tb_ed68.cpu.IOWait
+@23
+tb_ed68.cpu.core.regs.L[7:0]
+@420
+tb_ed68.cpu.Mode
+tb_ed68.cpu.T2Write
+@28
+tb_ed68.cpu.busak_n
+tb_ed68.cpu.busrq_n
+@22
+tb_ed68.cpu.di_reg[7:0]
+tb_ed68.cpu.dout[7:0]
+@28
+tb_ed68.cpu.halt_n
+tb_ed68.cpu.int_n
+tb_ed68.cpu.intcycle_n
+tb_ed68.cpu.iorq
+tb_ed68.cpu.iorq_n
+@22
+tb_ed68.cpu.mcycle[6:0]
+@28
+tb_ed68.cpu.nmi_n
+tb_ed68.cpu.no_read
+@22
+tb_ed68.cpu.tstate[6:0]
+@28
+tb_ed68.cpu.wait_n
+tb_ed68.cpu.wr_n
+tb_ed68.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

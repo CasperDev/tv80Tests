@@ -116,13 +116,15 @@ for name, s in setup_tests.items():
     code = code.replace("SETUP_IREG", f"8'h{s['regs8'].split()[0]}")
     code = code.replace("SETUP_RREG", f"8'h{s['regs8'].split()[1]}")
     code = code.replace("SETUP_IFFS", f"2'b{s['regs8'].split()[3]}{s['regs8'].split()[2]}")
+    code = code.replace("SETUP_IMODE", f"2'd{s['regs8'].split()[4]}")
     code = code.replace("SETUP_HALT", f"1'b{s['regs8'].split()[5]}")
     code = code.replace("MEM_INIT", make_mem_init(s["mem"]))
 
     code = code.replace("ASSERT_REGS", f"192'h{a['regs16'].replace(' ', '_')}")
     code = code.replace("ASSERT_IREG", f"8'h{a['regs8'][0]}")
     code = code.replace("ASSERT_RREG", f"8'h{a['regs8'][1]}")
-    code = code.replace("ASSERT_MODE", f"2'b{a['regs8'][3]}{a['regs8'][2]}")
+    code = code.replace("ASSERT_IFFS", f"2'b{a['regs8'][3]}{a['regs8'][2]}")
+    code = code.replace("ASSERT_IMODE", f"2'd{a['regs8'][4]}")
     code = code.replace("ASSERT_HALT", f"1'b{a['regs8'][5]}")
     
     code = code.replace("RUNCLOCKS", f"{a['cycles']}")

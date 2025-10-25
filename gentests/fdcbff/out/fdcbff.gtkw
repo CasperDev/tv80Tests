@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Fri Oct 24 17:48:20 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/fdcbff/out/fdcbff.vcd"
+[dumpfile_mtime] "Fri Oct 24 17:37:00 2025"
+[dumpfile_size] 22283
+[savefile] "/workspaces/tv80Tests/gentests/fdcbff/out/fdcbff.gtkw"
+[timestart] 0
+[size] 1976 949
+[pos] -1 -1
+*-5.382141 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_fdcbff.
+[sst_width] 297
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 278
+@28
+tb_fdcbff.cpu.reset
+@22
+tb_fdcbff.cpu.mcycle[6:0]
+tb_fdcbff.cpu.tstate[6:0]
+@28
+tb_fdcbff.cpu.cen
+tb_fdcbff.cpu.clk
+tb_fdcbff.cpu.m1_n
+tb_fdcbff.cpu.rfsh_n
+@22
+tb_fdcbff.cpu.A[15:0]
+@28
+tb_fdcbff.cpu.mreq_n
+tb_fdcbff.cpu.rd_n
+@22
+tb_fdcbff.cpu.di[7:0]
+tb_fdcbff.cpu.di_reg[7:0]
+@29
+tb_fdcbff.cpu.wr_n
+@22
+tb_fdcbff.cpu.dout[7:0]
+@420
+tb_fdcbff.cpu.IOWait
+tb_fdcbff.cpu.Mode
+tb_fdcbff.cpu.T2Write
+@28
+tb_fdcbff.cpu.busak_n
+tb_fdcbff.cpu.busrq_n
+tb_fdcbff.cpu.halt_n
+tb_fdcbff.cpu.int_n
+tb_fdcbff.cpu.intcycle_n
+tb_fdcbff.cpu.iorq
+tb_fdcbff.cpu.iorq_n
+tb_fdcbff.cpu.nmi_n
+tb_fdcbff.cpu.no_read
+tb_fdcbff.cpu.wait_n
+tb_fdcbff.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

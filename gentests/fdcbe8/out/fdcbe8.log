@@ -2,4 +2,4 @@ VCD info: dumpfile gentests/fdcbe8/out/fdcbe8.vcd opened for output.
 Test Test - fdcbe8 ... FAIL
 - FAIL: [MEMWR] expected=f0, actual=d0
 - FAIL: [B] expected=f0, actual=c2
-gentests/fdcbe8/fdcbe8.sv:185: $finish called at 285 (1ns)
+gentests/fdcbe8/fdcbe8.sv:189: $finish called at 285 (1ns)

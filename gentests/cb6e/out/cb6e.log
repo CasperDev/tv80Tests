@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/cb6e/out/cb6e.vcd opened for output.
 Test Test - cb6e ... PASS
-gentests/cb6e/cb6e.sv:183: $finish called at 175 (1ns)
+gentests/cb6e/cb6e.sv:187: $finish called at 175 (1ns)

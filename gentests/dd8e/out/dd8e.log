@@ -1,3 +1,3 @@
 VCD info: dumpfile gentests/dd8e/out/dd8e.vcd opened for output.
 Test Test - dd8e ... PASS
-gentests/dd8e/dd8e.sv:184: $finish called at 245 (1ns)
+gentests/dd8e/dd8e.sv:188: $finish called at 245 (1ns)

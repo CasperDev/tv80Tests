@@ -1,4 +1,0 @@
-VCD info: dumpfile gentests/cb46_5/out/cb46_5.vcd opened for output.
-Test Test - cb46_5 ... FAIL
-- FAIL: [F] expected=30, actual=10
-gentests/cb46_5/cb46_5.sv:183: $finish called at 175 (1ns)

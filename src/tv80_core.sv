@@ -137,7 +137,7 @@ module tv80_core (/*AUTOARG*/
   reg           Save_ALU_r;
   reg           PreserveC_r;
   reg [2:0]     mcycles;
-
+  reg [7:0]     RegCopy;
   // Micro code outputs
   wire [2:0]    mcycles_d;
   wire [2:0]    tstates;
@@ -150,7 +150,7 @@ module tv80_core (/*AUTOARG*/
   wire          Read_To_Acc;
   wire          Read_To_Reg;
   wire 			Extra_Reg_Save;
-  wire [3:0]     Set_BusB_To;
+    wire [3:0]     Set_BusB_To;
   wire [3:0]     Set_BusA_To;
   wire [3:0]     ALU_Op;
   wire           Save_ALU;
@@ -315,7 +315,7 @@ module tv80_core (/*AUTOARG*/
         else
             NextIs_XY_Fetch = 1'b0;
 
-        if (ExchangeRp)
+		if (ExchangeRp)
             Save_Mux = BusB;
         else if (!Save_ALU_r)
             Save_Mux = DI_Reg;
@@ -336,7 +336,6 @@ module tv80_core (/*AUTOARG*/
             IStatus <= 2'b00;
             mcycles <= 3'b000;
             dout <= 8'b00000000;
-
             ACC <= 8'hFF;
             F <= 8'hFF;
             Ap <= 8'hFF;
@@ -383,8 +382,8 @@ module tv80_core (/*AUTOARG*/
                             A[15:8] <= I;
                             R[6:0] <= R[6:0] + 1'b1;
                         end
-						// TODO: Halt ustawiany jest dopiero w kolejnym cyklu czyli PC zawsze zostaje zwiększone +1
-                        if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
+						
+						if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
                         begin
 							HaltPC <= PC;
                             PC <= PC16;
@@ -660,7 +659,7 @@ module tv80_core (/*AUTOARG*/
 
 
                 if (tstate[1] && Auto_Wait_t1 == 1'b0 ) begin
-                    if (~Extra_Reg_Save) dout <= BusB;
+                    dout <= BusB;
                     if (I_RLD == 1'b1 ) begin
                         dout[3:0] <= BusA[3:0];
                         dout[7:4] <= BusB[3:0];
@@ -694,9 +693,11 @@ module tv80_core (/*AUTOARG*/
                         (Save_ALU_r == 1'b1 && ALU_Op_r != 4'b0111) ) begin
                     case (Read_To_Reg_r)
                         5'b10111 :
-                            ACC <= Save_Mux;
-                        5'b10110 :
+                            ACC <= Extra_Reg_Save == 1'b1 ? RegCopy : Save_Mux;
+                        5'b10110 : begin
                             dout <= Save_Mux;
+							RegCopy <= Save_Mux;
+						end
                         5'b11000 :
                             SP[7:0] <= Save_Mux;
                         5'b11001 :
@@ -817,9 +818,9 @@ module tv80_core (/*AUTOARG*/
             or RegBusB or Save_Mux or Extra_Reg_Save or dout or mcycle or tstate) begin
         RegDIH = Save_Mux;
         RegDIL = Save_Mux;
-        if (Extra_Reg_Save) begin
-			RegDIH = dout;
-			RegDIL = dout;
+		if (Extra_Reg_Save && mcycle[0]) begin
+			RegDIH = RegCopy;
+			RegDIL = RegCopy;
 		end else if (ExchangeDH == 1'b1 && tstate[3] ) begin
             RegDIH = RegBusB[15:8];
             RegDIL = RegBusB[7:0];

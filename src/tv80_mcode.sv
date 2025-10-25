@@ -1329,12 +1329,14 @@ module tv80_mcode
                 8'b00110000,8'b00110001,8'b00110010,8'b00110011,8'b00110100,8'b00110101,8'b00110111,
                 8'b00111000,8'b00111001,8'b00111010,8'b00111011,8'b00111100,8'b00111101,8'b00111111 : begin
 					if (XY_Ind) begin
+						Extra_Reg_Save <= 1'b1;
+						
 						MCycles <= 3'b011;
-						Set_BusA_To <= 3'b110;
 						case (1'b1) // MCycle
 							MCycle[0], MCycle[6] :
 								Set_Addr_To <= aXY;
 							MCycle[1] : begin
+								Set_BusA_To <= 3'b110;
 								ALU_Op <= 4'b1000;
 								Read_To_Reg <= 1'b1;
 								Save_ALU <= 1'b1;
@@ -1346,9 +1348,9 @@ module tv80_mcode
 								Write <= 1'b1;
 							// end
 							// MCycle[3] : begin
-								Set_BusA_To[2:0] <= IR[2:0];
+								//Set_BusA_To[2:0] <= IR[2:0];
                             	Read_To_Reg <= 1'b1;
-								Extra_Reg_Save <= 1'b1;
+								// Extra_Reg_Save <= 1'b1;
 							end
 
 							default :;
@@ -1723,7 +1725,7 @@ module tv80_mcode
                 8'b01010110,8'b01110110  : begin // IM 1
                     IMode <= 2'b01;
 				end
-                8'b01011110,8'b01110111  : begin // IM 2
+                8'b01011110,8'b01111110  : begin // IM 2
                     IMode <= 2'b10;
 				end
                 // 16 bit arithmetic

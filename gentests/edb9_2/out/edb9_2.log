@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/edb9_2/out/edb9_2.vcd opened for output.
-Test Test - edb9_2 ... FAIL
-- FAIL: [F] expected=a7, actual=af
-gentests/edb9_2/edb9_2.sv:190: $finish called at 265 (1ns)
+Test Test - edb9_2 ... PASS
+gentests/edb9_2/edb9_2.sv:194: $finish called at 265 (1ns)
