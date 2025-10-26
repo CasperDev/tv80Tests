@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/fdcb79/out/fdcb79.vcd opened for output.
-Test Test - fdcb79 ... FAIL
-- FAIL: [F] expected=98, actual=28
+Test Test - fdcb79 ... PASS
 gentests/fdcb79/fdcb79.sv:189: $finish called at 255 (1ns)

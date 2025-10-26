@@ -24,6 +24,8 @@
 
 module tv80_alu (/*AUTOARG*/
 	input wire [7:0] BusA, BusB, F_In,		// 8-bit arguments + Previous Flags
+	input wire [7:0] BusC,					// High byte if IX/IY for BIT op
+	input wire XY_Ind,						// flag for DD,FD
 	output reg [7:0] Q, F_Out,				// 8-bit result + result Flags
 	input wire Arith16, 					// 1 - when 16-bit arthmetic operation
 	input wire Z16, 
@@ -272,13 +274,20 @@ module tv80_alu (/*AUTOARG*/
             end
             F_Out[Flag_H] = 1'b1;
             F_Out[Flag_N] = 1'b0;
-            if (IR[2:0] != 3'b110 ) begin
-                F_Out[Flag_X] = BusB[3];
-                F_Out[Flag_Y] = BusB[5];
-            end else begin
-                F_Out[Flag_X] = 1'b0; // TODO should be bit 3 of (wz >> 8)
-                F_Out[Flag_Y] = 1'b0; // TODO should be bit 5 of (wz >> 8)
-            end
+            // if (IR[2:0] != 3'b110 ) begin
+            //     F_Out[Flag_X] = BusB[3];
+            //     F_Out[Flag_Y] = BusB[5];
+            // end else begin
+            //     F_Out[Flag_X] = 1'b0; // TODO should be bit 3 of (wz >> 8)
+            //     F_Out[Flag_Y] = 1'b0; // TODO should be bit 5 of (wz >> 8)
+            // end
+			if (XY_Ind == 1'b1 || IR[2:0] == 3'b110) begin
+                F_Out[Flag_X] = BusC[3];
+                F_Out[Flag_Y] = BusC[5];
+			end else begin
+				F_Out[Flag_X] = BusB[3];
+            	F_Out[Flag_Y] = BusB[5];
+			end
         end // case: when 4'b1001
 
         4'b1010 : begin // SET

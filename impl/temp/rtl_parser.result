@@ -33,7 +33,7 @@
      },
      {
       "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 836,
+      "InstLine" : 837,
       "InstName" : "regs",
       "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_reg.sv",
       "ModuleLine" : 27,

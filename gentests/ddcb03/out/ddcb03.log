@@ -1,4 +1,3 @@
 VCD info: dumpfile gentests/ddcb03/out/ddcb03.vcd opened for output.
-Test Test - ddcb03 ... FAIL
-- FAIL: [E] expected=f0, actual=78
+Test Test - ddcb03 ... PASS
 gentests/ddcb03/ddcb03.sv:189: $finish called at 285 (1ns)

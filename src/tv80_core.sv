@@ -235,6 +235,7 @@ module tv80_core (/*AUTOARG*/
         .ALU_Op(ALU_Op_r),
         .IR(IR[5:0]), .ISet(ISet),
         .BusA(BusA), .BusB(BusB), .F_In(F),
+		.BusC(TmpAddr[15:8]), .XY_Ind(XY_Ind),
         .Q(ALU_Q), .F_Out(F_Out)
      );
 

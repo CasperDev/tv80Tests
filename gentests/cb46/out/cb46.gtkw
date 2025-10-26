@@ -1,0 +1,53 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Sun Oct 26 11:10:36 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/gentests/cb46/out/cb46.vcd"
+[dumpfile_mtime] "Sun Oct 26 10:46:50 2025"
+[dumpfile_size] 19149
+[savefile] "/workspaces/tv80Tests/gentests/cb46/out/cb46.gtkw"
+[timestart] 0
+[size] 1746 813
+[pos] -1 -1
+*-4.981701 155 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_cb46.
+[treeopen] tb_cb46.cpu.
+[sst_width] 297
+[signals_width] 160
+[sst_expanded] 1
+[sst_vpaned_height] 231
+@28
+tb_cb46.cpu.reset
+tb_cb46.cpu.clk
+tb_cb46.cpu.m1_n
+tb_cb46.cpu.rfsh_n
+@22
+tb_cb46.cpu.A[15:0]
+@28
+tb_cb46.cpu.mreq_n
+tb_cb46.cpu.rd_n
+tb_cb46.cpu.wr_n
+@22
+tb_cb46.cpu.di[7:0]
+tb_cb46.cpu.di_reg[7:0]
+tb_cb46.cpu.dout[7:0]
+tb_cb46.cpu.mcycle[6:0]
+tb_cb46.cpu.tstate[6:0]
+@28
+tb_cb46.cpu.no_read
+tb_cb46.cpu.write
+@22
+tb_cb46.cpu.core.ALU_Op[3:0]
+@23
+tb_cb46.cpu.core.ALU_Op_r[3:0]
+@28
+tb_cb46.cpu.core.PreserveC
+tb_cb46.cpu.core.PreserveC_r
+@22
+tb_cb46.cpu.core.BusA[7:0]
+tb_cb46.cpu.core.BusB[7:0]
+tb_cb46.cpu.core.ALU_Q[7:0]
+tb_cb46.cpu.core.F[7:0]
+tb_cb46.cpu.core.F_Out[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

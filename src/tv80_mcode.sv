@@ -1393,10 +1393,25 @@ module tv80_mcode
                 8'b01101000,8'b01101001,8'b01101010,8'b01101011,8'b01101100,8'b01101101,8'b01101111,
                 8'b01110000,8'b01110001,8'b01110010,8'b01110011,8'b01110100,8'b01110101,8'b01110111,
                 8'b01111000,8'b01111001,8'b01111010,8'b01111011,8'b01111100,8'b01111101,8'b01111111 : begin
-                    if (MCycle[0] ) begin
-                        Set_BusB_To[2:0] <= IR[2:0];
-                        ALU_Op <= 4'b1001;
-                    end
+                    if (XY_Ind) begin
+						MCycles <= 3'b010;
+						Set_BusB_To <= 3'b110;
+						case (1'b1) // MCycle
+							MCycle[0], MCycle[6] :
+								Set_Addr_To <= aXY;
+							MCycle[1] : begin
+								ALU_Op <= 4'b1001;
+								TStates <= 3'b100;
+							end
+
+							default :;
+						endcase // case(MCycle)
+					end else begin	
+						if (MCycle[0] ) begin
+							Set_BusB_To[2:0] <= IR[2:0];
+							ALU_Op <= 4'b1001;
+						end
+					end
                 end // case: 8'b01000000,8'b01000001,8'b01000010,8'b01000011,8'b01000100,8'b01000101,8'b01000111,...
 
                 // BIT b,(HL)
