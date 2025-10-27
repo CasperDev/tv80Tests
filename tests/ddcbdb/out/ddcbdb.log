@@ -1,5 +1,3 @@
 VCD info: dumpfile tests/ddcbdb/out/ddcbdb.vcd opened for output.
-Test Test - ddcbdb ... FAIL
-- FAIL: [MEMWR] expected=18, actual=10
-- FAIL: [E] expected=18, actual=88
+Test Test - ddcbdb ... PASS
 tests/ddcbdb/ddcbdb.sv:189: $finish called at 285 (1ns)

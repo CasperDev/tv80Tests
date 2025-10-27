@@ -1,0 +1,60 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Oct 27 09:49:53 2025
+[*]
+[dumpfile] "/workspaces/tv80Tests/tests/ddcb82/out/ddcb82.vcd"
+[dumpfile_mtime] "Mon Oct 27 09:49:25 2025"
+[dumpfile_size] 23262
+[savefile] "/workspaces/tv80Tests/tests/ddcb82/out/ddcb82.gtkw"
+[timestart] 0
+[size] 1577 753
+[pos] -223 -209
+*-5.932264 195 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_ddcb82.
+[treeopen] tb_ddcb82.cpu.
+[sst_width] 276
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 211
+@28
+tb_ddcb82.cpu.clk
+tb_ddcb82.cpu.m1_n
+@22
+tb_ddcb82.cpu.A[15:0]
+@28
+tb_ddcb82.cpu.mreq_n
+tb_ddcb82.cpu.rd_n
+@22
+tb_ddcb82.cpu.di[7:0]
+tb_ddcb82.cpu.di_reg[7:0]
+tb_ddcb82.cpu.dout[7:0]
+@c00022
+tb_ddcb82.cpu.core.IR[7:0]
+@28
+(0)tb_ddcb82.cpu.core.IR[7:0]
+(1)tb_ddcb82.cpu.core.IR[7:0]
+(2)tb_ddcb82.cpu.core.IR[7:0]
+(3)tb_ddcb82.cpu.core.IR[7:0]
+(4)tb_ddcb82.cpu.core.IR[7:0]
+(5)tb_ddcb82.cpu.core.IR[7:0]
+(6)tb_ddcb82.cpu.core.IR[7:0]
+(7)tb_ddcb82.cpu.core.IR[7:0]
+@1401200
+-group_end
+@22
+tb_ddcb82.cpu.core.BusA[7:0]
+tb_ddcb82.cpu.core.BusB[7:0]
+@28
+tb_ddcb82.cpu.core.Set_Addr_To[2:0]
+@22
+tb_ddcb82.cpu.core.Save_Mux[7:0]
+@29
+tb_ddcb82.cpu.core.Extra_Reg_Save
+@22
+tb_ddcb82.cpu.core.ALU_Q[7:0]
+tb_ddcb82.cpu.core.ALU_Op[3:0]
+tb_ddcb82.cpu.core.ALU_Op_r[3:0]
+tb_ddcb82.cpu.mcycle[6:0]
+tb_ddcb82.cpu.tstate[6:0]
+[pattern_trace] 1
+[pattern_trace] 0

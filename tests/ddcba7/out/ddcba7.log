@@ -1,4 +1,3 @@
 VCD info: dumpfile tests/ddcba7/out/ddcba7.vcd opened for output.
-Test Test - ddcba7 ... FAIL
-- FAIL: [A] expected=87, actual=0e
+Test Test - ddcba7 ... PASS
 tests/ddcba7/ddcba7.sv:189: $finish called at 285 (1ns)

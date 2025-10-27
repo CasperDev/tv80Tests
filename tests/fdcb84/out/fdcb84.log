@@ -1,4 +1,3 @@
 VCD info: dumpfile tests/fdcb84/out/fdcb84.vcd opened for output.
-Test Test - fdcb84 ... FAIL
-- FAIL: [H] expected=ea, actual=e3
+Test Test - fdcb84 ... PASS
 tests/fdcb84/fdcb84.sv:189: $finish called at 285 (1ns)

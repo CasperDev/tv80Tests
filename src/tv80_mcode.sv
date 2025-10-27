@@ -1346,13 +1346,8 @@ module tv80_mcode
 
 							MCycle[2] : begin
 								Write <= 1'b1;
-							// end
-							// MCycle[3] : begin
-								//Set_BusA_To[2:0] <= IR[2:0];
                             	Read_To_Reg <= 1'b1;
-								// Extra_Reg_Save <= 1'b1;
 							end
-
 							default :;
 						endcase // case(MCycle)
 					end else begin
@@ -1438,7 +1433,29 @@ module tv80_mcode
                 8'b11101000,8'b11101001,8'b11101010,8'b11101011,8'b11101100,8'b11101101,8'b11101111,
                 8'b11110000,8'b11110001,8'b11110010,8'b11110011,8'b11110100,8'b11110101,8'b11110111,
                 8'b11111000,8'b11111001,8'b11111010,8'b11111011,8'b11111100,8'b11111101,8'b11111111 : begin
-                    if (MCycle[0] ) begin
+                    if (XY_Ind) begin
+   						Extra_Reg_Save <= 1'b1;
+                        Set_BusB_To <= 3'b110;
+                        MCycles <= 3'b011;
+                        case (1'b1) // MCycle
+                            MCycle[0], MCycle[6] :
+                                Set_Addr_To <= aXY;
+                            MCycle[1] : begin
+                                Set_BusA_To <= 3'b110;
+                                ALU_Op <= 4'b1010;
+                                Read_To_Reg <= 1'b1;
+                                Save_ALU <= 1'b1;
+                                Set_Addr_To <= aXY;
+                                TStates <= 3'b100;
+                            end
+
+                            MCycle[2] : begin
+                                Write <= 1'b1;
+                                Read_To_Reg <= 1'b1;
+                            end
+                            default :;
+                        endcase // case(MCycle)
+                    end else if (MCycle[0] ) begin
                         ALU_Op <= 4'b1010;
                         Read_To_Reg <= 1'b1;
                         Save_ALU <= 1'b1;
@@ -1473,7 +1490,29 @@ module tv80_mcode
                 8'b10101000,8'b10101001,8'b10101010,8'b10101011,8'b10101100,8'b10101101,8'b10101111,
                 8'b10110000,8'b10110001,8'b10110010,8'b10110011,8'b10110100,8'b10110101,8'b10110111,
                 8'b10111000,8'b10111001,8'b10111010,8'b10111011,8'b10111100,8'b10111101,8'b10111111 : begin
-                    if (MCycle[0] ) begin
+                    if (XY_Ind) begin
+   						Extra_Reg_Save <= 1'b1;
+                        Set_BusB_To <= 3'b110;
+                        MCycles <= 3'b011;
+                        case (1'b1) // MCycle
+                            MCycle[0], MCycle[6] :
+                                Set_Addr_To <= aXY;
+                            MCycle[1] : begin
+                                Set_BusA_To <= 3'b110;
+                                ALU_Op <= 4'b1011;
+                                Read_To_Reg <= 1'b1;
+                                Save_ALU <= 1'b1;
+                                Set_Addr_To <= aXY;
+                                TStates <= 3'b100;
+                            end
+
+                            MCycle[2] : begin
+                                Write <= 1'b1;
+                                Read_To_Reg <= 1'b1;
+                            end
+                            default :;
+                        endcase // case(MCycle)
+                    end else if (MCycle[0] ) begin
                         ALU_Op <= 4'b1011;
                         Read_To_Reg <= 1'b1;
                         Save_ALU <= 1'b1;

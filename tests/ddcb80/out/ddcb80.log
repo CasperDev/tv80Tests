@@ -1,4 +1,3 @@
 VCD info: dumpfile tests/ddcb80/out/ddcb80.vcd opened for output.
-Test Test - ddcb80 ... FAIL
-- FAIL: [B] expected=30, actual=ba
+Test Test - ddcb80 ... PASS
 tests/ddcb80/ddcb80.sv:189: $finish called at 285 (1ns)

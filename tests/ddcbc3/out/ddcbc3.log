@@ -1,4 +1,3 @@
 VCD info: dumpfile tests/ddcbc3/out/ddcbc3.vcd opened for output.
-Test Test - ddcbc3 ... FAIL
-- FAIL: [E] expected=dd, actual=ec
+Test Test - ddcbc3 ... PASS
 tests/ddcbc3/ddcbc3.sv:189: $finish called at 285 (1ns)

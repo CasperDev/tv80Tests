@@ -182,7 +182,7 @@ initial begin
         SETMEM(16'h0001, 8'hcb);
         SETMEM(16'h0002, 8'h70);
         SETMEM(16'h0003, 8'h80);
-        SETMEM(16'had35, 8'h30);
+        SETMEM(16'had35, 8'h31);
     #(2* `CLKPERIOD * 23 + `FIN)
 	
     ASSERT(192'h6319_30f9_c84b_bcf2_0000_0000_0000_0000_acc5_a4ed_0000_0004, 8'h00, 8'h02, 2'b00, 2'd0, 1'b0);

@@ -1,5 +1,3 @@
 VCD info: dumpfile tests/ddcbc2/out/ddcbc2.vcd opened for output.
-Test Test - ddcbc2 ... FAIL
-- FAIL: [MEMWR] expected=31, actual=30
-- FAIL: [D] expected=31, actual=d2
+Test Test - ddcbc2 ... PASS
 tests/ddcbc2/ddcbc2.sv:189: $finish called at 285 (1ns)
