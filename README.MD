@@ -12,25 +12,25 @@ To run all tests use command
 
 To run one test specify subdirectory from ./tests directory
 
-	./run_tests.sh 00_nop_INT_1
+	./run_tests.sh 00
 
 To run one test and open GTKWave with result
 
-	./run_tests.sh 00_nop_INT_1 view
+	./run_tests.sh 00 view
 
-To run several tests at once use quoted wildcard mask
+To run several tests at once use quoted wildcard mask (enclosed in quotes!)
 
-	./run_tests.sh "*nop*
+	./run_tests.sh "cb??*
 
 
 ## TODO
 
-- [ ] M1 control line (remove register)
-- [ ] RFSH control line (remove register)
-- [ ] MREQ control line timing
-- [ ] IORQ control line timing
-- [ ] RD control line timing
-- [ ] WR control line timing
+- [ ] M1 control line (remove register), real timing 
+- [ ] RFSH control line (remove register), real timing
+- [ ] MREQ control real line timing
+- [ ] IORQ control real line timing
+- [ ] RD control real line timing
+- [ ] WR control real line timing
 
 - [ ] Fix INT 2 ack cycle 
 	- should take 19T and takes 21T (store PCL and PCH on stack should take 3T each but takes 4T each)
