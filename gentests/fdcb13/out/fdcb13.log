@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/fdcb13/out/fdcb13.vcd opened for output.
-Test Test - fdcb13 ... PASS
-gentests/fdcb13/fdcb13.sv:189: $finish called at 285 (1ns)

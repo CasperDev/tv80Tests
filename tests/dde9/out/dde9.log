@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/dde9/out/dde9.vcd opened for output.
+Test Test - dde9 ... PASS
+tests/dde9/dde9.sv:186: $finish called at 135 (1ns)

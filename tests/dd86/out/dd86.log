@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/dd86/out/dd86.vcd opened for output.
+Test Test - dd86 ... PASS
+tests/dd86/dd86.sv:188: $finish called at 245 (1ns)

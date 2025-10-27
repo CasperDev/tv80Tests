@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/FD04_inc_b/out/test.vcd opened for output.
--- FD 04 (inc b) (undoc)
-tests/FD04_inc_b/test.sv:32: $finish called at 135 (1ns)

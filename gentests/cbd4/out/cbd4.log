@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cbd4/out/cbd4.vcd opened for output.
-Test Test - cbd4 ... PASS
-gentests/cbd4/cbd4.sv:187: $finish called at 135 (1ns)

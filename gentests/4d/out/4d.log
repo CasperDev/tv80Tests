@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/4d/out/4d.vcd opened for output.
-Test Test - 4d ... PASS
-gentests/4d/4d.sv:186: $finish called at 95 (1ns)

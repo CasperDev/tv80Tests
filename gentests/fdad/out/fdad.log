@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/fdad/out/fdad.vcd opened for output.
-Test Test - fdad ... PASS
-gentests/fdad/fdad.sv:186: $finish called at 135 (1ns)

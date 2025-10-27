@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cbea/out/cbea.vcd opened for output.
-Test Test - cbea ... PASS
-gentests/cbea/cbea.sv:187: $finish called at 135 (1ns)

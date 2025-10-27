@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/cbb2/out/cbb2.vcd opened for output.
+Test Test - cbb2 ... PASS
+tests/cbb2/cbb2.sv:187: $finish called at 135 (1ns)

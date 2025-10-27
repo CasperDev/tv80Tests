@@ -1,4 +1,0 @@
-VCD info: dumpfile fuse_tb.vcd opened for output.
-Test  -- dd cb 2f    sra (ix+d),a ... FAIL
-- FAIL: [A] expected=f9, actual=f2
-fuse_tb.sv:20068: $finish called at 280 (1ns)

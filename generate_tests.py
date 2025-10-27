@@ -1,10 +1,10 @@
 from pathlib import Path
 import re
 
-setup_lines = Path("tdata/setup.txt").read_text().strip().splitlines()
-assert_text = Path("tdata/assert.txt").read_text()
-template = Path("tdata/template.sv").read_text()
-out_dir = Path("gentests")
+setup_lines = Path("testdata/setup.txt").read_text().strip().splitlines()
+assert_text = Path("testdata/assert.txt").read_text()
+template = Path("testdata/template.sv").read_text()
+out_dir = Path("tests")
 out_dir.mkdir(exist_ok=True)
 
 # --------------------------------------------

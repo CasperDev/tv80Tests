@@ -1,5 +1,0 @@
-VCD info: dumpfile gentests/fdcbec/out/fdcbec.vcd opened for output.
-Test Test - fdcbec ... FAIL
-- FAIL: [MEMWR] expected=69, actual=49
-- FAIL: [H] expected=69, actual=e7
-gentests/fdcbec/fdcbec.sv:189: $finish called at 285 (1ns)

@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cb2b/out/cb2b.vcd opened for output.
-Test Test - cb2b ... PASS
-gentests/cb2b/cb2b.sv:187: $finish called at 135 (1ns)

@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/ddac/out/ddac.vcd opened for output.
-Test Test - ddac ... PASS
-gentests/ddac/ddac.sv:186: $finish called at 135 (1ns)

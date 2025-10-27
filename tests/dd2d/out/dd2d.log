@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/dd2d/out/dd2d.vcd opened for output.
+Test Test - dd2d ... PASS
+tests/dd2d/dd2d.sv:186: $finish called at 135 (1ns)

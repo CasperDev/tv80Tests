@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/fdcbee/out/fdcbee.vcd opened for output.
-Test Test - fdcbee ... PASS
-gentests/fdcbee/fdcbee.sv:189: $finish called at 285 (1ns)

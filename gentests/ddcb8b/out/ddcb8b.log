@@ -1,5 +1,0 @@
-VCD info: dumpfile gentests/ddcb8b/out/ddcb8b.vcd opened for output.
-Test Test - ddcb8b ... FAIL
-- FAIL: [MEMWR] expected=88, actual=8a
-- FAIL: [E] expected=88, actual=c1
-gentests/ddcb8b/ddcb8b.sv:189: $finish called at 285 (1ns)

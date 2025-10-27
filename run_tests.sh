@@ -104,7 +104,7 @@ echo ""
 echo "=============================================="
 
 # --- Wybór testów na podstawie parametru ---
-TESTS_DIR="gentests"
+TESTS_DIR="tests"
 
 if [ -n "$1" ]; then
     # Pozwól używać wzorców typu 03*, *inc_bc*, itp.

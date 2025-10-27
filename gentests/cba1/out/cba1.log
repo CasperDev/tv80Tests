@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cba1/out/cba1.vcd opened for output.
-Test Test - cba1 ... PASS
-gentests/cba1/cba1.sv:187: $finish called at 135 (1ns)

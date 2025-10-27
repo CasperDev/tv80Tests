@@ -1,5 +1,0 @@
-VCD info: dumpfile gentests/ddcbea/out/ddcbea.vcd opened for output.
-Test Test - ddcbea ... FAIL
-- FAIL: [MEMWR] expected=7f, actual=5f
-- FAIL: [D] expected=7f, actual=75
-gentests/ddcbea/ddcbea.sv:189: $finish called at 285 (1ns)

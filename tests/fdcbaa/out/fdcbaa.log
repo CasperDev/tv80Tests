@@ -1,0 +1,5 @@
+VCD info: dumpfile tests/fdcbaa/out/fdcbaa.vcd opened for output.
+Test Test - fdcbaa ... FAIL
+- FAIL: [MEMWR] expected=1a, actual=3a
+- FAIL: [D] expected=1a, actual=fa
+tests/fdcbaa/fdcbaa.sv:189: $finish called at 285 (1ns)

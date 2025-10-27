@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/ddcb3c/out/ddcb3c.vcd opened for output.
-Test Test - ddcb3c ... PASS
-gentests/ddcb3c/ddcb3c.sv:189: $finish called at 285 (1ns)

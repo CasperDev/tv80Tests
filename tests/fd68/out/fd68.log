@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/fd68/out/fd68.vcd opened for output.
+Test Test - fd68 ... PASS
+tests/fd68/fd68.sv:186: $finish called at 135 (1ns)

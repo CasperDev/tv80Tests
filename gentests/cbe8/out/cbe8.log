@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cbe8/out/cbe8.vcd opened for output.
-Test Test - cbe8 ... PASS
-gentests/cbe8/cbe8.sv:187: $finish called at 135 (1ns)

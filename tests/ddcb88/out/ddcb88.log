@@ -1,0 +1,4 @@
+VCD info: dumpfile tests/ddcb88/out/ddcb88.vcd opened for output.
+Test Test - ddcb88 ... FAIL
+- FAIL: [B] expected=7c, actual=33
+tests/ddcb88/ddcb88.sv:189: $finish called at 285 (1ns)

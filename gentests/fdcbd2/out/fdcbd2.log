@@ -1,5 +1,0 @@
-VCD info: dumpfile gentests/fdcbd2/out/fdcbd2.vcd opened for output.
-Test Test - fdcbd2 ... FAIL
-- FAIL: [MEMWR] expected=55, actual=51
-- FAIL: [D] expected=55, actual=31
-gentests/fdcbd2/fdcbd2.sv:189: $finish called at 285 (1ns)

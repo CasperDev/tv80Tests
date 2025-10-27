@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/dda5/out/dda5.vcd opened for output.
-Test Test - dda5 ... PASS
-gentests/dda5/dda5.sv:186: $finish called at 135 (1ns)

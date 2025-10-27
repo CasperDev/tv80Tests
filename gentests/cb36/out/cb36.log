@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/cb36/out/cb36.vcd opened for output.
-Test Test - cb36 ... PASS
-gentests/cb36/cb36.sv:187: $finish called at 205 (1ns)

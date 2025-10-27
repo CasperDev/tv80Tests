@@ -1,4 +1,0 @@
-VCD info: dumpfile gentests/fdcbe9/out/fdcbe9.vcd opened for output.
-Test Test - fdcbe9 ... FAIL
-- FAIL: [C] expected=2f, actual=8e
-gentests/fdcbe9/fdcbe9.sv:189: $finish called at 285 (1ns)

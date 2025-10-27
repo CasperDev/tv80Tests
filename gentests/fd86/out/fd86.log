@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/fd86/out/fd86.vcd opened for output.
-Test Test - fd86 ... PASS
-gentests/fd86/fd86.sv:188: $finish called at 245 (1ns)

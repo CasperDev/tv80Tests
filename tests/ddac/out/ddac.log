@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/ddac/out/ddac.vcd opened for output.
+Test Test - ddac ... PASS
+tests/ddac/ddac.sv:186: $finish called at 135 (1ns)

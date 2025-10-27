@@ -1,5 +1,0 @@
-VCD info: dumpfile gentests/ddcbc2/out/ddcbc2.vcd opened for output.
-Test Test - ddcbc2 ... FAIL
-- FAIL: [MEMWR] expected=31, actual=30
-- FAIL: [D] expected=31, actual=d2
-gentests/ddcbc2/ddcbc2.sv:189: $finish called at 285 (1ns)

@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/07_rlca/out/test.vcd opened for output.
--- 07 (rlca)
-tests/07_rlca/test.sv:31: $finish called at 95 (1ns)

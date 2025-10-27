@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/fd8c/out/fd8c.vcd opened for output.
+Test Test - fd8c ... PASS
+tests/fd8c/fd8c.sv:186: $finish called at 135 (1ns)

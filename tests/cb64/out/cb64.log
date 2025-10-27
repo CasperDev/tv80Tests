@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/cb64/out/cb64.vcd opened for output.
+Test Test - cb64 ... PASS
+tests/cb64/cb64.sv:187: $finish called at 135 (1ns)

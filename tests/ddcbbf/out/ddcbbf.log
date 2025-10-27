@@ -1,0 +1,5 @@
+VCD info: dumpfile tests/ddcbbf/out/ddcbbf.vcd opened for output.
+Test Test - ddcbbf ... FAIL
+- FAIL: [MEMWR] expected=62, actual=e2
+- FAIL: [A] expected=62, actual=6e
+tests/ddcbbf/ddcbbf.sv:189: $finish called at 285 (1ns)

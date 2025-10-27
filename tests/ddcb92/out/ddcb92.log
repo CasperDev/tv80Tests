@@ -1,0 +1,4 @@
+VCD info: dumpfile tests/ddcb92/out/ddcb92.vcd opened for output.
+Test Test - ddcb92 ... FAIL
+- FAIL: [D] expected=aa, actual=ab
+tests/ddcb92/ddcb92.sv:189: $finish called at 285 (1ns)

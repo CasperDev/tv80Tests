@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/eda3/out/eda3.vcd opened for output.
+Test Test - eda3 ... PASS
+tests/eda3/eda3.sv:188: $finish called at 215 (1ns)

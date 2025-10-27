@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/DD00_nop/out/test.vcd opened for output.
--- DD 00 (NOP undoc)
-tests/DD00_nop/test.sv:33: $finish called at 135 (1ns)

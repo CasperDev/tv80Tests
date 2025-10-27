@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/b3/out/b3.vcd opened for output.
+Test Test - b3 ... PASS
+tests/b3/b3.sv:186: $finish called at 95 (1ns)

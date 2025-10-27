@@ -1,3 +1,0 @@
-VCD info: dumpfile gentests/3d/out/3d.vcd opened for output.
-Test Test - 3d ... PASS
-gentests/3d/3d.sv:185: $finish called at 95 (1ns)
