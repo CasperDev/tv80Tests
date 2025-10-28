@@ -1,22 +1,17 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'E:\TangNano\tv80Tests\src\tv80_alu.sv'
-Analyzing Verilog file 'E:\TangNano\tv80Tests\src\tv80_core.sv'
-Analyzing Verilog file 'E:\TangNano\tv80Tests\src\tv80_mcode.sv'
-Analyzing Verilog file 'E:\TangNano\tv80Tests\src\tv80_reg.sv'
-Analyzing Verilog file 'E:\TangNano\tv80Tests\src\tv80s.sv'
-Compiling module 'tv80s'("E:\TangNano\tv80Tests\src\tv80s.sv":25)
-Compiling module 'tv80_core'("E:\TangNano\tv80Tests\src\tv80_core.sv":24)
-Compiling module 'tv80_mcode'("E:\TangNano\tv80Tests\src\tv80_mcode.sv":25)
-Compiling module 'tv80_alu'("E:\TangNano\tv80Tests\src\tv80_alu.sv":25)
-WARN  (EX3779) : 'XY_Ind' should be on the sensitivity list. Signal missing is added and assuming complete sensitivity list specified. RTL design and post-synthesis netlist simulations may differ as a result("E:\TangNano\tv80Tests\src\tv80_alu.sv":284)
-WARN  (EX3779) : 'BusC' should be on the sensitivity list. Signal missing is added and assuming complete sensitivity list specified. RTL design and post-synthesis netlist simulations may differ as a result("E:\TangNano\tv80Tests\src\tv80_alu.sv":285)
-WARN  (EX3779) : 'BusC' should be on the sensitivity list. Signal missing is added and assuming complete sensitivity list specified. RTL design and post-synthesis netlist simulations may differ as a result("E:\TangNano\tv80Tests\src\tv80_alu.sv":286)
-WARN  (EX3779) : 'RegCopy' should be on the sensitivity list. Signal missing is added and assuming complete sensitivity list specified. RTL design and post-synthesis netlist simulations may differ as a result("E:\TangNano\tv80Tests\src\tv80_core.sv":823)
-WARN  (EX3779) : 'RegCopy' should be on the sensitivity list. Signal missing is added and assuming complete sensitivity list specified. RTL design and post-synthesis netlist simulations may differ as a result("E:\TangNano\tv80Tests\src\tv80_core.sv":824)
-Compiling module 'tv80_reg'("E:\TangNano\tv80Tests\src\tv80_reg.sv":27)
-Extracting RAM for identifier 'RegsH'("E:\TangNano\tv80Tests\src\tv80_reg.sv":37)
-Extracting RAM for identifier 'RegsL'("E:\TangNano\tv80Tests\src\tv80_reg.sv":38)
+Analyzing Verilog file 'C:\WORK\tv80Tests\src\tv80_alu.sv'
+Analyzing Verilog file 'C:\WORK\tv80Tests\src\tv80_core.sv'
+Analyzing Verilog file 'C:\WORK\tv80Tests\src\tv80_mcode.sv'
+Analyzing Verilog file 'C:\WORK\tv80Tests\src\tv80_reg.sv'
+Analyzing Verilog file 'C:\WORK\tv80Tests\src\tv80s.sv'
+Compiling module 'tv80s'("C:\WORK\tv80Tests\src\tv80s.sv":25)
+Compiling module 'tv80_core'("C:\WORK\tv80Tests\src\tv80_core.sv":24)
+Compiling module 'tv80_mcode'("C:\WORK\tv80Tests\src\tv80_mcode.sv":25)
+Compiling module 'tv80_alu'("C:\WORK\tv80Tests\src\tv80_alu.sv":25)
+Compiling module 'tv80_reg'("C:\WORK\tv80Tests\src\tv80_reg.sv":27)
+Extracting RAM for identifier 'RegsH'("C:\WORK\tv80Tests\src\tv80_reg.sv":37)
+Extracting RAM for identifier 'RegsL'("C:\WORK\tv80Tests\src\tv80_reg.sv":38)
 NOTE  (EX0101) : Current top module is "tv80s"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
@@ -34,6 +29,6 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-[95%] Generate netlist file "E:\TangNano\tv80Tests\impl\gwsynthesis\tv80Tests.vg" completed
-[100%] Generate report file "E:\TangNano\tv80Tests\impl\gwsynthesis\tv80Tests_syn.rpt.html" completed
+[95%] Generate netlist file "C:\WORK\tv80Tests\impl\gwsynthesis\tv80Tests.vg" completed
+[100%] Generate report file "C:\WORK\tv80Tests\impl\gwsynthesis\tv80Tests_syn.rpt.html" completed
 GowinSynthesis finish

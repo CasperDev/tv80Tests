@@ -23,18 +23,17 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 module tv80_alu (/*AUTOARG*/
-	input wire [7:0] BusA, BusB, F_In,		// 8-bit arguments + Previous Flags
-	input wire [7:0] BusC,					// High byte if IX/IY for BIT op
-	input wire XY_Ind,						// flag for DD,FD
-	output reg [7:0] Q, F_Out,				// 8-bit result + result Flags
-	input wire Arith16, 					// 1 - when 16-bit arthmetic operation
-	input wire Z16, 
-	input wire [3:0] ALU_Op, 				// 1 of 16 operation to execute
-	input wire [5:0] IR, 					// current CPU instruction
-	input wire [1:0] ISet					// current instruction set: regular, DD, FD, CB
+	input logic [7:0] BusA, BusB, F_In,		// 8-bit arguments + Previous Flags
+	input logic [7:0] BusC,					// High byte if IX/IY for BIT op
+	input logic XY_Ind,						// flag for DD,FD
+	output logic [7:0] Q, F_Out,				// 8-bit result + result Flags
+	input logic Arith16, 					// 1 - when 16-bit arthmetic operation
+	input logic Z16, 
+	input logic [3:0] ALU_Op, 				// 1 of 16 operation to execute
+	input logic [5:0] IR, 					// current CPU instruction
+	input logic [1:0] ISet					// current instruction set: regular, DD, FD, CB
   );
 
-  parameter		Mode   = 0;
   parameter		Flag_C = 0;
   parameter		Flag_N = 1;
   parameter		Flag_P = 2;
@@ -45,44 +44,45 @@ module tv80_alu (/*AUTOARG*/
   parameter		Flag_S = 7;
 
   function [4:0] AddSub4;
-    input [3:0] A;
-    input [3:0] B;
-    input Sub;
-    input Carry_In;
+    input logic [3:0] A;
+    input logic [3:0] B;
+    input logic Sub;
+    input logic Carry_In;
     begin
       AddSub4 = { 1'b0, A } + { 1'b0, (Sub)?~B:B } + {4'h0,Carry_In};
     end
   endfunction // AddSub4
 
   function [3:0] AddSub3;
-    input [2:0] A;
-    input [2:0] B;
-    input Sub;
-    input Carry_In;
+    input logic [2:0] A;
+    input logic [2:0] B;
+    input logic Sub;
+    input logic Carry_In;
     begin
       AddSub3 = { 1'b0, A } + { 1'b0, (Sub)?~B:B } + {3'h0,Carry_In};
     end
   endfunction // AddSub3
 
   function [1:0] AddSub1;
-    input A;
-    input B;
-    input Sub;
-    input Carry_In;
+    input logic A;
+    input logic B;
+    input logic Sub;
+    input logic Carry_In;
     begin
       AddSub1 = { 1'b0, A } + { 1'b0, (Sub)?~B:B } + {1'h0,Carry_In};
     end
   endfunction // AddSub1
 
   // AddSub variables (temporary signals)
-  reg UseCarry;
-  reg Carry7_v;
-  reg OverFlow_v;
-  reg HalfCarry_v;
-  reg Carry_v;
-  reg [7:0] Q_v;
+  logic UseCarry;
+  logic Carry7_v;
+  logic OverFlow_v;
+  logic HalfCarry_v;
+  logic Carry_v;
+  logic [7:0] Q_v;
+  logic [7:0] Op_ADD_Q;
 
-  reg [7:0] BitMask;
+  logic [7:0] BitMask;
 
 
   always @(/*AUTOSENSE*/ALU_Op or BusA or BusB or F_In or IR)
@@ -105,12 +105,13 @@ module tv80_alu (/*AUTOARG*/
       OverFlow_v = Carry_v ^ Carry7_v;
     end // always @ *
 
-  reg [7:0] Q_t;
-  reg [8:0] DAA_Q;
+  logic [7:0] Q_t;
+  logic [8:0] DAA_Q;
 
-  always @ (/*AUTOSENSE*/ALU_Op or Arith16 or BitMask or BusA or BusB
-	    or Carry_v or F_In or HalfCarry_v or IR or ISet
-	    or OverFlow_v or Q_v or Z16)
+  always_comb 
+    // (/*AUTOSENSE*/ALU_Op or Arith16 or BitMask or BusA or BusB
+	//     or Carry_v or F_In or HalfCarry_v or IR or ISet
+	//     or OverFlow_v or Q_v or Z16 or XY_Ind or BusC )
     begin
         // default
         Q_t = 8'hxx;
@@ -332,15 +333,9 @@ module tv80_alu (/*AUTOARG*/
                 end
 
                 3'b110 : begin // SLL (Undocumented) / SWAP
-                    if (Mode == 3 ) begin
-                        Q_t[7:4] = BusA[3:0];
-                        Q_t[3:0] = BusA[7:4];
-                        F_Out[Flag_C] = 1'b0;
-                    end else begin
-                        Q_t[7:1] = BusA[6:0];
-                        Q_t[0] = 1'b1;
-                        F_Out[Flag_C] = BusA[7];
-                    end // else: !if(Mode == 3 )
+                    Q_t[7:1] = BusA[6:0];
+                    Q_t[0] = 1'b1;
+                    F_Out[Flag_C] = BusA[7];
                 end // case: 3'b110
 
                 3'b101 : begin // SRA

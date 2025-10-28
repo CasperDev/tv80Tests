@@ -23,32 +23,32 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 module tv80_core (/*AUTOARG*/
     // Clock & reset
-    input wire clk, cen, reset,
+    input logic clk, cen, reset,
     // Control Outputs
-    output reg m1_n, iorq,
-    output wire no_read, write, 
+    output logic m1_n, iorq,
+    output logic no_read, write, 
     // Bus Exchange
-    output reg [15:0] A,
-    input wire [7:0] dinst, di,
-    output reg [7:0] dout,
+    output logic [15:0] A,
+    input logic [7:0] dinst, di,
+    output logic [7:0] dout,
     // State Info outputs
-    output wire rfsh_n, 
-    output reg halt_n, busak_n,
+    output logic rfsh_n, 
+    output logic halt_n, busak_n,
     // Control inputs
-    input wire wait_n, int_n, nmi_n, busrq_n,
+    input logic wait_n, int_n, nmi_n, busrq_n,
     // Cycle state
-    output reg [6:0] mc, ts, 
+    output logic [6:0] mc, ts, 
     // Estra state
-    output reg intcycle_n, 
-    output reg IntE, 
-    output reg stop
+    output logic intcycle_n, 
+    output logic IntE, 
+    output logic stop
   );
 
   // Beginning of automatic inputs (from unused autoinst inputs)
   // End of automatics
 
-  parameter Mode = 0;   // 0 => Z80, 1 => Fast Z80, 2 => 8080, 3 => GB
-  parameter IOWait = 1; // 0 => Single cycle I/O, 1 => Std I/O cycle
+  // 0 => Z80
+  // Std I/O cycle
   
   parameter Flag_C = 0;
   parameter Flag_N = 1;
@@ -69,132 +69,131 @@ module tv80_core (/*AUTOARG*/
   parameter     aZI      = 3'b110;
 
   // Registers
-  reg [7:0]     ACC, F;
-  reg [7:0]     Ap, Fp;
-  reg [7:0]     I;
-  reg [7:0]     R;
-  reg [15:0]    SP, PC;
-  reg [7:0]     RegDIH;
-  reg [7:0]     RegDIL;
-  wire [15:0]   RegBusA;
-  wire [15:0]   RegBusB;
-  wire [15:0]   RegBusC;
-  reg [2:0]     RegAddrA_r;
-  reg [2:0]     RegAddrA;
-  reg [2:0]     RegAddrB_r;
-  reg [2:0]     RegAddrB;
-  reg [2:0]     RegAddrC;
-  reg           RegWEH;
-  reg           RegWEL;
-  reg           Alternate;
+  logic [7:0]     ACC, F;
+  logic [7:0]     Ap, Fp;
+  logic [7:0]     I;
+  logic [7:0]     R;
+  logic [15:0]    SP, PC;
+  logic [7:0]     RegDIH;
+  logic [7:0]     RegDIL;
+  logic [15:0]   RegBusA;
+  logic [15:0]   RegBusB;
+  logic [15:0]   RegBusC;
+  logic [2:0]     RegAddrA_r;
+  logic [2:0]     RegAddrA;
+  logic [2:0]     RegAddrB_r;
+  logic [2:0]     RegAddrB;
+  logic [2:0]     RegAddrC;
+  bit           RegWEH;
+  bit           RegWEL;
+  bit           Alternate;
 
   // Help Registers
-  reg [15:0]    TmpAddr;        // Temporary address register
-  reg [7:0]     IR;             // Instruction register
-  reg [1:0]     ISet;           // Instruction set selector
-  reg [15:0]    RegBusA_r;
+  logic [15:0]    TmpAddr;        // Temporary address register
+  logic [7:0]     IR;             // Instruction register
+  logic [1:0]     ISet;           // Instruction set selector
+  logic [15:0]    RegBusA_r;
 
-  reg [15:0]    ID16;
-  reg [7:0]     Save_Mux;
+  logic [15:0]    ID16;
+  logic [7:0]     Save_Mux;
 
-  reg [6:0]     tstate;
-  reg [6:0]     mcycle;
-  reg           last_mcycle, last_tstate;
-  reg           IntE_FF1;
-  reg           IntE_FF2;
-  reg           Halt_FF;
-  reg           BusReq_s;
-  reg           BusAck;
-  reg           ClkEn;
-  reg           NMI_s;
-  reg           INT_s;
-  reg [1:0]     IStatus;
+  logic [6:0]     tstate;
+  logic [6:0]     mcycle;
+  bit           last_mcycle, last_tstate;
+  bit           IntE_FF1;
+  bit           IntE_FF2;
+  bit           Halt_FF;
+  bit           BusReq_s;
+  bit           BusAck;
+  bit           ClkEn;
+  bit           NMI_s;
+  bit           INT_s;
+  logic [1:0]     IStatus;
 
-  reg [7:0]     DI_Reg;
-  reg           T_Res;
-  reg [1:0]     XY_State;
-  reg [2:0]     Pre_XY_F_M;
-  reg           NextIs_XY_Fetch;
-  reg           XY_Ind;
-  reg           No_BTR;
-  reg           BTR_r;
-  reg           Auto_Wait;
-  reg           Auto_Wait_t1;
-  reg           Auto_Wait_t2;
-  reg           IncDecZ;
+  logic [7:0]     DI_Reg;
+  logic           T_Res;
+  logic [1:0]     XY_State;
+  logic [2:0]     Pre_XY_F_M;
+  logic           NextIs_XY_Fetch;
+  logic           XY_Ind;
+  logic           No_BTR;
+  logic           BTR_r;
+  logic           Auto_Wait;
+  logic           Auto_Wait_t1;
+  logic           Auto_Wait_t2;
+  logic           IncDecZ;
 
   // ALU signals
-  reg [7:0]     BusB;
-  reg [7:0]     BusA;
-  wire [7:0]    ALU_Q;
-  wire [7:0]    F_Out;
+  logic [7:0]     BusB;
+  logic [7:0]     BusA;
+  logic [7:0]    ALU_Q;
+  logic [7:0]    F_Out;
 
   // Registered micro code outputs
-  reg [4:0]     Read_To_Reg_r;
-  reg           Arith16_r;
-  reg           Z16_r;
-  reg [3:0]     ALU_Op_r;
-  reg           Save_ALU_r;
-  reg           PreserveC_r;
-  reg [2:0]     mcycles;
-  reg [7:0]     RegCopy;
+  logic [4:0]     Read_To_Reg_r;
+  logic           Arith16_r;
+  logic           Z16_r;
+  logic [3:0]     ALU_Op_r;
+  logic           Save_ALU_r;
+  logic           PreserveC_r;
+  logic [2:0]     mcycles;
+  logic [7:0]     RegCopy;
   // Micro code outputs
-  wire [2:0]    mcycles_d;
-  wire [2:0]    tstates;
-  reg           IntCycle;
-  reg           NMICycle;
-  wire          Inc_PC;
-  wire          Inc_WZ;
-  wire [3:0]    IncDec_16;
-  wire [1:0]    Prefix;
-  wire          Read_To_Acc;
-  wire          Read_To_Reg;
-  wire 			Extra_Reg_Save;
-    wire [3:0]     Set_BusB_To;
-  wire [3:0]     Set_BusA_To;
-  wire [3:0]     ALU_Op;
-  wire           Save_ALU;
-  wire           PreserveC;
-  wire           Arith16;
-  wire [2:0]     Set_Addr_To;
-  wire           Jump;
-  wire           JumpE;
-  wire           JumpXY;
-  wire           Call;
-  wire           RstP;
-  wire           LDZ;
-  wire           LDW;
-  wire           LDSPHL;
-  wire           iorq_i;
-  wire [2:0]     Special_LD;
-  wire           ExchangeDH;
-  wire           ExchangeRp;
-  wire           ExchangeAF;
-  wire           ExchangeRS;
-  wire           I_DJNZ;
-  wire           I_CPL;
-  wire           I_CCF;
-  wire           I_SCF;
-  wire           I_RETN;
-  wire           I_BT;
-  wire           I_BC;
-  wire           I_BTR;
-  wire           I_RLD;
-  wire           I_RRD;
-  wire           I_INRC;
-  wire           SetDI;
-  wire           SetEI;
-  wire [1:0]     IMode;
-  wire           Halt;
+  logic [2:0]    mcycles_d;
+  logic [2:0]    tstates;
+  logic           IntCycle;
+  logic           NMICycle;
+  logic          Inc_PC;
+  logic          Inc_WZ;
+  logic [3:0]    IncDec_16;
+  logic [1:0]    Prefix;
+  logic          Read_To_Acc;
+  logic          Read_To_Reg;
+  logic 		 Extra_Reg_Save;
+  logic [3:0]    Set_BusB_To;
+  logic [3:0]     Set_BusA_To;
+  logic [3:0]     ALU_Op;
+  logic           Save_ALU;
+  logic           PreserveC;
+  logic           Arith16;
+  logic [2:0]     Set_Addr_To;
+  logic           Jump;
+  logic           JumpE;
+  logic           JumpXY;
+  logic           Call;
+  logic           RstP;
+  logic           LDZ;
+  logic           LDW;
+  logic           LDSPHL;
+  logic           iorq_i;
+  logic [2:0]     Special_LD;
+  logic           ExchangeDH;
+  logic           ExchangeRp;
+  logic           ExchangeAF;
+  logic           ExchangeRS;
+  logic           I_DJNZ;
+  logic           I_CPL;
+  logic           I_CCF;
+  logic           I_SCF;
+  logic           I_RETN;
+  logic           I_BT;
+  logic           I_BC;
+  logic           I_BTR;
+  logic           I_RLD;
+  logic           I_RRD;
+  logic           I_INRC;
+  logic           SetDI;
+  logic           SetEI;
+  logic [1:0]     IMode;
+  logic           Halt;
 
-  reg [15:0]     PC16;
-  reg [15:0]     PC16_B;
-  reg [15:0]     SP16, SP16_A, SP16_B;
-  reg [15:0]     ID16_B;
-  reg            Oldnmi_n;
+  logic [15:0]     PC16;
+  logic [15:0]     PC16_B;
+  logic [15:0]     SP16, SP16_A, SP16_B;
+  logic [15:0]     ID16_B;
+  logic            Oldnmi_n;
 
     tv80_mcode #(
-		.Mode(Mode), 
 		.Flag_C(Flag_C), .Flag_N(Flag_N), .Flag_P(Flag_P), .Flag_X(Flag_X), 
 		.Flag_H(Flag_H), .Flag_Y(Flag_Y), .Flag_Z(Flag_Z), .Flag_S(Flag_S)
 	) mcode (
@@ -226,7 +225,6 @@ module tv80_core (/*AUTOARG*/
      );
 
     tv80_alu #(
-		.Mode(Mode), 
 		.Flag_C(Flag_C), .Flag_N(Flag_N), .Flag_P(Flag_P), .Flag_X(Flag_X), 
 		.Flag_H(Flag_H), .Flag_Y(Flag_Y), .Flag_Z(Flag_Z), .Flag_S(Flag_S)
 	) i_alu (
@@ -297,16 +295,17 @@ module tv80_core (/*AUTOARG*/
         endcase
     end // always @ (...
 
+    assign T_Res = last_tstate;
 
     always @(/*AUTOSENSE*/ALU_Q or BusAck or BusB or DI_Reg
             or ExchangeRp or IR or Save_ALU_r or Set_Addr_To or XY_Ind
             or XY_State or cen or last_tstate or mcycle) begin
         ClkEn = cen && ~ BusAck;
 
-        if (last_tstate)
-            T_Res = 1'b1;
-        else 
-            T_Res = 1'b0;
+        // if (last_tstate)
+        //     T_Res = 1'b1;
+        // else 
+        //     T_Res = 1'b0;
 
         if (XY_State != 2'b00 && XY_Ind == 1'b0 &&
             (   (Set_Addr_To == aXY) ||
@@ -378,11 +377,11 @@ module tv80_core (/*AUTOARG*/
                 if (mcycle[0] && (tstate[1] | tstate[2] | tstate[3] )) begin
                     // mcycle == 1 && tstate == 1, 2, || 3
                     if (tstate[2] && wait_n == 1'b1) begin
-                        if (Mode < 2 ) begin
-                            A[7:0] <= R;
-                            A[15:8] <= I;
-                            R[6:0] <= R[6:0] + 1'b1;
-                        end
+                        // ModeParam = 0 - Z80
+                        A[7:0] <= R;
+                        A[15:8] <= I;
+                        R[6:0] <= R[6:0] + 1'b1;
+                        
 						
 						if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
                         begin
@@ -470,15 +469,8 @@ module tv80_core (/*AUTOARG*/
                                 end // case: aXY
 
                                 aIOA : begin
-                                    if (Mode == 3 ) begin
-                                        // Memory map I/O on GBZ80
-                                        A[15:8] <= 8'hFF;
-                                    end else if (Mode == 2 ) begin
-                                        // Duplicate I/O address on 8080
-                                        A[15:8] <= DI_Reg;
-                                    end else begin
-                                        A[15:8] <= ACC;
-                                    end
+                                    // ModeParam = 0 - Z80
+                                    A[15:8] <= ACC;
                                     A[7:0] <= DI_Reg;
                                 end // case: aIOA
 
@@ -488,13 +480,8 @@ module tv80_core (/*AUTOARG*/
                                 end
 
                                 aBC : begin
-                                    if (Mode == 3 && iorq_i == 1'b1 ) begin
-                                        // Memory map I/O on GBZ80
-                                        A[15:8] <= 8'hFF;
-                                        A[7:0] <= RegBusC[7:0];
-                                    end else begin
-                                        A <= RegBusC;
-                                    end
+                                    // ModeParam = 0 - Z80
+                                    A <= RegBusC;
                                 end // case: aBC
 
                                 aDE : begin
@@ -546,7 +533,7 @@ module tv80_core (/*AUTOARG*/
                         end
                     end // if (T_Res == 1'b1 )
 
-
+                    // if T3 and wait not Active    
                     if (tstate[2] && wait_n == 1'b1 ) begin
                         if (ISet == 2'b01 && mcycle[6] ) begin
                             IR <= dinst;
@@ -631,18 +618,10 @@ module tv80_core (/*AUTOARG*/
 
 
                 if ((I_DJNZ == 1'b0 && Save_ALU_r == 1'b1) || ALU_Op_r == 4'b1001 ) begin
-                    if (Mode == 3 ) begin
-                        F[6] <= F_Out[6];
-                        F[5] <= F_Out[5];
-                        F[7] <= F_Out[7];
-                        if (PreserveC_r == 1'b0 ) begin
-                            F[4] <= F_Out[4];
-                        end
-                    end else begin
-                        F[7:1] <= F_Out[7:1];
-                        if (PreserveC_r == 1'b0 ) begin
-                            F[Flag_C] <= F_Out[0];
-                        end
+                    // ModeParam = 0 - Z80
+                    F[7:1] <= F_Out[7:1];
+                    if (PreserveC_r == 1'b0 ) begin
+                        F[Flag_C] <= F_Out[0];
                     end
                 end // if ((I_DJNZ == 1'b0 && Save_ALU_r == 1'b1) || ALU_Op_r == 4'b1001 )
 
@@ -742,7 +721,7 @@ module tv80_core (/*AUTOARG*/
                 RegAddrC <= { XY_State[1],  2'b11 };
             end
 
-            if (I_DJNZ == 1'b1 && Save_ALU_r == 1'b1 && Mode < 2 ) begin
+            if (I_DJNZ == 1'b1 && Save_ALU_r == 1'b1 ) begin
                 IncDecZ <= F_Out[Flag_Z];
             end
             if ((tstate[2] || (tstate[3] && mcycle[0])) && IncDec_16[2:0] == 3'b100 ) begin
@@ -816,7 +795,7 @@ module tv80_core (/*AUTOARG*/
 
 
     always @(/*AUTOSENSE*/ExchangeDH or ID16 or IncDec_16 or RegBusA_r
-            or RegBusB or Save_Mux or Extra_Reg_Save or dout or mcycle or tstate) begin
+            or RegBusB or Save_Mux or Extra_Reg_Save or dout or mcycle or tstate or RegCopy) begin
         RegDIH = Save_Mux;
         RegDIL = Save_Mux;
 		if (Extra_Reg_Save && mcycle[0]) begin
@@ -1034,10 +1013,10 @@ module tv80_core (/*AUTOARG*/
                             if (NextIs_XY_Fetch == 1'b1 ) begin
                                 mcycle <= 7'b0100000;
                                 Pre_XY_F_M <= mcyc_to_number(mcycle);
-                                if (IR == 8'b00110110 && Mode == 0 ) begin
+                                if (IR == 8'b00110110) begin
                                     Pre_XY_F_M <= 3'b010;
                                 end
-                            end else if ((mcycle[6]) || (mcycle[5] && Mode == 1 && ISet != 2'b01) ) begin
+                            end else if (mcycle[6])  begin
                                 mcycle <= number_to_bitvec(Pre_XY_F_M + 1);
                             end else if ((last_mcycle) ||
                                           No_BTR == 1'b1 ||
@@ -1059,8 +1038,10 @@ module tv80_core (/*AUTOARG*/
                             end
                         end
                     end else begin   // verilog has no "nor" operator
+
+                      // Progress to next T clock ONLY if not Auto_Wait && not 
                       if ( ~(Auto_Wait == 1'b1 && Auto_Wait_t2 == 1'b0) &&
-                           ~(IOWait == 1 && iorq_i == 1'b1 && Auto_Wait_t1 == 1'b0) )
+                           ~(iorq_i == 1'b1 && Auto_Wait_t1 == 1'b0) )
                         begin
                           tstate <= { tstate[5:0], tstate[6] };
                         end

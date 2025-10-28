@@ -10,7 +10,7 @@ RESET=$(tput sgr0)
 # --- Parametry ---
 CMD="$1"
 VIEW="$2"
-UUT="src/tv80s.sv src/tv80_alu.sv src/tv80_core.sv src/tv80_mcode.sv src/tv80_reg.sv"
+UUT="src/tv80s.sv src/tv80_alu.sv src/tv80_core.sv src/tv80_mcode.sv src/tv80_reg.sv src/alu_add.sv"
 INCPATH="tests"
 
 # --- Zliczanie wyników ---

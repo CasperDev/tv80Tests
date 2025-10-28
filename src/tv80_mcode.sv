@@ -59,7 +59,6 @@ module tv80_mcode
     output reg Write
   );
 
-    parameter             Mode   = 0;
     parameter             Flag_C = 0;
     parameter             Flag_N = 1;
     parameter             Flag_P = 2;
@@ -463,101 +462,48 @@ module tv80_mcode
                       ExchangeDH <= 1'b1;
                 end
 
-                8'b00001000  : begin // *[GB80] LD (nn),SP  // *[Z80,FAST] EX AF,AF' // *[8080] NOP
-                    if (Mode == 3 ) begin
-                        // LD (nn),SP
-                        MCycles <= 3'b101; 
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
-                                LDZ <= 1'b1;
-                            end
-
-                            MCycle[2] : begin
-                                Set_Addr_To <= aZI;
-                                Inc_PC <= 1'b1;
-                                LDW <= 1'b1;
-                                Set_BusB_To <= 4'b1000;
-                            end
-
-                            MCycle[3] : begin
-                                Inc_WZ <= 1'b1;
-                                Set_Addr_To <= aZI;
-                                Write <= 1'b1;
-                                Set_BusB_To <= 4'b1001;
-                            end
-
-                            MCycle[4] :
-                                Write <= 1'b1;
-                            default :;
-                        endcase
-                    end else if (Mode < 2 ) begin
-                        // EX AF,AF'
-                        ExchangeAF <= 1'b1;
-                    end
+                8'b00001000  : begin // *[Z80] EX AF,AF'
+                    // EX AF,AF'
+                    ExchangeAF <= 1'b1;
                 end // case: 8'b00001000
 
-                8'b11011001  : begin // *[GB80] RETI        // *[Z80,FAST] EXX
-                  if (Mode == 3 ) begin
-                      // RETI
-                      MCycles <= 3'b011; 
-                      case (1'b1) // MCycle
-                            MCycle[0] :
-                                Set_Addr_To <= aSP;
-                            MCycle[1] : begin
-                                IncDec_16 <= 4'b0111;
-                                Set_Addr_To <= aSP;
-                                LDZ <= 1'b1;
-                            end
-
-                            MCycle[2] : begin
-                                Jump <= 1'b1;
-                                IncDec_16 <= 4'b0111;
-                                I_RETN <= 1'b1;
-                                SetEI <= 1'b1;
-                            end
-                            default :;
-                        endcase
-                    end else if (Mode < 2 ) begin
-                        // EXX
-                        ExchangeRS <= 1'b1;
-                    end
+                8'b11011001  : begin // *[Z80] EXX
+                    // EXX
+                    ExchangeRS <= 1'b1;
                 end // case: 8'b11011001
 
-                8'b11100011  : begin // *[GB80] NOP  		// *[Z80,FAST,8080] EX (SP),HL 
-                    if (Mode != 3 ) begin
-                        // EX (SP),HL
-                        MCycles <= 3'b101; 
-                        case (1'b1) // MCycle
-                            MCycle[0] :
-                                Set_Addr_To <= aSP;
-                            MCycle[1] : begin
-                                Read_To_Reg <= 1'b1;
-                                Set_BusA_To <= 4'b0101;
-                                Set_BusB_To <= 4'b0101;
-                                Set_Addr_To <= aSP;
-                            end
-                            MCycle[2] : begin
-                                IncDec_16 <= 4'b0111;
-                                Set_Addr_To <= aSP;
-                                TStates <= 3'b100;
-                                Write <= 1'b1;
-                            end
-                            MCycle[3] : begin
-                                Read_To_Reg <= 1'b1;
-                                Set_BusA_To <= 4'b0100;
-                                Set_BusB_To <= 4'b0100;
-                                Set_Addr_To <= aSP;
-                            end
-                            MCycle[4] : begin
-                                IncDec_16 <= 4'b1111;
-                                TStates <= 3'b101;
-                                Write <= 1'b1;
-                            end
+                8'b11100011  : begin // *[Z80] EX (SP),HL 
+                    // EX (SP),HL
+                    MCycles <= 3'b101; 
+                    case (1'b1) // MCycle
+                        MCycle[0] :
+                            Set_Addr_To <= aSP;
+                        MCycle[1] : begin
+                            Read_To_Reg <= 1'b1;
+                            Set_BusA_To <= 4'b0101;
+                            Set_BusB_To <= 4'b0101;
+                            Set_Addr_To <= aSP;
+                        end
+                        MCycle[2] : begin
+                            IncDec_16 <= 4'b0111;
+                            Set_Addr_To <= aSP;
+                            TStates <= 3'b100;
+                            Write <= 1'b1;
+                        end
+                        MCycle[3] : begin
+                            Read_To_Reg <= 1'b1;
+                            Set_BusA_To <= 4'b0100;
+                            Set_BusB_To <= 4'b0100;
+                            Set_Addr_To <= aSP;
+                        end
+                        MCycle[4] : begin
+                            IncDec_16 <= 4'b1111;
+                            TStates <= 3'b101;
+                            Write <= 1'b1;
+                        end
 
-                            default :;
-                        endcase
-                    end // if (Mode != 3 )
+                        default :;
+                    endcase
                 end // case: 8'b11100011
 
 
@@ -834,168 +780,90 @@ module tv80_mcode
                 end // case: 8'b11000011
 
                 8'b11xxx010  : begin
-                    if (IR[5] == 1'b1 && Mode == 3 ) begin
-                        case (IR[4:3])
-                            2'b00  : begin // *[GB80] LD ($FF00+C),A
-                                MCycles <= 3'b010;
-                                case (1'b1) // MCycle
-                                    MCycle[0] : begin
-                                        Set_Addr_To <= aBC;
-                                        Set_BusB_To <= 4'b0111;
-                                    end
-                                    MCycle[1] : begin
-                                        Write <= 1'b1;
-                                        IORQ <= 1'b1;
-                                    end
-
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b00
-
-                            2'b01  : begin // *[GB80] LD (nn),A
-                                MCycles <= 3'b100;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        Inc_PC <= 1'b1;
-                                        LDZ <= 1'b1;
-                                    end
-
-                                    MCycle[2] : begin
-                                        Set_Addr_To <= aZI;
-                                        Inc_PC <= 1'b1;
-                                        Set_BusB_To <= 4'b0111;
-                                    end
-
-                                    MCycle[3] :
-                                        Write <= 1'b1;
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: default :...
-
-                            2'b10  : begin // *[GB80] LD A,($FF00+C)
-                                MCycles <= 3'b010;
-                                case (1'b1) // MCycle
-                                    MCycle[0] :
-                                        Set_Addr_To <= aBC;
-                                    MCycle[1] : begin
-                                        Read_To_Acc <= 1'b1;
-                                        IORQ <= 1'b1;
-                                    end
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b10
-
-                            2'b11  : begin // *[GB80] LD A,(nn)
-                                MCycles <= 3'b100;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        Inc_PC <= 1'b1;
-                                        LDZ <= 1'b1;
-                                    end
-                                    MCycle[2] : begin
-                                        Set_Addr_To <= aZI;
-                                        Inc_PC <= 1'b1;
-                                    end
-                                    MCycle[3] :
-                                        Read_To_Acc <= 1'b1;
-                                    default :;
-                                endcase // case(MCycle)
+                    // JP cc,nn
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[1] : begin
+                            Inc_PC <= 1'b1;
+                            LDZ <= 1'b1;
+                        end
+                        MCycle[2] : begin
+                            Inc_PC <= 1'b1;
+                            if (f_cc_true) begin
+                                Jump <= 1'b1;
                             end
-                        endcase
-                    end // (IR[5] == 1'b1 && Mode == 3 )
-                    else begin 				// *[Z80,FAST,8080] JP cc,nn
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
-                                LDZ <= 1'b1;
-                            end
-                            MCycle[2] : begin
-                                Inc_PC <= 1'b1;
-                                if (f_cc_true) begin
-                                    Jump <= 1'b1;
-                                end
-                            end
+                        end
 
-                            default :;
-                        endcase
-                    end // else: !if(DPAIR == 2'b11 )
+                        default :;
+                    endcase
                 end // case: 8'b11000010,8'b11001010,8'b11010010,8'b11011010,8'b11100010,8'b11101010,8'b11110010,8'b11111010
 
                 8'b00011000  : begin // *[Z80,FAST,GB80] JR e
-                    if (Mode != 2 ) begin
-                        // JR e
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[1] : 
-                                Inc_PC <= 1'b1;
-                            MCycle[2] : begin
-                                NoRead <= 1'b1;
-                                JumpE <= 1'b1;
-                                TStates <= 3'b101;
-                            end
-                            default :;
-                        endcase
-                    end // if (Mode != 2 )
+                    // JR e
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[1] : 
+                            Inc_PC <= 1'b1;
+                        MCycle[2] : begin
+                            NoRead <= 1'b1;
+                            JumpE <= 1'b1;
+                            TStates <= 3'b101;
+                        end
+                        default :;
+                    endcase
                 end // case: 8'b00011000
 
                 // Conditional relative jumps (JR [C/NC/Z/NZ], e)
                 8'b001xx000  : begin // *[Z80,FAST,GB80] JR cc,e
-                    if (Mode != 2 ) begin
-                        MCycles <= 3'd3;
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
+                    MCycles <= 3'd3;
+                    case (1'b1) // MCycle
+                        MCycle[1] : begin
+                            Inc_PC <= 1'b1;
 
-                                case (IR[4:3])
-                                    0 : MCycles <= (F[Flag_Z]) ? 3'd2 : 3'd3;
-                                    1 : MCycles <= (!F[Flag_Z]) ? 3'd2 : 3'd3;
-                                    2 : MCycles <= (F[Flag_C]) ? 3'd2 : 3'd3;
-                                    3 : MCycles <= (!F[Flag_C]) ? 3'd2 : 3'd3;
-                                endcase
-                            end
+                            case (IR[4:3])
+                                0 : MCycles <= (F[Flag_Z]) ? 3'd2 : 3'd3;
+                                1 : MCycles <= (!F[Flag_Z]) ? 3'd2 : 3'd3;
+                                2 : MCycles <= (F[Flag_C]) ? 3'd2 : 3'd3;
+                                3 : MCycles <= (!F[Flag_C]) ? 3'd2 : 3'd3;
+                            endcase
+                        end
 
-                            MCycle[2] : begin
-                                NoRead <= 1'b1;
-                                JumpE <= 1'b1;
-                                TStates <= 3'd5;
-                            end
-                            default :;
-                        endcase
-                    end // if (Mode != 2 )
+                        MCycle[2] : begin
+                            NoRead <= 1'b1;
+                            JumpE <= 1'b1;
+                            TStates <= 3'd5;
+                        end
+                        default :;
+                    endcase
                 end // case: 8'b00111000
 
                 8'b11101001  : begin // JP (HL)
                     JumpXY <= 1'b1;
 				end
-                8'b00010000  : begin // *[Z80,FAST,8080] DJNZ e // *[GB80] I_DJNZ=1 (??)
-                    if (Mode == 3 ) begin
-                        I_DJNZ <= 1'b1;
-                    end else if (Mode < 2 ) begin
-                        // DJNZ,e
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[0] : begin
-                                TStates <= 3'b101;
-                                I_DJNZ <= 1'b1;
-                                Set_BusB_To <= 4'b1010;
-                                Set_BusA_To[2:0] <= 3'b000;
-                                Read_To_Reg <= 1'b1;
-                                Save_ALU <= 1'b1;
-                                ALU_Op <= 4'b0010;
-                            end
-                            MCycle[1] : begin
-                                I_DJNZ <= 1'b1;
-                                Inc_PC <= 1'b1;
-                            end
-                            MCycle[2] : begin
-                                NoRead <= 1'b1;
-                                JumpE <= 1'b1;
-                                TStates <= 3'b101;
-                            end
-                            default :;
-                        endcase
-                    end // if (Mode < 2 )
+                8'b00010000  : begin // *[Z80] 
+                    // DJNZ,e
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[0] : begin
+                            TStates <= 3'b101;
+                            I_DJNZ <= 1'b1;
+                            Set_BusB_To <= 4'b1010;
+                            Set_BusA_To[2:0] <= 3'b000;
+                            Read_To_Reg <= 1'b1;
+                            Save_ALU <= 1'b1;
+                            ALU_Op <= 4'b0010;
+                        end
+                        MCycle[1] : begin
+                            I_DJNZ <= 1'b1;
+                            Inc_PC <= 1'b1;
+                        end
+                        MCycle[2] : begin
+                            NoRead <= 1'b1;
+                            JumpE <= 1'b1;
+                            TStates <= 3'b101;
+                        end
+                        default :;
+                    endcase
                 end // case: 8'b00010000
 
 
@@ -1030,42 +898,40 @@ module tv80_mcode
                 end // case: 8'b11001101
 
                 8'b11xxx100  : begin // *[Z80,FAST,8080] CALL cc,nn
-                    if (IR[5] == 1'b0 || Mode != 3 ) begin
-                        // CALL cc,nn
-                        MCycles <= 3'b101;
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
-                                LDZ <= 1'b1;
-                            end
-                            MCycle[2] : begin
-                                Inc_PC <= 1'b1;
-                                LDW <= 1'b1;
-                                if (f_cc_true) begin
-                                    IncDec_16 <= 4'b1111;
-                                    Set_Addr_To <= aSP;
-                                    TStates <= 3'b100;
-                                    Set_BusB_To <= 4'b1101;
-                                end else begin
-                                    MCycles <= 3'b011;
-                                end // else: !if(f_cc_true)
-                            end // case: 3
-
-                            MCycle[3] : begin
-                                Write <= 1'b1;
+                    // CALL cc,nn
+                    MCycles <= 3'b101;
+                    case (1'b1) // MCycle
+                        MCycle[1] : begin
+                            Inc_PC <= 1'b1;
+                            LDZ <= 1'b1;
+                        end
+                        MCycle[2] : begin
+                            Inc_PC <= 1'b1;
+                            LDW <= 1'b1;
+                            if (f_cc_true) begin
                                 IncDec_16 <= 4'b1111;
                                 Set_Addr_To <= aSP;
-                                Set_BusB_To <= 4'b1100;
-                            end
+                                TStates <= 3'b100;
+                                Set_BusB_To <= 4'b1101;
+                            end else begin
+                                MCycles <= 3'b011;
+                            end // else: !if(f_cc_true)
+                        end // case: 3
 
-                            MCycle[4] : begin
-                                Write <= 1'b1;
-                                Call <= 1'b1;
-                            end
+                        MCycle[3] : begin
+                            Write <= 1'b1;
+                            IncDec_16 <= 4'b1111;
+                            Set_Addr_To <= aSP;
+                            Set_BusB_To <= 4'b1100;
+                        end
 
-                            default :;
-                        endcase
-                    end // if (IR[5] == 1'b0 || Mode != 3 )
+                        MCycle[4] : begin
+                            Write <= 1'b1;
+                            Call <= 1'b1;
+                        end
+
+                        default :;
+                    endcase
                 end // case: 8'b11000100,8'b11001100,8'b11010100,8'b11011100,8'b11100100,8'b11101100,8'b11110100,8'b11111100
 
                 8'b11001001  : begin // RET
@@ -1092,119 +958,29 @@ module tv80_mcode
                 end // case: 8'b11001001
 
                 8'b11000000,8'b11001000,8'b11010000,8'b11011000,8'b11100000,8'b11101000,8'b11110000,8'b11111000  : begin
-                    if (IR[5] == 1'b1 && Mode == 3 ) begin // *[GB] ...
-                        case (IR[4:3])
-                            2'b00  : begin // *[GB] LD ($FF00+nn),A
-                                MCycles <= 3'b011;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        Inc_PC <= 1'b1;
-                                        Set_Addr_To <= aIOA;
-                                        Set_BusB_To <= 4'b0111;
-                                    end
-
-                                    MCycle[2] :
-                                        Write <= 1'b1;
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b00
-
-                            2'b01  : begin // *[GB] ADD SP,n
-                                MCycles <= 3'b011;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        ALU_Op <= 4'b0000;
-                                        Inc_PC <= 1'b1;
-                                        Read_To_Reg <= 1'b1;
-                                        Save_ALU <= 1'b1;
-                                        Set_BusA_To <= 4'b1000;
-                                        Set_BusB_To <= 4'b0110;
-                                    end
-
-                                    MCycle[2] : begin
-                                        NoRead <= 1'b1;
-                                        Read_To_Reg <= 1'b1;
-                                        Save_ALU <= 1'b1;
-                                        ALU_Op <= 4'b0001;
-                                        Set_BusA_To <= 4'b1001;
-                                        Set_BusB_To <= 4'b1110;        // Incorrect unsigned !!!!!!!!!!!!!!!!!!!!!
-                                    end
-
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b01
-
-                            2'b10  : begin // *[GB] LD A,($FF00+nn)
-                                MCycles <= 3'b011;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        Inc_PC <= 1'b1;
-                                        Set_Addr_To <= aIOA;
-                                    end
-
-                                    MCycle[2] : 
-                                        Read_To_Acc <= 1'b1;
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b10
-
-                            2'b11  : begin // *[GB] LD HL,SP+n       -- Not correct !!!!!!!!!!!!!!!!!!!
-                                MCycles <= 3'b101;
-                                case (1'b1) // MCycle
-                                    MCycle[1] : begin
-                                        Inc_PC <= 1'b1;
-                                        LDZ <= 1'b1;
-                                    end
-
-                                    MCycle[2] : begin
-                                        Set_Addr_To <= aZI;
-                                        Inc_PC <= 1'b1;
-                                        LDW <= 1'b1;
-                                    end
-
-                                    MCycle[3] : begin
-                                        Set_BusA_To[2:0] <= 3'b101; // L
-                                        Read_To_Reg <= 1'b1;
-                                        Inc_WZ <= 1'b1;
-                                        Set_Addr_To <= aZI;
-                                    end
-
-                                    MCycle[4] : begin
-                                        Set_BusA_To[2:0] <= 3'b100; // H
-                                        Read_To_Reg <= 1'b1;
-                                    end
-
-                                    default :;
-                                endcase // case(MCycle)
-                            end // case: 2'b11
-
-                        endcase // case(IR[4:3])
-
-                    end 
-					else begin // *[Z80,FAST,8080] RET cc
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[0] : begin
-                                if (f_cc_true) begin
-                                    Set_Addr_To <= aSP;
-                                end else begin
-                                    MCycles <= 3'b001;
-                                end
-                                TStates <= 3'b101;
-                            end // case: 1
-
-                            MCycle[1] : begin
-                                IncDec_16 <= 4'b0111;
+                    // RET cc
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[0] : begin
+                            if (f_cc_true) begin
                                 Set_Addr_To <= aSP;
-                                LDZ <= 1'b1;
+                            end else begin
+                                MCycles <= 3'b001;
                             end
-                            MCycle[2] : begin
-                                Jump <= 1'b1;
-                                IncDec_16 <= 4'b0111;
-                            end
-                            default :;
-                        endcase
-                    end // else: !if(IR[5] == 1'b1 && Mode == 3 )
+                            TStates <= 3'b101;
+                        end // case: 1
+
+                        MCycle[1] : begin
+                            IncDec_16 <= 4'b0111;
+                            Set_Addr_To <= aSP;
+                            LDZ <= 1'b1;
+                        end
+                        MCycle[2] : begin
+                            Jump <= 1'b1;
+                            IncDec_16 <= 4'b0111;
+                        end
+                        default :;
+                    endcase
                 end // case: 8'b11000000,8'b11001000,8'b11010000,8'b11011000,8'b11100000,8'b11101000,8'b11110000,8'b11111000
 
                 8'b11000111,8'b11001111,8'b11010111,8'b11011111,8'b11100111,8'b11101111,8'b11110111,8'b11111111  : begin // RST p
@@ -1235,74 +1011,41 @@ module tv80_mcode
 
                 // INPUT AND OUTPUT GROUP
                 8'b11011011  : begin // *[z80,FAST,8080] IN A,(n)
-                    if (Mode != 3 ) begin
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
-                                Set_Addr_To <= aIOA;
-                            end
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[1] : begin
+                            Inc_PC <= 1'b1;
+                            Set_Addr_To <= aIOA;
+                        end
 
-                            MCycle[2] : begin
-                                Read_To_Acc <= 1'b1;
-                                IORQ <= 1'b1;
-                            end
+                        MCycle[2] : begin
+                            Read_To_Acc <= 1'b1;
+                            IORQ <= 1'b1;
+                        end
 
-                            default :;
-                        endcase
-                    end // if (Mode != 3 )
+                        default :;
+                    endcase
                 end // case: 8'b11011011
 
-                8'b11010011  : begin // *[z80,FAST,8080] OUT (n),A
-                    if (Mode != 3 ) begin
-                        MCycles <= 3'b011;
-                        case (1'b1) // MCycle
-                            MCycle[1] : begin
-                                Inc_PC <= 1'b1;
-                                Set_Addr_To <= aIOA;
-                                Set_BusB_To <= 4'b0111;
-                            end
+                8'b11010011  : begin // *[z80,FAST,8080] 
+                    // OUT (n),A
+                    MCycles <= 3'b011;
+                    case (1'b1) // MCycle
+                        MCycle[1] : begin
+                            Inc_PC <= 1'b1;
+                            Set_Addr_To <= aIOA;
+                            Set_BusB_To <= 4'b0111;
+                        end
 
-                            MCycle[2] : begin
-                                Write <= 1'b1;
-                                IORQ <= 1'b1;
-                            end
+                        MCycle[2] : begin
+                            Write <= 1'b1;
+                            IORQ <= 1'b1;
+                        end
 
-                            default :;
-                        endcase
-                    end // if (Mode != 3 )
+                        default :;
+                    endcase
                 end // case: 8'b11010011
 
-
-                //----------------------------------------------------------------------------
-                //----------------------------------------------------------------------------
-                // MULTIBYTE INSTRUCTIONS
-                //----------------------------------------------------------------------------
-                //----------------------------------------------------------------------------
-
-//              8'b11001011  :    // CB prefix
-//                begin
-//                  if (Mode != 2 )
-//                    begin
-//                      Prefix = 2'b01;
-//                    end
-//                end
-
-//              8'b11101101  :    // ED Prefix
-//                begin
-//                  if (Mode < 2 )
-//                    begin
-//                      Prefix = 2'b10;
-//                    end
-//                end
-
-//              8'b11011101,8'b11111101  :    // DD/FD Prefix
-//                begin
-//                  if (Mode < 2 )
-//                    begin
-//                      Prefix = 2'b11;
-//                    end
-//                end
 
             endcase // case(IR)
         end // case: 2'b00
@@ -2061,52 +1804,27 @@ module tv80_mcode
         end // block: default_ed_block
     endcase // case(ISet)
 
-    if (Mode == 1 ) begin
-        if (MCycle[0] ) begin
-            //TStates = 3'b100;
-        end else begin
-            TStates <= 3'b011;
+    
+    if (MCycle[5] ) begin
+        Inc_PC <= 1'b1;
+        if (IR == 8'b00110110 || IR == 8'b11001011 ) begin
+            Set_Addr_To <= aNone;
         end
     end
-
-    if (Mode == 3 ) begin
-        if (MCycle[0] ) begin
-            //TStates = 3'b100;
-        end else begin
-            TStates <= 3'b100;
+    if (MCycle[6] ) begin
+        TStates <= 3'b101;
+        if (ISet != 2'b01 ) begin
+            Set_Addr_To <= aXY;
         end
-    end
-
-    if (Mode < 2 ) begin
-        if (MCycle[5] ) begin
+        Set_BusB_To[2:0] <= SSS;
+        Set_BusB_To[3] <= 1'b0;
+        if (IR == 8'b00110110 || ISet == 2'b01 ) begin
+            // LD (HL),n
             Inc_PC <= 1'b1;
-            if (Mode == 1 ) begin
-                Set_Addr_To <= aXY;
-                TStates <= 3'b100;
-                Set_BusB_To[2:0] <= SSS;
-                Set_BusB_To[3] <= 1'b0;
-            end
-            if (IR == 8'b00110110 || IR == 8'b11001011 ) begin
-                Set_Addr_To <= aNone;
-            end
+        end else begin
+            NoRead <= 1'b1;
         end
-        if (MCycle[6] ) begin
-            if (Mode == 0 ) begin
-                TStates <= 3'b101;
-            end
-            if (ISet != 2'b01 ) begin
-                Set_Addr_To <= aXY;
-            end
-            Set_BusB_To[2:0] <= SSS;
-            Set_BusB_To[3] <= 1'b0;
-            if (IR == 8'b00110110 || ISet == 2'b01 ) begin
-                // LD (HL),n
-                Inc_PC <= 1'b1;
-            end else begin
-                NoRead <= 1'b1;
-            end
-        end
-    end // if (Mode < 2 )
+    end
 
 end // always @ (IR, ISet, MCycle, F, NMICycle, INTCycle)
 

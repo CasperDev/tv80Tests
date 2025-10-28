@@ -1,41 +1,41 @@
 [
  {
-  "InstFile" : "E:/TangNano/tv80Tests/src/tv80s.sv",
+  "InstFile" : "C:/WORK/tv80Tests/src/tv80s.sv",
   "InstLine" : 25,
   "InstName" : "tv80s",
-  "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80s.sv",
+  "ModuleFile" : "C:/WORK/tv80Tests/src/tv80s.sv",
   "ModuleLine" : 25,
   "ModuleName" : "tv80s",
   "SubInsts" : [
    {
-    "InstFile" : "E:/TangNano/tv80Tests/src/tv80s.sv",
+    "InstFile" : "C:/WORK/tv80Tests/src/tv80s.sv",
     "InstLine" : 57,
     "InstName" : "core",
-    "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
+    "ModuleFile" : "C:/WORK/tv80Tests/src/tv80_core.sv",
     "ModuleLine" : 24,
     "ModuleName" : "tv80_core",
     "SubInsts" : [
      {
-      "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 200,
+      "InstFile" : "C:/WORK/tv80Tests/src/tv80_core.sv",
+      "InstLine" : 199,
       "InstName" : "mcode",
-      "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_mcode.sv",
+      "ModuleFile" : "C:/WORK/tv80Tests/src/tv80_mcode.sv",
       "ModuleLine" : 25,
       "ModuleName" : "tv80_mcode"
      },
      {
-      "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 232,
+      "InstFile" : "C:/WORK/tv80Tests/src/tv80_core.sv",
+      "InstLine" : 230,
       "InstName" : "i_alu",
-      "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_alu.sv",
+      "ModuleFile" : "C:/WORK/tv80Tests/src/tv80_alu.sv",
       "ModuleLine" : 25,
       "ModuleName" : "tv80_alu"
      },
      {
-      "InstFile" : "E:/TangNano/tv80Tests/src/tv80_core.sv",
-      "InstLine" : 837,
+      "InstFile" : "C:/WORK/tv80Tests/src/tv80_core.sv",
+      "InstLine" : 816,
       "InstName" : "regs",
-      "ModuleFile" : "E:/TangNano/tv80Tests/src/tv80_reg.sv",
+      "ModuleFile" : "C:/WORK/tv80Tests/src/tv80_reg.sv",
       "ModuleLine" : 27,
       "ModuleName" : "tv80_reg"
      }
