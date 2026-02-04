@@ -24,7 +24,7 @@
 
 module tv80s (/*AUTOARG*/
     // Clock & Reset
-    input logic clk, cen, reset,
+    input logic clk, cen, rst_n,
     // Control Outputs
     output logic m1_n,
     output logic mreq_n, iorq_n, rd_n, wr_n, 
@@ -45,17 +45,17 @@ module tv80s (/*AUTOARG*/
   // wr_n active in T2
   // Std I/O cycle
 
-  logic          intcycle_n;
-  logic          no_read;        // 0-reqd or write, 1-internal cycle (??) 
-  logic          write;          // wr
-  logic          iorq;           // when rd or wr: 1-IORQ r/w, 0- MREQ r/w
-  logic [7:0]    di_reg;
-  logic [6:0]    mcycle;
-  logic [6:0]    tstate;
+  logic          intcycle_n;        // 0-INT/NMI Acknowledge Cycle, 1-Standard Cycle
+  logic          no_read;           // 0-read enabled, 1-do not execute Read 
+  logic          write;             // 0-read, 1-write
+  logic          iorq;              // 0-read/write memory (MREQ), 1-read/write I/O (IORQ)
+  logic [7:0]    di_reg;            // input data latched durning T2
+  logic [6:0]    mcycle;            // current M cycle
+  logic [6:0]    tstate;            // current T state within M cycle
 
 
     tv80_core core (
-        .clk(clk), .cen (cen), .reset(reset),
+        .clk(clk), .cen (cen), .rst_n(rst_n),
         // Control Outputs
         .m1_n (m1_n), .iorq (iorq), .no_read (no_read), .write (write),
         // Bus Exchange
@@ -71,8 +71,8 @@ module tv80s (/*AUTOARG*/
         .intcycle_n (intcycle_n)
      );
     
-    always_ff@(posedge clk or posedge reset) begin
-        if (reset) begin
+    always_ff@(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
             rd_n   <= 1'b1; wr_n   <= 1'b1;  iorq_n <= 1'b1; mreq_n <= 1'b1;
             di_reg <= 'd0;
         end else if(cen) begin
@@ -81,31 +81,39 @@ module tv80s (/*AUTOARG*/
             iorq_n <= 1'b1;       // default
             mreq_n <= 1'b1;       // default
             if (mcycle[0]) begin
+                // During M1 (T1 and T2), 
+                // for Standard Fetch set active RD and MREQ
+                // for INT/NMI Acknowledge Cycle set active IORQ (and M1)
                 if (tstate[1] || (tstate[2] && wait_n == 1'b0)) begin
                     rd_n <= ~ intcycle_n;
                     mreq_n <= ~ intcycle_n;
                     iorq_n <= intcycle_n;
                 end
+                // During M1 (T3 and T4), refresh state - set active MREQ w/o RD
                 if (tstate[3]) mreq_n <= 1'b0;
             end // if (mcycle[0])
             else begin
+                // Durning M2,M3,etc (T1 and T2), if Read (not write & not read blocked)
+                // Standard Read cycle - set active RD and IORQ or MREQ respectively
                 if ((tstate[1] || (tstate[2] && wait_n == 1'b0)) && no_read == 1'b0 && write == 1'b0) begin
                     rd_n <= 1'b0;
                     iorq_n <= ~ iorq;
                     mreq_n <= iorq;
                 end
+                // Durning M2,M3,etc (T1 and T2), if Write 
+                // Standard Write cycle - set active WR and IORQ or MREQ respectively
                 if ((tstate[1] || (tstate[2] && wait_n == 1'b0)) && write == 1'b1) begin
                     wr_n <= 1'b0;
                     iorq_n <= ~ iorq;
                     mreq_n <= iorq;
                 end
-
             end // else: !if(mcycle[0])
 
+            // Latch data input during T2 if Wait not active (not in a wait state)
             if (tstate[2] && wait_n == 1'b1)
                 di_reg <= di;
-        end // else: !if(reset)
-    end // always @ (posedge clk or posedge reset)
+        end // else: !if(!rst_n)
+    end // always @ (posedge clk or negedge rst_n)
 
 endmodule // t80s
 

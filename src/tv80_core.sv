@@ -23,7 +23,7 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 module tv80_core (/*AUTOARG*/
     // Clock & reset
-    input logic clk, cen, reset,
+    input logic clk, cen, rst_n,
     // Control Outputs
     output logic m1_n, iorq,
     output logic no_read, write, 
@@ -324,8 +324,8 @@ module tv80_core (/*AUTOARG*/
     end // always @ *
 	
 	reg [15:0] HaltPC;
-    always @ (posedge clk or posedge reset) begin
-        if (reset) begin
+    always @ (posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
             PC <= 0;  // Program Counter
 			HaltPC <= 'd0;
             A <= 0;
@@ -688,7 +688,7 @@ module tv80_core (/*AUTOARG*/
                     endcase
                 end // if ((tstate == 1 && Save_ALU_r == 1'b0 && Auto_Wait_t1 == 1'b0) ||...
             end // if (ClkEn == 1'b1 )
-        end // else: !if(reset)
+        end // else: !if(!rst_n)
     end
 
 
@@ -890,8 +890,8 @@ module tv80_core (/*AUTOARG*/
     //
     //-------------------------------------------------------------------------
     reg rfsh_n_r = 1'b1;
-    always@(posedge clk or posedge reset) begin
-        if (reset) begin
+    always@(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
             rfsh_n_r <= 1'b1;
         end else if (cen) begin
             if (mcycle[0] && ((tstate[2]  && wait_n == 1'b1) || tstate[3]) ) begin
@@ -900,7 +900,7 @@ module tv80_core (/*AUTOARG*/
                 rfsh_n_r <= 1'b1;
             end
         end
-    end // always@(posedge clk or posedge reset)
+    end // always@(posedge clk or negedge rst_n)
     assign rfsh_n = rfsh_n_r;
 
     always @(/*AUTOSENSE*/BusAck or Halt_FF or I_DJNZ or IntCycle
@@ -922,8 +922,8 @@ module tv80_core (/*AUTOARG*/
     //
     //-----------------------------------------------------------------------
 
-    always @ (posedge clk or posedge reset) begin : sync_inputs
-        if (reset) begin
+    always @ (posedge clk or negedge rst_n) begin : sync_inputs
+        if (!rst_n) begin
             BusReq_s <= 1'b0;
             INT_s <= 1'b0;
             NMI_s <= 1'b0;
@@ -946,8 +946,8 @@ module tv80_core (/*AUTOARG*/
     //
     //-----------------------------------------------------------------------
 	reg SetEI_r;
-    always @ (posedge clk or posedge reset) begin
-        if (reset) begin
+    always @ (posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
             mcycle <= 7'b0000001;
             tstate <= 7'b0000001;
             Pre_XY_F_M <= 3'b000;
