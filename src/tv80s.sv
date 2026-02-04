@@ -24,7 +24,7 @@
 
 module tv80s (/*AUTOARG*/
     // Clock & Reset
-    input logic clk, cen, rst_n,
+    input logic clk, cen, reset,
     // Control Outputs
     output logic m1_n,
     output logic mreq_n, iorq_n, rd_n, wr_n, 
@@ -38,6 +38,7 @@ module tv80s (/*AUTOARG*/
     input logic wait_n, int_n, nmi_n, busrq_n
   );
 
+    wire rst_n = ~reset;
 	initial begin
 		mreq_n = 1'b1; iorq_n = 1'b1; rd_n = 1'b1; wr_n = 1'b1; 
 	end

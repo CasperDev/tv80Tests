@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/WORK/tv80Tests/src/tv80s.sv",
-    "InstLine" : 57,
+    "InstLine" : 58,
     "InstName" : "core",
     "ModuleFile" : "C:/WORK/tv80Tests/src/tv80_core.sv",
     "ModuleLine" : 24,
