@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/fde9/out/fde9.vcd opened for output.
-Test Test - fde9 ... PASS
-tests/fde9/fde9.sv:186: $finish called at 135 (1ns)
