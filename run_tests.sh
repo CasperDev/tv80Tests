@@ -89,11 +89,7 @@ run_test() {
     if [ "$VIEW" = "view" ]; then
         if [ -f "$vcd_file" ]; then
             echo "📈 Opening GTKWave for $test_name..."
-			if [ -f "$gtkw_file" ]; then
-                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "$test_base_name.vcd" "$test_base_name.gtkw" >/dev/null 2>&1 & disown)
-            else
-                (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "$test_base_name.vcd" >/dev/null 2>&1 & disown)
-            fi
+            (cd "$out_dir" && nohup gtkwave --rcvar 'fontname_signals Monospace 13' --rcvar 'fontname_waves Monospace 13' "$test_base_name.vcd" "$test_base_name.gtkw" >/dev/null 2>&1 & disown)
 		else
             echo "⚠️  VCD file not found: $vcd_file"
         fi
