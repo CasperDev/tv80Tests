@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/python:3.11
+FROM mcr.microsoft.com/vscode/devcontainers/python
 
 # Zainstaluj Icarus Verilog i narzędzia pomocnicze
 RUN apt-get update && apt-get install -y \
