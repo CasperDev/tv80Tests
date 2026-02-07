@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="tv80s" Register="12" Lut="36" T_Register="264(12)" T_Alu="55(0)" T_Lut="1492(36)" T_Ssram="12(0)">
- <SubModule name="core" Register="252" Alu="48" Lut="1192" T_Register="252(252)" T_Alu="55(48)" T_Lut="1456(1192)" T_Ssram="12(0)">
-  <SubModule name="mcode" Lut="249" T_Lut="249(249)"/>
+<Module name="tv80s" Register="12" Lut="32" T_Register="264(12)" T_Alu="55(0)" T_Lut="1521(32)" T_Ssram="12(0)">
+ <SubModule name="core" Register="252" Alu="48" Lut="1256" T_Register="252(252)" T_Alu="55(48)" T_Lut="1489(1256)" T_Ssram="12(0)">
+  <SubModule name="mcode" Lut="218" T_Lut="218(218)"/>
   <SubModule name="i_alu" Alu="7" Lut="8" T_Alu="7(7)" T_Lut="8(8)"/>
   <SubModule name="regs" Lut="7" Ssram="12" T_Lut="7(7)" T_Ssram="12(12)"/>
  </SubModule>

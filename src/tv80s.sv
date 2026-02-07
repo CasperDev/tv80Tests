@@ -65,8 +65,6 @@ module tv80s (/*AUTOARG*/
         .rfsh_n (rfsh_n), .halt_n (halt_n), .busak_n(busak_n),
         // Control inputs
         .wait_n (wait_n), .int_n (int_n), .nmi_n (nmi_n), .busrq_n (busrq_n),
-        // Extra State
-        .IntE (), .stop (),
         // Cycle state
         .mc (mcycle), .ts (tstate),
         .intcycle_n (intcycle_n)
