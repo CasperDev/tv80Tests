@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/cb1b/out/cb1b.vcd opened for output.
+Test Test - cb1b ... PASS
+tests/cb1b/cb1b.sv:187: $finish called at 135 (1ns)

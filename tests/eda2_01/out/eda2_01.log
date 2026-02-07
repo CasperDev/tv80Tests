@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/eda2_01/out/eda2_01.vcd opened for output.
+Test Test - eda2_01 ... PASS
+tests/eda2_01/eda2_01.sv:188: $finish called at 215 (1ns)

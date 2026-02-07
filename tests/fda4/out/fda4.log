@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/fda4/out/fda4.vcd opened for output.
+Test Test - fda4 ... PASS
+tests/fda4/fda4.sv:186: $finish called at 135 (1ns)

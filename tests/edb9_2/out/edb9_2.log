@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/edb9_2/out/edb9_2.vcd opened for output.
+Test Test - edb9_2 ... PASS
+tests/edb9_2/edb9_2.sv:194: $finish called at 265 (1ns)

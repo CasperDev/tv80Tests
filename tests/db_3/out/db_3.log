@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/db_3/out/db_3.vcd opened for output.
+Test Test - db_3 ... PASS
+tests/db_3/db_3.sv:187: $finish called at 165 (1ns)

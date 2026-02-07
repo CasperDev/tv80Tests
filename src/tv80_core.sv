@@ -295,6 +295,7 @@ module tv80_core (/*AUTOARG*/
         endcase
     end // always @ (...
 
+
     assign T_Res = last_tstate;
 
     always @(/*AUTOSENSE*/ALU_Q or BusAck or BusB or DI_Reg
@@ -795,7 +796,7 @@ module tv80_core (/*AUTOARG*/
 
 
     always @(/*AUTOSENSE*/ExchangeDH or ID16 or IncDec_16 or RegBusA_r
-            or RegBusB or Save_Mux or Extra_Reg_Save or dout or mcycle or tstate or RegCopy) begin
+            or RegBusB or Save_Mux or Extra_Reg_Save or mcycle or tstate or RegCopy) begin
         RegDIH = Save_Mux;
         RegDIL = Save_Mux;
 		if (Extra_Reg_Save && mcycle[0]) begin

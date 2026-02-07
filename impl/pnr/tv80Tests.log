@@ -1,5 +1,5 @@
-Reading netlist file: "C:\WORK\tv80Tests\impl\gwsynthesis\tv80Tests.vg"
-Parsing netlist file "C:\WORK\tv80Tests\impl\gwsynthesis\tv80Tests.vg" completed
+Reading netlist file: "E:\TangNano\tv80Tests\impl\gwsynthesis\tv80Tests.vg"
+Parsing netlist file "E:\TangNano\tv80Tests\impl\gwsynthesis\tv80Tests.vg" completed
 Processing netlist completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -18,10 +18,10 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "C:\WORK\tv80Tests\impl\pnr\tv80Tests.power.html" completed
-Generate file "C:\WORK\tv80Tests\impl\pnr\tv80Tests.pin.html" completed
-Generate file "C:\WORK\tv80Tests\impl\pnr\tv80Tests.rpt.html" completed
-Generate file "C:\WORK\tv80Tests\impl\pnr\tv80Tests.rpt.txt" completed
-Generate file "C:\WORK\tv80Tests\impl\pnr\tv80Tests.tr.html" completed
-Wed Feb  4 10:36:41 2026
+Generate file "E:\TangNano\tv80Tests\impl\pnr\tv80Tests.power.html" completed
+Generate file "E:\TangNano\tv80Tests\impl\pnr\tv80Tests.pin.html" completed
+Generate file "E:\TangNano\tv80Tests\impl\pnr\tv80Tests.rpt.html" completed
+Generate file "E:\TangNano\tv80Tests\impl\pnr\tv80Tests.rpt.txt" completed
+Generate file "E:\TangNano\tv80Tests\impl\pnr\tv80Tests.tr.html" completed
+Thu Feb  5 12:56:28 2026
 

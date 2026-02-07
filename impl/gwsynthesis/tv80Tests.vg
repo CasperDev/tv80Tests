@@ -1,14 +1,14 @@
 //
 //Written by GowinSynthesis
 //Tool Version "V1.9.12 (64-bit)"
-//Wed Feb  4 10:34:51 2026
+//Thu Feb  5 12:56:19 2026
 
 //Source file index table:
-//file0 "\C:/WORK/tv80Tests/src/tv80_alu.sv"
-//file1 "\C:/WORK/tv80Tests/src/tv80_core.sv"
-//file2 "\C:/WORK/tv80Tests/src/tv80_mcode.sv"
-//file3 "\C:/WORK/tv80Tests/src/tv80_reg.sv"
-//file4 "\C:/WORK/tv80Tests/src/tv80s.sv"
+//file0 "\E:/TangNano/tv80Tests/src/tv80_alu.sv"
+//file1 "\E:/TangNano/tv80Tests/src/tv80_core.sv"
+//file2 "\E:/TangNano/tv80Tests/src/tv80_mcode.sv"
+//file3 "\E:/TangNano/tv80Tests/src/tv80_reg.sv"
+//file4 "\E:/TangNano/tv80Tests/src/tv80s.sv"
 `timescale 100 ps/100 ps
 module tv80_mcode (
   n1609_10,

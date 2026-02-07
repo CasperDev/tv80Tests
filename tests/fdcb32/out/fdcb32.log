@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/fdcb32/out/fdcb32.vcd opened for output.
+Test Test - fdcb32 ... PASS
+tests/fdcb32/fdcb32.sv:189: $finish called at 285 (1ns)

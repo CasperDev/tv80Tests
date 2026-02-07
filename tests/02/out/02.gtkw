@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Thu Feb  5 09:02:43 2026
+[*]
+[dumpfile] "/workspaces/tv80Tests/tests/02/out/02.vcd"
+[dumpfile_mtime] "Thu Feb  5 08:57:13 2026"
+[dumpfile_size] 17057
+[savefile] "/workspaces/tv80Tests/tests/02/out/02.gtkw"
+[timestart] 0
+[size] 1886 986
+[pos] -1 -1
+*-4.192776 105 35 75 105 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_02.
+[treeopen] tb_02.cpu.
+[sst_width] 297
+[signals_width] 183
+[sst_expanded] 1
+[sst_vpaned_height] 291
+@28
+tb_02.cpu.rst_n
+tb_02.cpu.clk
+@22
+tb_02.cpu.mcycle[6:0]
+tb_02.cpu.tstate[6:0]
+tb_02.cpu.A[15:0]
+@28
+tb_02.cpu.m1_n
+tb_02.cpu.rfsh_n
+tb_02.cpu.mreq_n
+tb_02.cpu.rd_n
+@22
+tb_02.cpu.core.ACC[7:0]
+@23
+tb_02.cpu.dout[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

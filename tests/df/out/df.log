@@ -1,0 +1,3 @@
+VCD info: dumpfile tests/df/out/df.vcd opened for output.
+Test Test - df ... PASS
+tests/df/df.sv:186: $finish called at 165 (1ns)
