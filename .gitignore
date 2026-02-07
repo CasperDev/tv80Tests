@@ -1,6 +1,4 @@
-*/**/*.vcd
-*/**/*.vvp
-tmp
+impl/temp/*
 *.log
 *.vcd
 *.vvp
