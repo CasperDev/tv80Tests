@@ -1,3 +1,4 @@
-*/**/*.vcd
-*/**/*.vvp
+*.vcd
+*.vvp
+*.log
 tmp
