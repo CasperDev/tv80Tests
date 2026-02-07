@@ -39,9 +39,7 @@ module tv80_core (/*AUTOARG*/
     // Cycle state
     output logic [6:0] mc, ts, 
     // Estra state
-    output logic intcycle_n, 
-    output logic IntE, 
-    output logic stop
+    output logic intcycle_n 
   );
 
   // Beginning of automatic inputs (from unused autoinst inputs)
@@ -384,7 +382,7 @@ module tv80_core (/*AUTOARG*/
                         R[6:0] <= R[6:0] + 1'b1;
                         
 						
-						if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0 && ~ (Halt_FF == 1'b1 || Halt == 1'b1) )
+						if (Jump == 1'b0 && Call == 1'b0 && NMICycle == 1'b0 && IntCycle == 1'b0  )
                         begin
 							HaltPC <= PC;
                             PC <= PC16;
@@ -904,17 +902,14 @@ module tv80_core (/*AUTOARG*/
     end // always@(posedge clk or negedge rst_n)
     assign rfsh_n = rfsh_n_r;
 
-    always @(/*AUTOSENSE*/BusAck or Halt_FF or I_DJNZ or IntCycle
-            or IntE_FF1 or di or iorq_i or mcycle or tstate) begin
+    always_comb begin
         mc = mcycle;
         ts = tstate;
         DI_Reg = di;
         halt_n = ~ Halt_FF;
         busak_n = ~ BusAck;
         intcycle_n = ~ IntCycle;
-        IntE = IntE_FF1;
         iorq = iorq_i;
-        stop = I_DJNZ;
     end
 
     //-----------------------------------------------------------------------
@@ -965,6 +960,7 @@ module tv80_core (/*AUTOARG*/
 			SetEI_r <= 1'b0;
         end else begin
             if (cen) begin
+				// Auto_Wait_t1
                 if (T_Res == 1'b1 ) begin
                     Auto_Wait_t1 <= 1'b0;
                 end else begin
@@ -1089,7 +1085,7 @@ module tv80_core (/*AUTOARG*/
     end // always @ *
 
 
-    always @(/*AUTOSENSE*/IntCycle or NMICycle or mcycle) begin
+    always_comb begin
         Auto_Wait = 1'b0;
         if (IntCycle == 1'b1 || NMICycle == 1'b1 ) begin
             if (mcycle[0] ) begin
