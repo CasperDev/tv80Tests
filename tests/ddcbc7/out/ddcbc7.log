@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/ddcbc7/out/ddcbc7.vcd opened for output.
-Test Test - ddcbc7 ... PASS
-tests/ddcbc7/ddcbc7.sv:189: $finish called at 285 (1ns)
