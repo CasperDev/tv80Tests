@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Feb 07 09:29:18 2026
+[*]
+[dumpfile] "E:\TangNano\tv80Tests\tests\ed78\out\ed78.vcd"
+[dumpfile_mtime] "Sat Feb 07 09:23:36 2026"
+[dumpfile_size] 20731
+[savefile] "E:\TangNano\tv80Tests\tests\ed78\out\ed78.gtkw"
+[timestart] 0
+[size] 1543 724
+[pos] -1 -1
+*-4.994763 155 35 75 115 155 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_ed78.
+[treeopen] tb_ed78.cpu.
+[sst_width] 197
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 197
+@28
+tb_ed78.cpu.rst_n
+tb_ed78.cpu.clk
+@22
+tb_ed78.cpu.mcycle[6:0]
+tb_ed78.cpu.tstate[6:0]
+tb_ed78.cpu.A[15:0]
+@28
+tb_ed78.cpu.m1_n
+tb_ed78.cpu.rfsh_n
+[color] 1
+tb_ed78.cpu.mreq_n
+[color] 1
+tb_ed78.cpu.rd_n
+[color] 1
+tb_ed78.cpu.iorq_n
+tb_ed78.cpu.iorq
+@22
+tb_ed78.cpu.core.IR[7:0]
+@29
+tb_ed78.cpu.no_read
+@28
+tb_ed78.cpu.write
+[pattern_trace] 1
+[pattern_trace] 0

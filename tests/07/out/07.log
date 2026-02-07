@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/07/out/07.vcd opened for output.
-Test Test - 07 ... PASS
-tests/07/07.sv:185: $finish called at 95 (1ns)

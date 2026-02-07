@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/fdcbff/out/fdcbff.vcd opened for output.
-Test Test - fdcbff ... PASS
-tests/fdcbff/fdcbff.sv:189: $finish called at 285 (1ns)

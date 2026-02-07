@@ -1,3 +1,0 @@
-VCD info: dumpfile tests/cbec/out/cbec.vcd opened for output.
-Test Test - cbec ... PASS
-tests/cbec/cbec.sv:187: $finish called at 135 (1ns)
